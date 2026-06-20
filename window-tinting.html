@@ -1,0 +1,604 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Window Tinting — Premium Automotive Film · EVA Car Mats Ireland</title>
+<meta name="description" content="Professional car window tinting in Sallins, Co. Kildare. Privacy, heat &amp; glare control with premium ceramic and carbon films. Book a fitting today.">
+<link rel="stylesheet" href="shared.css?v=3">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link id="gf-bricolage" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&display=swap">
+<link id="gf-anton" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&display=swap">
+<link id="gf-fraunces" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,400..700,30,0..1&display=swap">
+<link id="gf-bigshoulders" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@400;500;600;700;800&display=swap">
+<style>
+  /* tinting page accents — more glossy / metallic */
+  .tint-percent{
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+  }
+  .tint-tile{
+    position: relative;
+    aspect-ratio: 4/5;
+    border: 1px solid var(--hairline);
+    background: var(--ink-2);
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    cursor: pointer;
+    transition: border-color .25s var(--ease), transform .25s var(--ease);
+  }
+  .tint-tile:hover{ border-color: var(--gold); transform: translateY(-2px) }
+  .tint-tile .glass{
+    position: absolute; inset: 14px 14px 60px;
+    background:
+      linear-gradient(135deg, rgba(255,255,255,.06) 0%, rgba(255,255,255,0) 30%, rgba(255,255,255,.06) 70%, rgba(255,255,255,0) 100%),
+      var(--shade, rgba(0,0,0,.5));
+    border-radius: 2px;
+    border: 1px solid rgba(255,255,255,.08);
+  }
+  .tint-tile .lvl{
+    position: absolute; bottom: 0; left: 0; right: 0;
+    padding: 16px;
+    border-top: 1px solid var(--hairline);
+    background: var(--ink);
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gold-2);
+  }
+  .tint-tile .lvl .vlt{ display: block; color: var(--cream); font-size: 18px; letter-spacing: 0; text-transform: none; font-family: var(--display); font-weight: 500; margin-top: 4px }
+  @media (max-width: 900px){ .tint-percent{grid-template-columns: repeat(3,1fr)} }
+  @media (max-width: 560px){ .tint-percent{grid-template-columns: repeat(2,1fr)} }
+
+  .pkg{
+    background: var(--ink-2);
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius-card);
+    padding: 40px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    transition: border-color .25s var(--ease), transform .3s var(--ease);
+    position: relative;
+  }
+  .pkg:hover{ border-color: var(--gold); transform: translateY(-4px) }
+  .pkg.featured{
+    border-color: var(--gold);
+    background:
+      linear-gradient(180deg, rgba(199,152,73,.04) 0%, rgba(10,10,11,0) 60%),
+      var(--ink-2);
+  }
+  .pkg .pkg-tag{
+    position: absolute; top: -10px; right: 24px;
+    background: var(--gold); color: var(--ink);
+    padding: 4px 12px;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+  .pkg .p-num{
+    font-family: var(--mono); font-size: 11px;
+    letter-spacing: 0.18em; color: var(--gold); text-transform: uppercase;
+  }
+  .pkg h3{
+    font-family: var(--display);
+    font-size: 32px; font-weight: 600;
+    letter-spacing: -0.02em;
+    margin: 0;
+    color: var(--cream);
+  }
+  .pkg .price{
+    font-family: var(--display);
+    font-size: 38px;
+    font-weight: 600;
+    color: var(--gold-2);
+    letter-spacing: -0.02em;
+  }
+  .pkg .price .from{ font-size: 14px; color: var(--muted); font-family: var(--mono); letter-spacing: .14em; text-transform: uppercase; margin-right: 8px; vertical-align: middle }
+  .pkg ul{
+    list-style: none; padding: 0; margin: 0;
+    display: flex; flex-direction: column; gap: 12px;
+  }
+  .pkg ul li{
+    display: flex; gap: 12px; align-items: flex-start;
+    font-size: 14.5px; color: var(--text);
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .pkg ul li:last-child{ border-bottom: none; padding-bottom: 0 }
+  .pkg ul li .tick{
+    color: var(--gold);
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    flex: 0 0 16px;
+  }
+</style>
+<!-- SEO-INJECT -->
+<link rel="canonical" href="https://evacarmats.ie/window-tinting.html">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#0a0a0b">
+<meta name="author" content="EVA Car Mats Ireland">
+<meta name="geo.region" content="IE-KE">
+<meta name="geo.placename" content="Sallins, Co. Kildare">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="EVA Car Mats Ireland">
+<meta property="og:locale" content="en_IE">
+<meta property="og:title" content="Window Tinting — Premium Automotive Film · EVA Car Mats Ireland">
+<meta property="og:description" content="Professional car window tinting in Sallins, Co. Kildare. Privacy, heat &amp; glare control with premium ceramic and carbon films. Book a fitting today.">
+<meta property="og:url" content="https://evacarmats.ie/window-tinting.html">
+<meta property="og:image" content="https://evacarmats.ie/hero-home.jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Window Tinting — Premium Automotive Film · EVA Car Mats Ireland">
+<meta name="twitter:description" content="Professional car window tinting in Sallins, Co. Kildare. Privacy, heat &amp; glare control with premium ceramic and carbon films. Book a fitting today.">
+<meta name="twitter:image" content="https://evacarmats.ie/hero-home.jpeg">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+</head>
+<body>
+
+<!-- ============== HEADER ============== -->
+<header class="site-header" data-screen-label="header">
+  <div class="nav-wrap">
+    <a class="brand" href="index.html" aria-label="EVA Car Mats Ireland home">
+      <span class="brand-mark"><img src="assets/logo.jpg" alt=""></span>
+      <span class="brand-text">
+        <span class="b-1">EVA Car Mats</span>
+      </span>
+    </a>
+    <nav aria-label="Primary" class="nav-primary">
+      <button class="nav-close" aria-label="Close menu">✕</button>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li class="nav-has-dropdown active">
+          <button class="nav-dropdown-toggle" aria-expanded="false">Services <span class="nav-chevron">›</span></button>
+          <ul class="nav-dropdown">
+            <li><a href="car-mats.html">Car Mats</a></li>
+            <li><a href="taxi-drivers.html">Taxi Drivers</a></li>
+            <li><a href="window-tinting.html" class="active">Window Tinting</a></li>
+            <li><a href="seat-covers.html">Seat Covers</a></li>
+          </ul>
+        </li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="testimonials.html">Reviews</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <a class="nav-mobile-phone" href="tel:+353894655600">089 465 5600</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="nav-phone" href="tel:+353894655600">089 465 5600</a>
+      <a class="btn-nav-cta" href="#tint-form">Book Tint</a>
+      <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ============== HERO — distinct, full-bleed image-led ============== -->
+<section class="hero" data-screen-label="hero" style="align-items: flex-start">
+  <div class="hero-bg">
+    <img src="assets/tinting-hero.jpg" alt="Sedan with professional window tinting in a studio bay">
+  </div>
+  <div class="hero-inner" style="padding-top: clamp(96px, 14vh, 180px); padding-bottom: clamp(60px, 8vh, 100px)">
+    <div class="container">
+      <div style="max-width: 920px">
+        <h1 class="display h-xl reveal" style="font-family: 'Bricolage Grotesque', var(--display), sans-serif; font-size: 68px; line-height: 0.96; letter-spacing: -1.4px; color: #e8c275; margin-bottom: 28px; width: 880px">
+          <span style="color: #f7f5f2">A cleaner line,</span><br>
+          <span style="color: var(--gold-2); font-style: italic; font-weight: 500">a quieter cabin.</span>
+        </h1>
+        <p class="lede reveal" style="margin-bottom: 36px">
+          Professional automotive window film, installed in our studio. Premium privacy, heat &amp; glare control with a factory-tight edge. Now booking in Sallins.
+        </p>
+        <div class="reveal" style="display:flex; gap:14px; flex-wrap: wrap">
+          <a href="#tint-form" class="btn btn-primary btn-lg">Book a Fitting <span class="arrow"></span></a>
+          <a href="#packages" class="btn btn-ghost btn-lg">View Packages</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== BENEFITS — narrow band ============== -->
+<section class="section dense" style="border-top: 1px solid var(--hairline)">
+  <div class="container">
+    <div style="text-align:center; margin-bottom: 56px" class="reveal">
+      <div class="eyebrow no-bar" style="margin-bottom: 18px; justify-content: center">Reasons to tint</div>
+      <h2 class="display h-md">Four good reasons.</h2>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--hairline); border: 1px solid var(--hairline); border-radius: var(--radius-card); overflow: hidden" class="reveal">
+      <div style="background: var(--ink-2); padding: 40px 28px">
+        <div class="card-num" style="margin-bottom: 22px">01</div>
+        <h3 style="font-family: var(--display); font-size: 24px; font-weight: 500; letter-spacing: -0.01em; margin: 0 0 10px">Appearance</h3>
+        <p style="color: var(--muted); margin: 0; font-size: 14.5px">Even, glass-deep tone with no orange peel or bubbling. The car looks finished.</p>
+      </div>
+      <div style="background: var(--ink-2); padding: 40px 28px">
+        <div class="card-num" style="margin-bottom: 22px">02</div>
+        <h3 style="font-family: var(--display); font-size: 24px; font-weight: 500; letter-spacing: -0.01em; margin: 0 0 10px">Privacy</h3>
+        <p style="color: var(--muted); margin: 0; font-size: 14.5px">Cabin and contents stay out of view from the curb — particularly behind the B-pillar.</p>
+      </div>
+      <div style="background: var(--ink-2); padding: 40px 28px">
+        <div class="card-num" style="margin-bottom: 22px">03</div>
+        <h3 style="font-family: var(--display); font-size: 24px; font-weight: 500; letter-spacing: -0.01em; margin: 0 0 10px">Heat</h3>
+        <p style="color: var(--muted); margin: 0; font-size: 14.5px">Ceramic films cut up to 88% of infrared. Cooler cabin, less air-con drain.</p>
+      </div>
+      <div style="background: var(--ink-2); padding: 40px 28px">
+        <div class="card-num" style="margin-bottom: 22px">04</div>
+        <h3 style="font-family: var(--display); font-size: 24px; font-weight: 500; letter-spacing: -0.01em; margin: 0 0 10px">Glare</h3>
+        <p style="color: var(--muted); margin: 0; font-size: 14.5px">Low-light driving improves. Headlights and low winter sun stop blowing out the cabin.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== VLT LEVELS ============== -->
+<section class="section">
+  <div class="container">
+    <div style="display: grid; grid-template-columns: 1fr 1.4fr; gap: 80px; align-items: flex-end; margin-bottom: 48px" class="reveal">
+      <div>
+        <div class="eyebrow" style="margin-bottom: 18px">Shade levels</div>
+        <h2 class="display h-md">Pick your darkness.</h2>
+      </div>
+      <p class="lede" style="margin: 0">
+        VLT — Visible Light Transmission — is the percentage of light the film lets through. Lower number, darker glass. We'll guide you to a level that's right for your vehicle, day-to-day driving and Irish road regulations.
+      </p>
+    </div>
+
+    <div class="tint-percent reveal">
+      <div class="tint-tile" style="--shade: rgba(0,0,0,.18)">
+        <div class="glass"></div>
+        <div class="lvl">VLT<span class="vlt">70%</span></div>
+      </div>
+      <div class="tint-tile" style="--shade: rgba(0,0,0,.38)">
+        <div class="glass"></div>
+        <div class="lvl">VLT<span class="vlt">50%</span></div>
+      </div>
+      <div class="tint-tile" style="--shade: rgba(0,0,0,.58)">
+        <div class="glass"></div>
+        <div class="lvl">VLT<span class="vlt">35%</span></div>
+      </div>
+      <div class="tint-tile" style="--shade: rgba(0,0,0,.78)">
+        <div class="glass"></div>
+        <div class="lvl">VLT<span class="vlt">20%</span></div>
+      </div>
+      <div class="tint-tile" style="--shade: rgba(0,0,0,.92)">
+        <div class="glass"></div>
+        <div class="lvl">VLT<span class="vlt">5%</span></div>
+      </div>
+    </div>
+
+    <p style="margin-top: 28px; color: var(--muted); font-size: 13px; max-width: 80ch">
+      Note · Irish law restricts how dark the front side windows and windscreen can be tinted. Rear windows are unrestricted on most vehicles. We'll advise on a fully road-legal configuration before any film is cut.
+    </p>
+  </div>
+</section>
+
+<!-- ============== SIDE-BY-SIDE PROCESS ============== -->
+<section class="section" style="background: var(--ink-2); border-top: 1px solid var(--hairline)">
+  <div class="container">
+    <div class="split">
+      <div class="reveal" style="position: relative">
+        <img src="assets/tinting-application.jpg" alt="Technician applying tint film to a sedan" style="border-radius: var(--radius-card); border: 1px solid var(--hairline); width: 100%">
+      </div>
+      <div class="reveal">
+        <div class="eyebrow" style="margin-bottom: 18px">Process</div>
+        <h2 class="display h-md" style="margin-bottom: 24px">Studio fit, four hours.</h2>
+        <p class="lede" style="margin-bottom: 28px">
+          Tinting is one-shot work — there's no shortcut to a clean install. The studio is climate-controlled and dust-filtered for that reason.
+        </p>
+
+        <div style="display: flex; flex-direction: column; gap: 14px">
+          <div style="display: grid; grid-template-columns: 48px 1fr; gap: 18px; padding: 18px 0; border-bottom: 1px solid var(--hairline)">
+            <div style="font-family: var(--display); font-size: 24px; font-weight: 600; color: var(--gold-2); line-height: 1">01</div>
+            <div>
+              <div style="font-family: var(--display); font-size: 18px; font-weight: 500; color: var(--cream); margin-bottom: 4px">Glass prep</div>
+              <div style="color: var(--muted); font-size: 14px">Deep clean, edge inspection, mask trim. Any defect is corrected before film touches glass.</div>
+            </div>
+          </div>
+          <div style="display: grid; grid-template-columns: 48px 1fr; gap: 18px; padding: 18px 0; border-bottom: 1px solid var(--hairline)">
+            <div style="font-family: var(--display); font-size: 24px; font-weight: 600; color: var(--gold-2); line-height: 1">02</div>
+            <div>
+              <div style="font-family: var(--display); font-size: 18px; font-weight: 500; color: var(--cream); margin-bottom: 4px">Computer-cut film</div>
+              <div style="color: var(--muted); font-size: 14px">Pre-cut to your vehicle on a plotter — no blades near the paint. Each window cut individually.</div>
+            </div>
+          </div>
+          <div style="display: grid; grid-template-columns: 48px 1fr; gap: 18px; padding: 18px 0; border-bottom: 1px solid var(--hairline)">
+            <div style="font-family: var(--display); font-size: 24px; font-weight: 600; color: var(--gold-2); line-height: 1">03</div>
+            <div>
+              <div style="font-family: var(--display); font-size: 18px; font-weight: 500; color: var(--cream); margin-bottom: 4px">Application &amp; squeegee</div>
+              <div style="color: var(--muted); font-size: 14px">Heat-shrunk, squeegee'd inside. Edges sealed flush to the glass with no light gap.</div>
+            </div>
+          </div>
+          <div style="display: grid; grid-template-columns: 48px 1fr; gap: 18px; padding: 18px 0">
+            <div style="font-family: var(--display); font-size: 24px; font-weight: 600; color: var(--gold-2); line-height: 1">04</div>
+            <div>
+              <div style="font-family: var(--display); font-size: 18px; font-weight: 500; color: var(--cream); margin-bottom: 4px">Cure &amp; hand-back</div>
+              <div style="color: var(--muted); font-size: 14px">2-hour cure in studio. Care sheet supplied. Leave windows up for 48 hours, drive away.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== PACKAGES ============== -->
+<section class="section" id="packages">
+  <div class="container">
+    <div style="text-align:center; margin-bottom: 56px" class="reveal">
+      <div class="eyebrow no-bar" style="margin-bottom:18px; justify-content:center">Packages</div>
+      <h2 class="display h-md">Dyed Film — Pricing by vehicle type.</h2>
+      <p class="lede" style="margin: 18px auto 0">All prices include studio installation. Final quote confirmed before booking.</p>
+    </div>
+
+    <div class="reveal" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px">
+      <article class="pkg">
+        <div class="p-num">HATCHBACK</div>
+        <div style="display: flex; flex-direction: column; gap: 14px; margin-top: 4px">
+          <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding-bottom: 14px; border-bottom: 1px solid var(--hairline)">
+            <span style="font-family: var(--mono); font-size: 12px; color: var(--muted); letter-spacing: .12em; text-transform: uppercase">Back section</span>
+            <span style="font-family: var(--display); font-size: 26px; font-weight: 600; color: var(--gold-2); letter-spacing: -0.02em">€145</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 16px">
+            <span style="font-family: var(--mono); font-size: 12px; color: var(--muted); letter-spacing: .12em; text-transform: uppercase">Full car <span style="text-transform: none; letter-spacing: 0; font-size: 11px">(excl. windscreen)</span></span>
+            <span style="font-family: var(--display); font-size: 26px; font-weight: 600; color: var(--gold-2); letter-spacing: -0.02em">€180</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="pkg">
+        <div class="p-num">SALOON</div>
+        <div style="display: flex; flex-direction: column; gap: 14px; margin-top: 4px">
+          <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding-bottom: 14px; border-bottom: 1px solid var(--hairline)">
+            <span style="font-family: var(--mono); font-size: 12px; color: var(--muted); letter-spacing: .12em; text-transform: uppercase">Back section</span>
+            <span style="font-family: var(--display); font-size: 26px; font-weight: 600; color: var(--gold-2); letter-spacing: -0.02em">€150</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 16px">
+            <span style="font-family: var(--mono); font-size: 12px; color: var(--muted); letter-spacing: .12em; text-transform: uppercase">Full car <span style="text-transform: none; letter-spacing: 0; font-size: 11px">(excl. windscreen)</span></span>
+            <span style="font-family: var(--display); font-size: 26px; font-weight: 600; color: var(--gold-2); letter-spacing: -0.02em">€190</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="pkg">
+        <div class="p-num">ESTATE</div>
+        <div style="display: flex; flex-direction: column; gap: 14px; margin-top: 4px">
+          <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding-bottom: 14px; border-bottom: 1px solid var(--hairline)">
+            <span style="font-family: var(--mono); font-size: 12px; color: var(--muted); letter-spacing: .12em; text-transform: uppercase">Back section</span>
+            <span style="font-family: var(--display); font-size: 26px; font-weight: 600; color: var(--gold-2); letter-spacing: -0.02em">€170</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 16px">
+            <span style="font-family: var(--mono); font-size: 12px; color: var(--muted); letter-spacing: .12em; text-transform: uppercase">Full car <span style="text-transform: none; letter-spacing: 0; font-size: 11px">(excl. windscreen)</span></span>
+            <span style="font-family: var(--display); font-size: 26px; font-weight: 600; color: var(--gold-2); letter-spacing: -0.02em">€200</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="pkg">
+        <div class="p-num">SUV / FAMILY CARRIER</div>
+        <div style="display: flex; flex-direction: column; gap: 14px; margin-top: 4px">
+          <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding-bottom: 14px; border-bottom: 1px solid var(--hairline)">
+            <span style="font-family: var(--mono); font-size: 12px; color: var(--muted); letter-spacing: .12em; text-transform: uppercase">Back section</span>
+            <span style="font-family: var(--display); font-size: 26px; font-weight: 600; color: var(--gold-2); letter-spacing: -0.02em">€180</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 16px">
+            <span style="font-family: var(--mono); font-size: 12px; color: var(--muted); letter-spacing: .12em; text-transform: uppercase">Full car <span style="text-transform: none; letter-spacing: 0; font-size: 11px">(excl. windscreen)</span></span>
+            <span style="font-family: var(--display); font-size: 26px; font-weight: 600; color: var(--gold-2); letter-spacing: -0.02em">€210</span>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <div class="reveal" style="display: flex; justify-content: center; margin-top: 40px">
+      <a href="#tint-form" class="btn btn-primary">Book Tint <span class="arrow"></span></a>
+    </div>
+
+    <style>
+      @media (max-width: 960px){ #packages .reveal[style*="repeat(4"]{ grid-template-columns: repeat(2, 1fr) !important } }
+      @media (max-width: 560px){ #packages .reveal[style*="repeat(4"]{ grid-template-columns: 1fr !important } }
+    </style>
+  </div>
+</section>
+
+<!-- ============== GALLERY ============== -->
+<section class="section" style="background: var(--ink-2); border-top: 1px solid var(--hairline)">
+  <div class="container">
+    <div style="display:flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 32px; margin-bottom: 40px" class="reveal">
+      <div>
+        <div class="eyebrow" style="margin-bottom:18px">Recent Work</div>
+        <h2 class="display h-md">Out of the bay</h2>
+      </div>
+      <p class="lede" style="margin: 0; max-width: 36ch">Crisp edges, even tone, finished to spec.</p>
+    </div>
+    <div class="gallery reveal">
+      <div class="g w-7 h-1"><img src="assets/tinting-hero.jpg" alt="Tinted sedan studio"></div>
+      <div class="g w-5 h-1"><img src="assets/tinting-side.jpg" alt="Side profile tinted sedan"></div>
+      <div class="g w-12 h-wide"><img src="assets/tinting-application.jpg" alt="Tint application in studio"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== CTA STRIP ============== -->
+<section class="cta-strip">
+  <div class="container">
+    <div class="cta-strip-inner">
+      <div>
+        <span class="phone-label">Book a slot in the bay</span>
+        <a href="tel:+353894655600" class="phone-big">+353 89 465 5600</a>
+        <p style="color: var(--muted); margin: 14px 0 0; max-width: 50ch">Most fittings booked within a week. Same-day quotes during studio hours.</p>
+      </div>
+      <div class="cta-strip-actions">
+        <a href="tel:+353894655600" class="btn btn-primary btn-lg">Call Now</a>
+        <a href="#tint-form" class="btn btn-ghost btn-lg">Send Enquiry</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== ENQUIRY FORM ============== -->
+<section class="section" id="tint-form">
+  <div class="container tight">
+    <div style="text-align:center; margin-bottom: 48px" class="reveal">
+      <div class="eyebrow no-bar" style="margin-bottom:18px; justify-content:center">Tinting Enquiry</div>
+      <h2 class="display h-md">Quick enquiry</h2>
+      <p class="lede" style="margin: 18px auto 0">Tell us what you'd like done — we'll send a quote and a fitting slot.</p>
+    </div>
+
+    <form class="card dark" data-form style="padding: 40px" novalidate>
+      <div style="display:flex; justify-content: space-between; align-items: center; margin-bottom: 32px; padding-bottom: 24px; border-bottom: 1px solid var(--hairline)">
+        <div class="kicker">FORM · TINT ENQUIRY</div>
+        <div class="label">Studio booking</div>
+      </div>
+
+      <div class="form-grid">
+        <div class="field">
+          <label>Make <span class="req">*</span></label>
+          <select required name="make" data-make="tint"></select>
+          <span class="error">Required</span>
+        </div>
+        <div class="field">
+          <label>Model <span class="req">*</span></label>
+          <select required name="model" data-model data-pair="tint"></select>
+          <span class="error">Required</span>
+        </div>
+        <div class="field">
+          <label>Year <span class="req">*</span></label>
+          <select required name="year" data-year-select></select>
+          <span class="error">Required</span>
+        </div>
+        <div class="field">
+          <label>Body style</label>
+          <select name="body">
+            <option value="">Select…</option>
+            <option>Saloon</option>
+            <option>Hatchback</option>
+            <option>Estate</option>
+            <option>SUV / Crossover</option>
+            <option>Coupe</option>
+            <option>Van</option>
+          </select>
+        </div>
+        <div class="field full">
+          <label>Preferred shade (VLT)</label>
+          <div class="radio-row">
+            <input type="radio" name="vlt" value="70%" id="vlt-70"><label for="vlt-70">70% Light</label>
+            <input type="radio" name="vlt" value="50%" id="vlt-50"><label for="vlt-50">50%</label>
+            <input type="radio" name="vlt" value="35%" id="vlt-35" checked><label for="vlt-35">35% Medium</label>
+            <input type="radio" name="vlt" value="20%" id="vlt-20"><label for="vlt-20">20% Dark</label>
+            <input type="radio" name="vlt" value="5%" id="vlt-5"><label for="vlt-5">5% Limo</label>
+          </div>
+        </div>
+        <div class="field">
+          <label>Name <span class="req">*</span></label>
+          <input type="text" name="name" required>
+          <span class="error">Required</span>
+        </div>
+        <div class="field">
+          <label>Phone <span class="req">*</span></label>
+          <input type="tel" name="phone" required placeholder="089 …">
+          <span class="error">Required</span>
+        </div>
+        <div class="field">
+          <label>Email</label>
+          <input type="email" name="email">
+        </div>
+        <div class="field">
+          <label>Preferred contact</label>
+          <select name="contact_method">
+            <option>Call</option>
+            <option>WhatsApp</option>
+            <option>SMS</option>
+            <option>Email</option>
+          </select>
+        </div>
+        <div class="field full">
+          <label>Notes</label>
+          <textarea name="notes" placeholder="Windscreen sun-strip, headlight tint, tint removal, anything else…"></textarea>
+        </div>
+      </div>
+
+      <div style="display:flex; justify-content: space-between; align-items: center; gap: 18px; flex-wrap: wrap; margin-top: 28px">
+        <p style="color: var(--muted); font-size: 13px; margin: 0; max-width: 40ch">No deposit at enquiry. We'll confirm pricing and a fitting slot before booking.</p>
+        <button type="submit" class="btn btn-primary btn-lg">Send Enquiry <span class="arrow"></span></button>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- ============== FOOTER ============== -->
+<footer class="site-footer" data-screen-label="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="foot-col foot-brand">
+        <a class="brand" href="index.html">
+          <span class="brand-mark"><img src="assets/logo.jpg" alt=""></span>
+          <span class="brand-text">
+            <span class="b-1">EVA Car Mats</span>
+            <span class="b-2">The Best in Ireland</span>
+          </span>
+        </a>
+        <p>Made-to-measure EVA mats and professional window tinting. Based in Sallins, serving every county in Ireland.</p>
+        <div class="foot-socials">
+          <a href="https://www.facebook.com/profile.php?id=61558046664454" aria-label="Facebook" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z"/></svg></a>
+          <a href="https://www.instagram.com/evacarmatsireland/" aria-label="Instagram" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+          <a href="https://www.tiktok.com/@carmats_eva333" aria-label="TikTok" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19.5 6.7a5.4 5.4 0 0 1-3.3-1.2 5.4 5.4 0 0 1-2-3.5h-3.3v13.4a2.4 2.4 0 1 1-2.4-2.4c.3 0 .6 0 .8.1V9.7a5.7 5.7 0 0 0-.8 0 5.7 5.7 0 1 0 5.7 5.7V9.5a8.7 8.7 0 0 0 5.3 1.8z"/></svg></a>
+        </div>
+      </div>
+      <div class="foot-col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="terms-and-conditions.html">Terms &amp; Conditions</a></li>
+          <li><a href="cookie-policy.html">Cookie Policy</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Studio</h4>
+        <ul>
+          <li><a href="tel:+353894655600">089 465 5600</a></li>
+          <li><a href="contact.html">Sallins, Co. Kildare</a></li>
+          <li><a href="contact.html">Mon–Sat · 09:00–18:30</a></li>
+          <li><a href="contact.html">Get directions</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Pages</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="car-mats.html">Car Mats</a></li>
+          <li><a href="taxi-drivers.html">Taxi Drivers</a></li>
+          <li><a href="window-tinting.html">Window Tinting</a></li>
+          <li><a href="seat-covers.html">Seat Covers</a></li>
+          <li><a href="testimonials.html">Testimonials</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span data-year>2026</span> EVA Car Mats Ireland · Sallins, Co. Kildare</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============== COOKIE BANNER ============== -->
+<div class="cookie-banner" id="cookie-banner" role="dialog" aria-label="Cookie consent">
+  <p class="cookie-banner-text">We use cookies to improve your experience. By continuing to use this site, you accept our use of cookies. <a href="cookie-policy.html">Learn more</a></p>
+  <div class="cookie-banner-actions">
+    <button class="cookie-accept" id="cookie-accept">Accept</button>
+    <button class="cookie-decline" id="cookie-decline">Decline</button>
+  </div>
+</div>
+
+<script src="shared.js"></script>
+</body>
+</html>

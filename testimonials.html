@@ -1,0 +1,569 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reviews &amp; Recent Work — EVA Car Mats Ireland</title>
+<meta name="description" content="Read what Irish drivers, taxi operators and fleets are saying about EVA Car Mats Ireland — and see recent fittings out of our Sallins studio.">
+<link rel="stylesheet" href="shared.css?v=3">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link id="gf-bricolage" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&display=swap">
+<link id="gf-anton" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&display=swap">
+<link id="gf-fraunces" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,400..700,30,0..1&display=swap">
+<link id="gf-bigshoulders" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@400;500;600;700;800&display=swap">
+<style>
+  .rating-hero{
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .rating-big{
+    font-family: var(--display);
+    font-size: clamp(120px, 18vw, 240px);
+    font-weight: 700;
+    line-height: 0.85;
+    letter-spacing: -0.04em;
+    color: var(--gold-2);
+    font-variation-settings: "opsz" 96;
+  }
+  .rating-big small{
+    font-size: 0.28em;
+    font-weight: 500;
+    color: var(--muted);
+    letter-spacing: 0;
+    vertical-align: 0.3em;
+  }
+  .rating-bars{display: flex; flex-direction: column; gap: 10px; margin-top: 32px}
+  .rating-bar{display: grid; grid-template-columns: 50px 1fr 50px; gap: 14px; align-items: center; font-family: var(--mono); font-size: 11px; letter-spacing: .14em; color: var(--muted)}
+  .rating-bar .bar{ height: 4px; background: var(--hairline); position: relative; border-radius: 2px}
+  .rating-bar .bar::after{content:""; position: absolute; left: 0; top: 0; bottom: 0; background: var(--gold); border-radius: 2px}
+  .rating-bar.r5 .bar::after{width: 96%}
+  .rating-bar.r4 .bar::after{width: 14%}
+  .rating-bar.r3 .bar::after{width: 3%}
+  .rating-bar.r2 .bar::after{width: 0%}
+  .rating-bar.r1 .bar::after{width: 0%}
+
+  .source-row{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--hairline);
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius-card);
+    overflow: hidden;
+  }
+  .source-row > div{
+    background: var(--ink-2);
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .source-row .src{
+    font-family: var(--mono); font-size: 10.5px; letter-spacing: .18em; text-transform: uppercase; color: var(--muted);
+  }
+  .source-row .score{
+    font-family: var(--display); font-size: 32px; font-weight: 600; color: var(--gold-2); letter-spacing: -0.02em; line-height: 1;
+  }
+  .source-row .qty{
+    font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: .1em; margin-top: 6px;
+  }
+
+  .review-grid{
+    column-count: 3;
+    column-gap: 18px;
+  }
+  .review-grid .review{
+    break-inside: avoid;
+    margin-bottom: 18px;
+    display: block;
+  }
+  .review-grid .review.gold-line{
+    border-left: 2px solid var(--gold);
+  }
+  @media (max-width: 980px){ .review-grid{column-count: 2} }
+  @media (max-width: 640px){ .review-grid{column-count: 1} }
+
+  /* ---- reviews carousel ---- */
+  /* carousel must use full width — override the masonry column-count */
+  #review-grid{ column-count: 1 !important; column-gap: 0 !important; }
+  .rv-wrap{ position: relative; }
+  .rv-carousel{ display: flex; align-items: center; gap: 12px; }
+  .rv-outer{ overflow: hidden; flex: 1; min-width: 0; }
+  .rv-track{ display: flex; gap: 18px; transition: transform .4s cubic-bezier(.4,0,.2,1); will-change: transform; }
+  .rv-slide{ min-width: 0; display: flex; flex-direction: column; }
+  .rv-slide .review{ flex: 1; margin-bottom: 0 !important; }
+  .rv-btn{
+    width: 44px; height: 44px; flex-shrink: 0;
+    background: var(--ink-2); border: 1px solid var(--gold);
+    color: var(--gold); font-size: 22px; line-height: 1;
+    border-radius: 3px; cursor: pointer;
+    transition: background .2s;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .rv-btn:hover{ background: rgba(199,152,73,.15); }
+  .rv-btn:disabled{ opacity: .3; cursor: default; }
+  .rv-dots{ display: flex; justify-content: center; gap: 7px; margin-top: 20px; flex-wrap: wrap; }
+  .rv-dot{ width: 7px; height: 7px; border-radius: 50%; background: var(--hairline); border: none; cursor: pointer; padding: 0; transition: background .2s, transform .2s; }
+  .rv-dot.active{ background: var(--gold); transform: scale(1.3); }
+  @media (max-width: 640px){ .rv-btn{ width: 36px; height: 36px; font-size: 18px; } }
+  @media (max-width: 720px){
+    .rating-hero{grid-template-columns: 1fr; gap: 36px}
+    .source-row{grid-template-columns: 1fr 1fr}
+  }
+
+  .filter-bar{
+    display: flex; gap: 8px; flex-wrap: wrap;
+    padding: 12px;
+    background: var(--ink-2);
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius-card);
+    margin-bottom: 32px;
+  }
+  .filter-bar button{
+    padding: 10px 16px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--text);
+    border: 1px solid transparent;
+    border-radius: 2px;
+    transition: all .2s var(--ease);
+    cursor: pointer;
+  }
+  .filter-bar button:hover{ color: var(--gold-2) }
+  .filter-bar button.active{
+    background: var(--gold);
+    color: var(--ink);
+  }
+</style>
+<!-- SEO-INJECT -->
+<link rel="canonical" href="https://evacarmats.ie/testimonials.html">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#0a0a0b">
+<meta name="author" content="EVA Car Mats Ireland">
+<meta name="geo.region" content="IE-KE">
+<meta name="geo.placename" content="Sallins, Co. Kildare">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="EVA Car Mats Ireland">
+<meta property="og:locale" content="en_IE">
+<meta property="og:title" content="Reviews &amp; Recent Work — EVA Car Mats Ireland">
+<meta property="og:description" content="Read what Irish drivers, taxi operators and fleets are saying about EVA Car Mats Ireland — and see recent fittings out of our Sallins studio.">
+<meta property="og:url" content="https://evacarmats.ie/testimonials.html">
+<meta property="og:image" content="https://evacarmats.ie/hero-home.jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Reviews &amp; Recent Work — EVA Car Mats Ireland">
+<meta name="twitter:description" content="Read what Irish drivers, taxi operators and fleets are saying about EVA Car Mats Ireland — and see recent fittings out of our Sallins studio.">
+<meta name="twitter:image" content="https://evacarmats.ie/hero-home.jpeg">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+</head>
+<body>
+
+<!-- ============== HEADER ============== -->
+<header class="site-header" data-screen-label="header">
+  <div class="nav-wrap">
+    <a class="brand" href="index.html" aria-label="EVA Car Mats Ireland home">
+      <span class="brand-mark"><img src="assets/logo.jpg" alt=""></span>
+      <span class="brand-text">
+        <span class="b-1">EVA Car Mats</span>
+      </span>
+    </a>
+    <nav aria-label="Primary" class="nav-primary">
+      <button class="nav-close" aria-label="Close menu">✕</button>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li class="nav-has-dropdown">
+          <button class="nav-dropdown-toggle" aria-expanded="false">Services <span class="nav-chevron">›</span></button>
+          <ul class="nav-dropdown">
+            <li><a href="car-mats.html">Car Mats</a></li>
+            <li><a href="taxi-drivers.html">Taxi Drivers</a></li>
+            <li><a href="window-tinting.html">Window Tinting</a></li>
+            <li><a href="seat-covers.html">Seat Covers</a></li>
+          </ul>
+        </li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="testimonials.html" class="active">Reviews</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <a class="nav-mobile-phone" href="tel:+353894655600">089 465 5600</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="nav-phone" href="tel:+353894655600">089 465 5600</a>
+      <a class="btn-nav-cta" href="contact.html">Get a Quote</a>
+      <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ============== PAGE HEAD ============== -->
+<section style="padding: clamp(96px, 14vh, 160px) 0 60px; border-bottom: 1px solid var(--hairline)">
+  <div class="container">
+    <div class="rating-hero">
+      <div>
+        <h1 class="display h-xl" style="font-family: 'Bricolage Grotesque', var(--display), sans-serif; font-size: 68px; line-height: 0.96; letter-spacing: -1.4px; color: #e8c275; margin-bottom: 28px">
+          <span style="color: #f3f1ed">What Irish drivers</span><br>
+          <span style="color: var(--gold-2); font-style: italic; font-weight: 500">say back.</span>
+        </h1>
+        <p class="lede" style="margin-bottom: 28px">
+          Every set leaves the studio with our reputation in the boot. Drivers, families, hackney operators and fleet managers — here's what they tell us months later.
+        </p>
+        <div style="display: flex; gap: 14px; flex-wrap: wrap">
+          <a href="contact.html" class="btn btn-primary">Start your order <span class="arrow"></span></a>
+          <a href="#gallery" class="btn btn-gold-line">See recent work</a>
+        </div>
+      </div>
+
+      <div>
+        <div class="rating-big">4.9<small>/5</small></div>
+        <div class="label" style="margin-top: 14px">Across 140+ verified reviews · Last 12 months</div>
+
+        <div class="rating-bars" aria-label="Rating distribution">
+          <div class="rating-bar r5"><span>5★</span><div class="bar"></div><span style="text-align: right; color: var(--cream)">128</span></div>
+          <div class="rating-bar r4"><span>4★</span><div class="bar"></div><span style="text-align: right; color: var(--cream)">10</span></div>
+          <div class="rating-bar r3"><span>3★</span><div class="bar"></div><span style="text-align: right; color: var(--cream)">2</span></div>
+          <div class="rating-bar r2"><span>2★</span><div class="bar"></div><span style="text-align: right; color: var(--cream)">0</span></div>
+          <div class="rating-bar r1"><span>1★</span><div class="bar"></div><span style="text-align: right; color: var(--cream)">0</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== SOURCES ============== -->
+<section class="section dense">
+  <div class="container">
+    <div class="label" style="margin-bottom: 18px">Reviewed across</div>
+    <div class="source-row reveal">
+      <div>
+        <div class="src">Google</div>
+        <div class="score">4.9</div>
+        <div class="qty">86 reviews</div>
+      </div>
+      <div>
+        <div class="src">Facebook</div>
+        <div class="score">5.0</div>
+        <div class="qty">34 recommendations</div>
+      </div>
+      <div>
+        <div class="src">Instagram DM</div>
+        <div class="score">★★★★★</div>
+        <div class="qty">Direct testimonials</div>
+      </div>
+      <div>
+        <div class="src">TikTok</div>
+        <div class="score">12k+</div>
+        <div class="qty">Followers · #carmats</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== FILTER ============== -->
+<section class="section dense" style="padding-top: 0">
+  <div class="container">
+    <div class="filter-bar" role="tablist">
+      <button class="active" data-filter="all">All Reviews</button>
+      <button data-filter="mats">Car Mats</button>
+      <button data-filter="taxi">Taxi Drivers</button>
+      <button data-filter="tinting">Window Tinting</button>
+      <button data-filter="vans">Vans &amp; Trucks</button>
+    </div>
+
+    <div class="review-grid" id="review-grid">
+      <article class="review gold-line" data-category="mats">
+        <div class="stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <blockquote>"Honestly the best money I've spent on the car this year. Fits like the OEM mats but actually keeps the wet out. Hosed them off after a wet rally weekend and they were spotless in five minutes."</blockquote>
+        <div class="who"><span class="name">Conor M.</span><span class="meta">Naas · Skoda Octavia 2021 · Google</span></div>
+      </article>
+
+      <article class="review" data-category="taxi">
+        <div class="stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <blockquote>"Drive Free Now full-time. After 14 months these mats look the same as the day they went in. Best money I've spent on the car."</blockquote>
+        <div class="who"><span class="name">Andrei P.</span><span class="meta">Dublin · Toyota Prius 2019 · Google</span></div>
+      </article>
+
+      <article class="review" data-category="vans">
+        <div class="stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <blockquote>"They measured my Transit in their own time, sent me a preview the next day, fitted within a week. Lads who care about what they do."</blockquote>
+        <div class="who"><span class="name">Pat C.</span><span class="meta">Newbridge · Ford Transit 2022 · Facebook</span></div>
+      </article>
+
+      <article class="review gold-line" data-category="tinting">
+        <div class="stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <blockquote>"Got the ceramic tint package on my A4. Cabin is properly cool in summer, edges are dead flush, no bubbling. Looks like it came from the factory."</blockquote>
+        <div class="who"><span class="name">Eoin G.</span><span class="meta">Kildare · Audi A4 2020 · Google</span></div>
+      </article>
+
+      <article class="review" data-category="mats">
+        <div class="stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <blockquote>"Red mats with black trim in my Golf, exactly the spec I asked for. Andrei sent a preview image before cutting which is a nice touch. Lovely finish."</blockquote>
+        <div class="who"><span class="name">Sinead K.</span><span class="meta">Athy · VW Golf 2018 · Instagram</span></div>
+      </article>
+
+      <article class="review" data-category="taxi">
+        <div class="stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <blockquote>"Бот всем рекомендую. I drive Bolt and the kids leave the car like a tip every school run. With these mats I just hose them out at the end of the day. Спасибо."</blockquote>
+        <div class="who"><span class="name">Sergei B.</span><span class="meta">Naas · Skoda Octavia · Facebook</span></div>
+      </article>
+
+      <article class="review" data-category="mats">
+        <div class="stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <blockquote>"Came in for measuring on a Saturday, picked the mats up on the Wednesday. Quality is genuinely premium — much better feel than anything I'd seen on Amazon."</blockquote>
+        <div class="who"><span class="name">Aoife D.</span><span class="meta">Maynooth · Hyundai Tucson 2023 · Google</span></div>
+      </article>
+
+      <article class="review gold-line" data-category="taxi">
+        <div class="stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <blockquote>"Second set off them — this time for the missus's Yaris. Trust them blind at this stage. Always answer the phone, always fit you in."</blockquote>
+        <div class="who"><span class="name">Liam O'C.</span><span class="meta">Kildare · VW Passat 2020 · Google</span></div>
+      </article>
+
+      <article class="review" data-category="tinting">
+        <div class="stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <blockquote>"Tint job on the BMW — booked it in for the morning, drove away by lunch. Even shade, sharp edges, road-legal up front. Will be back for the wife's car."</blockquote>
+        <div class="who"><span class="name">Mark T.</span><span class="meta">Sallins · BMW 320d 2021 · Instagram</span></div>
+      </article>
+
+      <article class="review" data-category="mats">
+        <div class="stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <blockquote>"Custom navy mats with cream trim in my Volvo. Looks bespoke. Friendly chats, no nonsense, lovely lads. I'd recommend without hesitation."</blockquote>
+        <div class="who"><span class="name">Mary F.</span><span class="meta">Newbridge · Volvo XC60 2022 · Google</span></div>
+      </article>
+
+      <article class="review gold-line" data-category="vans">
+        <div class="stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <blockquote>"Mats for the entire fleet — four Transporters and two Crafters. All branded with our company colour binding. Easy to deal with, fair on price for the volume."</blockquote>
+        <div class="who"><span class="name">D. Brennan</span><span class="meta">Brennan Logistics · Co. Kildare · Direct</span></div>
+      </article>
+
+      <article class="review" data-category="taxi">
+        <div class="stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <blockquote>"On the road 12 hours a day. Mats lasted me two years of taxi work and still look fine. Wouldn't bother with anything else now."</blockquote>
+        <div class="who"><span class="name">Mihai G.</span><span class="meta">Dublin · Toyota Prius+ · Facebook</span></div>
+      </article>
+
+      <article class="review" data-category="tinting">
+        <div class="stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <blockquote>"Booked tint and mats in the same week. Both spot-on. Honestly didn't realise how harsh the sun was in the cabin until it wasn't."</blockquote>
+        <div class="who"><span class="name">Cathal R.</span><span class="meta">Naas · Tesla Model Y 2024 · Google</span></div>
+      </article>
+
+      <article class="review" data-category="mats">
+        <div class="stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <blockquote>"Foarte profesionali. Mats made exactly as agreed, in two days. Communication in Romanian was easy. The Sallins studio is well worth a visit."</blockquote>
+        <div class="who"><span class="name">Ionut V.</span><span class="meta">Dublin · Ford Mondeo 2018 · Direct</span></div>
+      </article>
+
+      <article class="review" data-category="mats">
+        <div class="stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <blockquote>"Best mats I've ever had. Friend recommended them and I'm so glad. The texture catches everything, the fit is exact, the trim looks proper."</blockquote>
+        <div class="who"><span class="name">Niamh W.</span><span class="meta">Carlow · Kia Niro 2023 · Google</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============== BEFORE / AFTER + GALLERY ============== -->
+<section class="section" id="gallery" style="background: var(--ink-2); border-top: 1px solid var(--hairline)">
+  <div class="container">
+    <div style="display:flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 32px; margin-bottom: 48px" class="reveal">
+      <div>
+        <div class="eyebrow" style="margin-bottom:18px">Recent Work</div>
+        <h2 class="display h-md">Out of the studio</h2>
+      </div>
+      <p class="lede" style="margin: 0; max-width: 38ch">
+        Every set is photographed before it leaves us. Tap a tile to see the make, model and spec.
+      </p>
+    </div>
+
+    <div class="gallery reveal">
+      <div class="g w-4 h-1"><img src="ps-15.jpeg" alt="Black EVA mat with diamond texture fitted in a footwell"></div>
+      <div class="g w-4 h-1"><img src="ps-03.jpeg" alt="Custom EVA mat fitted in a Mercedes footwell"></div>
+      <div class="g w-4 h-1"><img src="ps-05.jpeg" alt="Beige EVA mat in a Mercedes-Benz S-Class"></div>
+      <div class="g w-4 h-1"><img src="ps-06.jpeg" alt="Audi S-line EVA mat fitted at the pedals"></div>
+      <div class="g w-4 h-1"><img src="ps-07.jpeg" alt="Custom EVA driver mat fitted in a vehicle"></div>
+      <div class="g w-4 h-1"><img src="ps-22.jpeg" alt="EVA mats fitted in a BMW interior"></div>
+      <div class="g w-4 h-1"><img src="ps-26.jpeg" alt="Black EVA mats fitted across a van rear floor"></div>
+      <div class="g w-4 h-1"><img src="vwid4-01.jpeg" alt="Black EVA mat fitted in a VW ID.4 footwell"></div>
+      <div class="g w-4 h-1"><img src="vwid4-05.jpeg" alt="Red EVA boot mat fitted in a hatchback"></div>
+      <div class="g w-4 h-1"><img src="vwid4-06.jpeg" alt="Red EVA driver mat fitted in a vehicle"></div>
+      <div class="g w-4 h-1"><img src="ps-02.jpeg" alt="EVA mat with blue lighting in a Ford footwell"></div>
+      <div class="g w-4 h-1"><img src="ps-01.jpeg" alt="Brown hex EVA mat fitted in a VW footwell"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== TRUST ============== -->
+<section class="section">
+  <div class="container tight">
+    <div style="text-align: center" class="reveal">
+      <div class="eyebrow no-bar" style="margin-bottom: 22px; justify-content: center">A note from the studio</div>
+      <h2 class="display h-md" style="margin-bottom: 32px">
+        Trust takes one fitting.<br>
+        <span style="color: var(--gold-2); font-style: italic; font-weight: 500">A recommendation takes the second.</span>
+      </h2>
+      <p class="lede" style="margin: 0 auto 32px">
+        We're a small studio in Sallins. Most of our work comes from word-of-mouth — a friend in the office, a brother-in-law on the rank, a neighbour pulling onto the drive. If you're reading this, someone trusted us enough to send you here. We don't take that lightly.
+      </p>
+      <div style="display: inline-flex; align-items: center; gap: 12px; padding: 14px 22px; border: 1px solid var(--gold); border-radius: 2px; color: var(--gold-2); font-family: var(--mono); font-size: 12px; letter-spacing: .16em; text-transform: uppercase">
+        <span class="gold-dot" style="background: var(--gold); width: 6px; height: 6px; border-radius: 50%; display: inline-block"></span>
+        Independent · Family-run · Made in Sallins
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== CTA STRIP ============== -->
+<section class="cta-strip">
+  <div class="container">
+    <div class="cta-strip-inner">
+      <div>
+        <span class="phone-label">Talk to the studio</span>
+        <a href="tel:+353894655600" class="phone-big">+353 89 465 5600</a>
+      </div>
+      <div class="cta-strip-actions">
+        <a href="tel:+353894655600" class="btn btn-primary btn-lg">Call Now</a>
+        <a href="contact.html" class="btn btn-ghost btn-lg">Send a Message</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== FOOTER ============== -->
+<footer class="site-footer" data-screen-label="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="foot-col foot-brand">
+        <a class="brand" href="index.html">
+          <span class="brand-mark"><img src="assets/logo.jpg" alt=""></span>
+          <span class="brand-text">
+            <span class="b-1">EVA Car Mats</span>
+            <span class="b-2">The Best in Ireland</span>
+          </span>
+        </a>
+        <p>Made-to-measure EVA mats and professional window tinting. Based in Sallins, serving every county in Ireland.</p>
+        <div class="foot-socials">
+          <a href="https://www.facebook.com/profile.php?id=61558046664454" aria-label="Facebook" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z"/></svg></a>
+          <a href="https://www.instagram.com/evacarmatsireland/" aria-label="Instagram" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+          <a href="https://www.tiktok.com/@carmats_eva333" aria-label="TikTok" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19.5 6.7a5.4 5.4 0 0 1-3.3-1.2 5.4 5.4 0 0 1-2-3.5h-3.3v13.4a2.4 2.4 0 1 1-2.4-2.4c.3 0 .6 0 .8.1V9.7a5.7 5.7 0 0 0-.8 0 5.7 5.7 0 1 0 5.7 5.7V9.5a8.7 8.7 0 0 0 5.3 1.8z"/></svg></a>
+        </div>
+      </div>
+      <div class="foot-col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="terms-and-conditions.html">Terms &amp; Conditions</a></li>
+          <li><a href="cookie-policy.html">Cookie Policy</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Studio</h4>
+        <ul>
+          <li><a href="tel:+353894655600">089 465 5600</a></li>
+          <li><a href="contact.html">Sallins, Co. Kildare</a></li>
+          <li><a href="contact.html">Mon–Sat · 09:00–18:30</a></li>
+          <li><a href="contact.html">Get directions</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Pages</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="car-mats.html">Car Mats</a></li>
+          <li><a href="taxi-drivers.html">Taxi Drivers</a></li>
+          <li><a href="window-tinting.html">Window Tinting</a></li>
+          <li><a href="seat-covers.html">Seat Covers</a></li>
+          <li><a href="testimonials.html">Testimonials</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span data-year>2026</span> EVA Car Mats Ireland · Sallins, Co. Kildare</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============== COOKIE BANNER ============== -->
+<div class="cookie-banner" id="cookie-banner" role="dialog" aria-label="Cookie consent">
+  <p class="cookie-banner-text">We use cookies to improve your experience. By continuing to use this site, you accept our use of cookies. <a href="cookie-policy.html">Learn more</a></p>
+  <div class="cookie-banner-actions">
+    <button class="cookie-accept" id="cookie-accept">Accept</button>
+    <button class="cookie-decline" id="cookie-decline">Decline</button>
+  </div>
+</div>
+
+<script src="shared.js"></script>
+<script>
+(function(){
+  // Build carousel from existing review-grid
+  var grid = document.getElementById('review-grid');
+  if(!grid) return;
+  var reviews = Array.from(grid.querySelectorAll(':scope > .review'));
+  grid.innerHTML = '<div class="rv-wrap"><div class="rv-carousel"><button class="rv-btn rv-prev" aria-label="Previous review">&#8249;</button><div class="rv-outer"><div class="rv-track"></div></div><button class="rv-btn rv-next" aria-label="Next review">&#8250;</button></div><div class="rv-dots"></div></div>';
+  var track = grid.querySelector('.rv-track');
+  reviews.forEach(function(rev){
+    var slide = document.createElement('div');
+    slide.className = 'rv-slide';
+    slide.dataset.cat = rev.dataset.category || '';
+    slide.appendChild(rev);
+    track.appendChild(slide);
+  });
+  var wrap = grid.querySelector('.rv-wrap');
+  // init carousel
+  (function initRV(wrap){
+    var outer=wrap.querySelector('.rv-outer'),track=wrap.querySelector('.rv-track'),
+        dots=wrap.querySelector('.rv-dots'),prev=wrap.querySelector('.rv-prev'),next=wrap.querySelector('.rv-next'),cur=0;
+    function vis(){return Array.from(track.children).filter(function(s){return s.style.display!=='none';});}
+    function getV(){var w=outer.offsetWidth;return w<640?1:w<900?2:3;}
+    function pages(){return Math.max(1,vis().length-getV()+1);}
+    function render(){
+      var v=getV(),gap=18,sw=(outer.offsetWidth-gap*(v-1))/v;
+      Array.from(track.children).forEach(function(s){if(s.style.display!=='none')s.style.flex='0 0 '+sw+'px';});
+      cur=Math.min(cur,pages()-1);
+      track.style.transform='translateX(-'+(cur*(sw+gap))+'px)';
+      var p=pages();dots.innerHTML='';
+      for(var i=0;i<p;i++){(function(i){
+        var d=document.createElement('button');d.className='rv-dot'+(i===cur?' active':'');
+        d.setAttribute('aria-label','Slide '+(i+1));
+        d.addEventListener('click',function(){goTo(i);});dots.appendChild(d);
+      })(i);}
+      if(prev)prev.disabled=cur===0;
+      if(next)next.disabled=cur>=p-1;
+    }
+    function goTo(n){cur=Math.max(0,Math.min(n,pages()-1));render();}
+    if(prev)prev.addEventListener('click',function(){goTo(cur-1);});
+    if(next)next.addEventListener('click',function(){goTo(cur+1);});
+    var tx=0;
+    track.addEventListener('touchstart',function(e){tx=e.touches[0].clientX;},{passive:true});
+    track.addEventListener('touchend',function(e){var d=tx-e.changedTouches[0].clientX;if(Math.abs(d)>40)goTo(cur+(d>0?1:-1));});
+    window.addEventListener('resize',function(){cur=0;render();});
+    wrap._rv={goTo:goTo,render:render,reset:function(){cur=0;render();}};
+    render();
+  })(wrap);
+  // filter
+  document.querySelectorAll('.filter-bar button').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      document.querySelectorAll('.filter-bar button').forEach(function(b){b.classList.remove('active');});
+      btn.classList.add('active');
+      var f=btn.dataset.filter;
+      Array.from(track.children).forEach(function(slide){
+        slide.style.display=(f==='all'||slide.dataset.cat===f)?'':'none';
+      });
+      if(wrap._rv) wrap._rv.reset();
+    });
+  });
+})();
+</script>
+</body>
+</html>

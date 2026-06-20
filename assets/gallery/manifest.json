@@ -1,0 +1,223 @@
+[
+  {
+    "slug": "byd-seal",
+    "name": "BYD Seal",
+    "tag": "EV \u00b7 Saloon",
+    "cover": "byd-seal-1.jpg",
+    "photos": [
+      "byd-seal-1.jpg",
+      "byd-seal-2.jpg",
+      "byd-seal-3.jpg",
+      "byd-seal-4.jpg",
+      "byd-seal-5.jpg",
+      "byd-seal-6.jpg"
+    ]
+  },
+  {
+    "slug": "byd-sealion-7",
+    "name": "BYD Sealion 7",
+    "tag": "EV \u00b7 SUV",
+    "cover": "byd-sealion-7-1.jpg",
+    "photos": [
+      "byd-sealion-7-1.jpg",
+      "byd-sealion-7-2.jpg",
+      "byd-sealion-7-3.jpg",
+      "byd-sealion-7-4.jpg",
+      "byd-sealion-7-5.jpg",
+      "byd-sealion-7-6.jpg"
+    ]
+  },
+  {
+    "slug": "ford-tourneo-connect",
+    "name": "Ford Tourneo Connect",
+    "tag": "7-seat \u00b7 Compact",
+    "cover": "ford-tourneo-connect-1.jpg",
+    "photos": [
+      "ford-tourneo-connect-1.jpg",
+      "ford-tourneo-connect-2.jpg",
+      "ford-tourneo-connect-3.jpg",
+      "ford-tourneo-connect-4.jpg",
+      "ford-tourneo-connect-5.jpg",
+      "ford-tourneo-connect-6.jpg"
+    ]
+  },
+  {
+    "slug": "ford-tourneo-custom",
+    "name": "Ford Tourneo Custom",
+    "tag": "8-seat \u00b7 Minibus",
+    "cover": "ford-tourneo-custom-1.jpg",
+    "photos": [
+      "ford-tourneo-custom-1.jpg",
+      "ford-tourneo-custom-2.jpg",
+      "ford-tourneo-custom-3.jpg",
+      "ford-tourneo-custom-4.jpg",
+      "ford-tourneo-custom-5.jpg",
+      "ford-tourneo-custom-6.jpg"
+    ]
+  },
+  {
+    "slug": "ford-transit-kombi",
+    "name": "Ford Transit Kombi",
+    "tag": "9-seat \u00b7 Van",
+    "cover": "ford-transit-kombi-1.jpg",
+    "photos": [
+      "ford-transit-kombi-1.jpg",
+      "ford-transit-kombi-2.jpg",
+      "ford-transit-kombi-3.jpg",
+      "ford-transit-kombi-4.jpg",
+      "ford-transit-kombi-5.jpg",
+      "ford-transit-kombi-6.jpg"
+    ]
+  },
+  {
+    "slug": "peugeot-partner",
+    "name": "Peugeot Partner",
+    "tag": "Van \u00b7 Compact",
+    "cover": "peugeot-partner-1.jpg",
+    "photos": [
+      "peugeot-partner-1.jpg",
+      "peugeot-partner-2.jpg",
+      "peugeot-partner-3.jpg",
+      "peugeot-partner-4.jpg",
+      "peugeot-partner-5.jpg",
+      "peugeot-partner-6.jpg"
+    ]
+  },
+  {
+    "slug": "peugeot-rifter",
+    "name": "Peugeot Rifter",
+    "tag": "MPV \u00b7 5-seat",
+    "cover": "peugeot-rifter-1.jpg",
+    "photos": [
+      "peugeot-rifter-1.jpg",
+      "peugeot-rifter-2.jpg",
+      "peugeot-rifter-3.jpg",
+      "peugeot-rifter-4.jpg",
+      "peugeot-rifter-5.jpg",
+      "peugeot-rifter-6.jpg"
+    ]
+  },
+  {
+    "slug": "skoda-enyaq",
+    "name": "Skoda Enyaq",
+    "tag": "EV \u00b7 SUV",
+    "cover": "skoda-enyaq-1.jpg",
+    "photos": [
+      "skoda-enyaq-1.jpg",
+      "skoda-enyaq-2.jpg",
+      "skoda-enyaq-3.jpg",
+      "skoda-enyaq-4.jpg",
+      "skoda-enyaq-5.jpg",
+      "skoda-enyaq-6.jpg"
+    ]
+  },
+  {
+    "slug": "tesla-model-y",
+    "name": "Tesla Model Y",
+    "tag": "EV \u00b7 SUV",
+    "cover": "tesla-model-y-1.jpg",
+    "photos": [
+      "tesla-model-y-1.jpg",
+      "tesla-model-y-2.jpg",
+      "tesla-model-y-3.jpg",
+      "tesla-model-y-4.jpg",
+      "tesla-model-y-5.jpg",
+      "tesla-model-y-6.jpg"
+    ]
+  },
+  {
+    "slug": "toyota-bz4x",
+    "name": "Toyota BZ4X",
+    "tag": "EV \u00b7 SUV",
+    "cover": "toyota-bz4x-1.jpg",
+    "photos": [
+      "toyota-bz4x-1.jpg",
+      "toyota-bz4x-2.jpg",
+      "toyota-bz4x-3.jpg",
+      "toyota-bz4x-4.jpg",
+      "toyota-bz4x-5.jpg",
+      "toyota-bz4x-6.jpg"
+    ]
+  },
+  {
+    "slug": "toyota-camry",
+    "name": "Toyota Camry",
+    "tag": "Hybrid \u00b7 Saloon",
+    "cover": "toyota-camry-1.jpg",
+    "photos": [
+      "toyota-camry-1.jpg",
+      "toyota-camry-2.jpg",
+      "toyota-camry-3.jpg",
+      "toyota-camry-4.jpg",
+      "toyota-camry-5.jpg",
+      "toyota-camry-6.jpg"
+    ]
+  },
+  {
+    "slug": "toyota-corolla",
+    "name": "Toyota Corolla",
+    "tag": "Hybrid \u00b7 Saloon",
+    "cover": "toyota-corolla-1.jpg",
+    "photos": [
+      "toyota-corolla-1.jpg",
+      "toyota-corolla-2.jpg",
+      "toyota-corolla-3.jpg",
+      "toyota-corolla-4.jpg",
+      "toyota-corolla-5.jpg"
+    ]
+  },
+  {
+    "slug": "toyota-prius",
+    "name": "Toyota Prius",
+    "tag": "Hybrid \u00b7 #1 Taxi",
+    "cover": "toyota-prius-1.jpg",
+    "photos": [
+      "toyota-prius-1.jpg",
+      "toyota-prius-2.jpg",
+      "toyota-prius-3.jpg",
+      "toyota-prius-4.jpg",
+      "toyota-prius-5.jpg",
+      "toyota-prius-6.jpg"
+    ]
+  },
+  {
+    "slug": "toyota-prius-7",
+    "name": "Toyota Prius 7-Seat",
+    "tag": "Hybrid \u00b7 7-seat",
+    "cover": "toyota-prius-7-1.jpg",
+    "photos": [
+      "toyota-prius-7-1.jpg",
+      "toyota-prius-7-2.jpg",
+      "toyota-prius-7-3.jpg",
+      "toyota-prius-7-4.jpg",
+      "toyota-prius-7-5.jpg",
+      "toyota-prius-7-6.jpg"
+    ]
+  },
+  {
+    "slug": "toyota-rav4",
+    "name": "Toyota RAV4",
+    "tag": "Hybrid \u00b7 SUV",
+    "cover": "toyota-rav4-1.jpg",
+    "photos": [
+      "toyota-rav4-1.jpg",
+      "toyota-rav4-2.jpg",
+      "toyota-rav4-3.jpg",
+      "toyota-rav4-4.jpg",
+      "toyota-rav4-5.jpg",
+      "toyota-rav4-6.jpg"
+    ]
+  },
+  {
+    "slug": "vw-id4",
+    "name": "Volkswagen ID.4",
+    "tag": "EV \u00b7 SUV",
+    "cover": "vw-id4-1.jpg",
+    "photos": [
+      "vw-id4-1.jpg",
+      "vw-id4-2.jpg",
+      "vw-id4-3.jpg",
+      "vw-id4-4.jpg"
+    ]
+  }
+]

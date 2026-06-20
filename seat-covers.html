@@ -1,0 +1,1258 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Custom Seat Covers — Premium Fit for Every Vehicle · EVA Car Mats Ireland</title>
+<meta name="description" content="Custom-made seat covers individually tailored for your vehicle. ECO leather, Alcantara, or combined. Premium craftsmanship, perfect fit. Based in Sallins, Co. Kildare.">
+<link rel="stylesheet" href="shared.css?v=3">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link id="gf-bricolage" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&display=swap">
+<link id="gf-anton" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&display=swap">
+<link id="gf-fraunces" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,400..700,30,0..1&display=swap">
+<link id="gf-bigshoulders" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@400;500;600;700;800&display=swap">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<style>
+  /* ---- seat covers page extras ---- */
+  .steps-5{
+    grid-template-columns: repeat(5, 1fr);
+  }
+  @media (max-width: 1100px){
+    .steps-5{ grid-template-columns: repeat(3, 1fr) }
+    .steps-5 .step:nth-child(3){ border-right: none }
+    .steps-5 .step:nth-child(1),
+    .steps-5 .step:nth-child(2),
+    .steps-5 .step:nth-child(3){ border-bottom: 1px solid var(--hairline) }
+  }
+  @media (max-width: 640px){
+    .steps-5{ grid-template-columns: 1fr }
+    .steps-5 .step{ border-right: none !important; border-bottom: 1px solid var(--hairline) }
+    .steps-5 .step:last-child{ border-bottom: none }
+  }
+
+  /* material cards */
+  .material-cards{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+  }
+  .mat-card{    background: var(--ink-2);
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    transition: border-color .3s var(--ease), transform .3s var(--ease);
+  }
+  .mat-card:hover{ border-color: var(--gold); transform: translateY(-2px) }
+  .mat-card .mc-thumb{
+    height: 200px;
+    background: var(--surface);
+    position: relative;
+    overflow: hidden;
+  }
+  .mat-card .mc-thumb img{
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform .8s var(--ease);
+  }
+  .mat-card:hover .mc-thumb img{ transform: scale(1.04) }
+  .mat-card .mc-thumb-placeholder{
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--mono); font-size: 10px; letter-spacing: .18em;
+    text-transform: uppercase; color: var(--muted);
+  }
+  .mat-card .mc-body{
+    padding: 28px 28px 32px;
+  }
+  .mat-card .mc-tag{
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 14px;
+  }
+  .mat-card h3{
+    font-family: var(--display);
+    font-size: 26px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    color: var(--cream);
+    margin: 0 0 10px;
+  }
+  .mat-card p{
+    font-size: 14.5px;
+    color: var(--muted);
+    margin: 0;
+    max-width: 36ch;
+  }
+  .mat-card .mc-popular{
+    position: absolute; top: 14px; right: 14px;
+    background: var(--gold);
+    color: var(--ink);
+    font-family: var(--mono);
+    font-size: 9.5px;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    padding: 5px 10px;
+    border-radius: 2px;
+    font-weight: 600;
+  }
+
+  /* before/after pairs */
+  .ba-grid{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+  }
+  .ba-pair{
+    background: var(--ink-2);
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    transition: border-color .3s var(--ease);
+    cursor: pointer;
+  }
+  .ba-pair:hover{ border-color: var(--hairline-2) }
+  .ba-row{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--hairline);
+  }
+  .ba-img{
+    position: relative;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    background: var(--surface);
+  }
+  .ba-img img{
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform .8s var(--ease);
+  }
+  .ba-pair:hover .ba-img img{ transform: scale(1.03) }
+  .ba-img-tag{
+    position: absolute; bottom: 0; left: 0; right: 0;
+    padding: 6px 12px;
+    background: rgba(10,10,11,.75);
+    backdrop-filter: blur(6px);
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+  }
+  .ba-img-tag.before{ color: var(--cream) }
+  .ba-img-tag.after{ color: var(--gold-2) }
+  .ba-grid-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 28px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .ba-section { margin-bottom: 72px; }
+  .ba-caption{
+    padding: 16px 20px;
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .ba-placeholder{
+    background: var(--ink-2);
+    display: flex;
+    align-items: center; justify-content: center;
+    height: 100%;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: .12em;
+    color: var(--muted-2);
+    text-transform: uppercase;
+  }
+
+  /* gallery lightbox */
+  .sc-lb{
+    position: fixed; inset: 0; z-index: 5000;
+    background: rgba(8,8,9,.94);
+    display: flex; flex-direction: column;
+    opacity: 0; visibility: hidden;
+    transition: opacity .3s var(--ease), visibility .3s var(--ease);
+  }
+  .sc-lb.open{ opacity: 1; visibility: visible }
+  .sc-lb-top{
+    display: flex; align-items: center; justify-content: flex-end;
+    padding: 18px 24px; flex-shrink: 0;
+  }
+  .sc-lb-close{
+    width: 46px; height: 46px; flex-shrink: 0;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,.18);
+    background: rgba(255,255,255,.04);
+    color: var(--cream); font-size: 22px; line-height: 1;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: background .2s, border-color .2s;
+  }
+  .sc-lb-close:hover{ background: rgba(255,255,255,.1); border-color: var(--gold); color: var(--gold-2) }
+  .sc-lb-stage{
+    flex: 1; position: relative;
+    display: flex; align-items: center; justify-content: center;
+    min-height: 0; padding: 0 24px;
+  }
+  .sc-lb-figure{
+    position: relative;
+    max-width: 100%; max-height: 100%;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .sc-lb-img{
+    max-width: 100%; max-height: 78vh;
+    object-fit: contain;
+    border-radius: var(--radius);
+    user-select: none; -webkit-user-drag: none;
+    display: block;
+  }
+  .sc-lb-label{
+    position: absolute; top: 14px; left: 14px;
+    padding: 6px 14px;
+    background: rgba(10,10,11,.78);
+    backdrop-filter: blur(6px);
+    font-family: var(--mono); font-size: 11px;
+    letter-spacing: .16em; text-transform: uppercase;
+    color: var(--gold-2);
+    border-radius: 100px;
+  }
+  .sc-lb-caption{
+    position: absolute; left: 0; right: 0; bottom: 0;
+    padding: 16px 18px;
+    background: linear-gradient(180deg, rgba(10,10,11,0), rgba(10,10,11,.85));
+    font-family: var(--mono); font-size: 11px;
+    letter-spacing: .14em; text-transform: uppercase;
+    color: var(--cream); text-align: center;
+  }
+  .sc-lb-arrow{
+    position: absolute; top: 50%; transform: translateY(-50%);
+    width: 52px; height: 52px; border-radius: 50%;
+    border: 1px solid var(--gold);
+    background: rgba(10,10,11,.55);
+    color: var(--gold-2); font-size: 26px; line-height: 1;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: background .2s; z-index: 2;
+  }
+  .sc-lb-arrow:hover{ background: rgba(199,152,73,.2) }
+  .sc-lb-prev{ left: 16px } .sc-lb-next{ right: 16px }
+  .sc-lb-counter{
+    flex-shrink: 0; text-align: center;
+    padding: 14px 0 26px;
+    font-family: var(--mono); font-size: 12px;
+    letter-spacing: .1em; color: var(--gold-2);
+  }
+  body.sc-lb-lock{ overflow: hidden }
+  @media (max-width: 768px){
+    .sc-lb-stage{ padding: 0 8px }
+    .sc-lb-arrow{ width: 44px; height: 44px; font-size: 22px }
+    .sc-lb-prev{ left: 6px } .sc-lb-next{ right: 6px }
+    .sc-lb-img{ max-height: 72vh }
+  }
+
+  @media (max-width: 768px) {
+    .ba-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  }
+
+  @media (max-width: 900px){
+    .material-cards{ grid-template-columns: 1fr }
+    .ba-grid{ grid-template-columns: 1fr 1fr; gap: 12px }
+    .ba-grid .ba-pair[style*="1 / -1"] .ba-row{ grid-template-columns: 1fr 1fr !important }
+  }
+  @media (max-width: 380px){
+    .ba-grid{ grid-template-columns: 1fr }
+  }
+
+  /* form note */
+  .form-note{
+    margin-top: 12px;
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* ---- process steps (card layout) ---- */
+  .process-steps{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    margin-bottom: 48px;
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius-card);
+    overflow: hidden;
+  }
+  .process-step{
+    position: relative;
+    background: var(--ink-2);
+    padding: 44px 30px 38px;
+    border-right: 1px solid var(--hairline);
+    transition: background .25s var(--ease);
+  }
+  .process-step:last-child{ border-right: none; }
+  .process-step::before{
+    content: "";
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--gold);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform .35s var(--ease);
+  }
+  .process-step:hover{ background: var(--surface); }
+  .process-step:hover::before{ transform: scaleX(1); }
+  .ps-step-label{
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold-2);
+    display: block;
+    margin-bottom: 14px;
+  }
+  .ps-num{
+    font-family: var(--display);
+    font-size: 56px;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: var(--gold);
+    display: block;
+  }
+  .ps-rule{
+    width: 34px; height: 2px;
+    background: var(--gold-deep, var(--gold));
+    opacity: .55;
+    margin: 18px 0 22px;
+  }
+  .process-step h4{
+    font-family: var(--display);
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--cream);
+    margin: 0 0 10px;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+  }
+  .process-step p{
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.65;
+    margin: 0;
+  }
+  @media (max-width: 980px){
+    .process-steps{ grid-template-columns: repeat(2, 1fr); }
+    .process-step:nth-child(2n){ border-right: none; }
+    .process-step:nth-child(1),
+    .process-step:nth-child(2){ border-bottom: 1px solid var(--hairline); }
+  }
+  @media (max-width: 560px){
+    .process-steps{ grid-template-columns: 1fr; }
+    .process-step{ border-right: none; border-bottom: 1px solid var(--hairline); }
+    .process-step:last-child{ border-bottom: none; }
+  }
+</style>
+<!-- SEO-INJECT -->
+<link rel="canonical" href="https://evacarmats.ie/seat-covers.html">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#0a0a0b">
+<meta name="author" content="EVA Car Mats Ireland">
+<meta name="geo.region" content="IE-KE">
+<meta name="geo.placename" content="Sallins, Co. Kildare">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="EVA Car Mats Ireland">
+<meta property="og:locale" content="en_IE">
+<meta property="og:title" content="Custom Seat Covers — Premium Fit for Every Vehicle · EVA Car Mats Ireland">
+<meta property="og:description" content="Custom-made seat covers individually tailored for your vehicle. ECO leather, Alcantara, or combined. Premium craftsmanship, perfect fit. Based in Sallins, Co. Kildare.">
+<meta property="og:url" content="https://evacarmats.ie/seat-covers.html">
+<meta property="og:image" content="https://evacarmats.ie/hero-home.jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Custom Seat Covers — Premium Fit for Every Vehicle · EVA Car Mats Ireland">
+<meta name="twitter:description" content="Custom-made seat covers individually tailored for your vehicle. ECO leather, Alcantara, or combined. Premium craftsmanship, perfect fit. Based in Sallins, Co. Kildare.">
+<meta name="twitter:image" content="https://evacarmats.ie/hero-home.jpeg">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+</head>
+<body>
+
+<!-- ============== HEADER ============== -->
+<header class="site-header" data-screen-label="header">
+  <div class="nav-wrap">
+    <a class="brand" href="index.html" aria-label="EVA Car Mats Ireland home">
+      <span class="brand-mark"><img src="assets/logo.jpg" alt=""></span>
+      <span class="brand-text">
+        <span class="b-1">EVA Car Mats</span>
+      </span>
+    </a>
+    <nav aria-label="Primary" class="nav-primary">
+      <button class="nav-close" aria-label="Close menu">✕</button>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li class="nav-has-dropdown active">
+          <button class="nav-dropdown-toggle" aria-expanded="false">Services <span class="nav-chevron">›</span></button>
+          <ul class="nav-dropdown">
+            <li><a href="car-mats.html">Car Mats</a></li>
+            <li><a href="taxi-drivers.html">Taxi Drivers</a></li>
+            <li><a href="window-tinting.html">Window Tinting</a></li>
+            <li><a href="seat-covers.html" class="active">Seat Covers</a></li>
+          </ul>
+        </li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="testimonials.html">Reviews</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <a class="nav-mobile-phone" href="tel:+353894655600">089 465 5600</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="nav-phone" href="tel:+353894655600">089 465 5600</a>
+      <a class="btn-nav-cta" href="#quote-form">Get a Quote</a>
+      <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ============== HERO ============== -->
+<section class="hero" data-screen-label="hero" style="align-items: flex-start">
+  <div class="hero-bg">
+    <img src="mpyke8f0-ChatGPT-Image-Jun-3_-2026_-11_10_32-PM.jpg" alt="Premium black leather car seat close-up — custom seat covers by EVA Car Mats Ireland">
+    <div style="position:absolute; inset:0;
+      background: linear-gradient(180deg,
+        rgba(10,10,11,.4) 0%,
+        rgba(10,10,11,0) 28%,
+        rgba(10,10,11,.5) 65%,
+        rgba(10,10,11,.94) 100%),
+      linear-gradient(90deg, rgba(10,10,11,.65) 0%, rgba(10,10,11,.1) 60%)">
+    </div>
+  </div>
+
+
+  <div class="hero-inner" style="padding-top: clamp(96px, 14vh, 180px); padding-bottom: clamp(60px, 8vh, 100px)">
+    <div class="container">
+      <div class="hero-content">
+        <h1 class="display h-xl reveal" style="font-family: 'Bricolage Grotesque', var(--display), sans-serif; font-size: 68px; line-height: 0.96; letter-spacing: -1.4px; color: #e8c275; margin-bottom: 28px">
+          <span style="color: #f3f1ed">Custom Seat Covers —</span><br>
+          <span style="color: var(--gold-2); font-style: italic; font-weight: 500">Built for Your Car.</span>
+        </h1>
+        <p class="lede reveal" style="margin-bottom: 36px">
+          Premium craftsmanship. Perfect fit. Made in Ireland.
+        </p>
+        <div class="reveal" style="display:flex; gap:14px; flex-wrap: wrap">
+          <a href="#quote-form" class="btn btn-primary btn-lg">
+            Request a Quote <span class="arrow"></span>
+          </a>
+          <a href="tel:+353894655600" class="btn btn-ghost btn-lg">Call Now: 089 465 5600</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== MARQUEE ============== -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>Custom Fit <em class="dot">●</em> ECO Leather <em class="dot">●</em> Alcantara <em class="dot">●</em> Hand-Sewn <em class="dot">●</em> Made in Ireland <em class="dot">●</em> Cars · Vans · Taxis <em class="dot">●</em> Choice of Colour &amp; Stitching <em class="dot">●</em> </span>
+    <span>Custom Fit <em class="dot">●</em> ECO Leather <em class="dot">●</em> Alcantara <em class="dot">●</em> Hand-Sewn <em class="dot">●</em> Made in Ireland <em class="dot">●</em> Cars · Vans · Taxis <em class="dot">●</em> Choice of Colour &amp; Stitching <em class="dot">●</em> </span>
+  </div>
+</div>
+
+<!-- ============== SECTION 1 — WHAT ARE SEAT COVERS ============== -->
+<section class="section" data-screen-label="intro" data-od-id="sc-intro">
+  <div class="container">
+    <div class="split">
+      <div class="reveal">
+        <div class="eyebrow" style="margin-bottom: 24px">The Craft</div>
+        <h2 class="display h-md" style="margin-bottom: 28px">
+          Not generic.<br>
+          Not one-size-fits-all.<br>
+          <em style="color: var(--gold-2); font-weight:500">Yours.</em>
+        </h2>
+        <p class="lede" style="margin-bottom: 18px">
+          EVA Car Mats Ireland now offers custom-made seat covers, individually tailored for each vehicle. Every cover is sewn to match your car's exact seat shape — with your choice of material, colour, and stitching.
+        </p>
+        <p style="color: var(--muted); max-width: 54ch; margin-bottom: 32px">
+          We don't sell universal seat covers off a shelf. We measure your vehicle's specific seat profile, cut to your dimensions, and hand-finish each set before it leaves the studio. The result is a flush, factory-quality fit that protects your original upholstery and transforms your interior.
+        </p>
+        <div style="display:flex; gap: 14px; flex-wrap: wrap">
+          <a href="#quote-form" class="btn btn-gold-line">Request a Quote <span class="arrow"></span></a>
+          <a href="tel:+353894655600" class="btn btn-ghost">Call 089 465 5600</a>
+        </div>
+      </div>
+      <div class="reveal" style="position: relative">
+        <div style="position:absolute; inset: -16px; border: 1px solid var(--hairline); pointer-events: none"></div>
+        <img src="mpyke8lr-WhatsApp-Image-2026-06-02-at-00.55.28-_1_.jpeg"
+          alt="Premium custom seat covers fitted in a vehicle"
+          style="border-radius: var(--radius-card); border: 1px solid var(--hairline); width:100%; object-fit: cover; aspect-ratio: 4/3">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== SECTION 2 — WHY CHOOSE ============== -->
+<section class="section" style="border-top: 1px solid var(--hairline)" data-od-id="sc-benefits">
+  <div class="container">
+    <div style="display:grid; grid-template-columns: 1fr 1.4fr; gap: 80px; align-items: flex-end; margin-bottom: 56px" class="reveal">
+      <div>
+        <div class="eyebrow" style="margin-bottom:18px">Why Choose</div>
+        <h2 class="display h-md">Nine reasons<br>to cover properly.</h2>
+      </div>
+      <p class="lede" style="margin: 0">
+        A custom seat cover isn't just protection — it's a statement of how you treat your vehicle. Here's what sets our covers apart from anything you'd find in a shop.
+      </p>
+    </div>
+
+    <div class="benefit-grid reveal">
+      <div>
+        <div class="b-num">01</div>
+        <h3>Protects original upholstery</h3>
+        <p>Your factory seats stay immaculate underneath — protecting resale value and preventing costly reupholstery later.</p>
+      </div>
+      <div>
+        <div class="b-num">02</div>
+        <h3>Custom fit, your vehicle</h3>
+        <p>Designed specifically for your make, model, and year. No gaps, no bunching, no sliding.</p>
+      </div>
+      <div>
+        <div class="b-num">03</div>
+        <h3>Premium materials</h3>
+        <p>ECO leather, Alcantara-style fabric, or a combined finish. Each material chosen for durability, feel, and appearance.</p>
+      </div>
+      <div>
+        <div class="b-num">04</div>
+        <h3>Your colour, your stitching</h3>
+        <p>Choose your cover colour, stitching thread, and optional embossed logo to match or contrast your interior.</p>
+      </div>
+      <div>
+        <div class="b-num">05</div>
+        <h3>Easy fit and removal</h3>
+        <p>Designed to install in minutes. Remove for cleaning, put back without a second thought.</p>
+      </div>
+      <div>
+        <div class="b-num">06</div>
+        <h3>Transforms the interior</h3>
+        <p>A fresh, cohesive look from the moment you sit in. Aged seats feel new — new seats look premium.</p>
+      </div>
+      <div>
+        <div class="b-num">07</div>
+        <h3>Odour-resistant &amp; wipe-clean</h3>
+        <p>ECO leather surfaces repel spills and smells. A damp cloth is all the maintenance you'll ever need.</p>
+      </div>
+      <div>
+        <div class="b-num">08</div>
+        <h3>Taxis, family cars &amp; daily drivers</h3>
+        <p>Whether you're clocking 80,000 km a year or protecting seats for young children — we build for real-world use.</p>
+      </div>
+      <div>
+        <div class="b-num">09</div>
+        <h3>Long-lasting investment</h3>
+        <p>Quality materials and hand-sewn construction mean your covers outlast anything off the shelf — for years, not months.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== SECTION 3 — MATERIAL OPTIONS ============== -->
+<section class="section dense" style="background: var(--ink-2); border-top: 1px solid var(--hairline)" data-od-id="sc-materials">
+  <div class="container">
+    <div style="display:flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 32px; margin-bottom: 48px" class="reveal">
+      <div>
+        <div class="eyebrow" style="margin-bottom:18px">Materials</div>
+        <h2 class="display h-md">Three finishes.<br>One standard of quality.</h2>
+      </div>
+      <p class="reveal" style="color: var(--muted); max-width: 40ch; margin: 0">
+        Each material is selected for a different lifestyle and use case. Not sure which? We'll advise in person at the studio.
+      </p>
+    </div>
+
+    <div class="material-cards reveal">
+      <!-- ECO Leather -->
+      <div class="mat-card">
+        <div class="mc-thumb" style="position: relative">
+          <img src="mpyke8jv-WhatsApp-Image-2026-06-02-at-00.55.03.jpeg" alt="ECO Leather seat cover — black finish">
+        </div>
+        <div class="mc-body">
+          <div class="mc-tag">001 / ECO Leather</div>
+          <h3>ECO Leather</h3>
+          <p>Sleek, durable, and easy to wipe clean. The practical choice for taxi drivers, family cars, and anyone who needs a surface that forgives daily life. Available in black, grey, and dark brown.</p>
+        </div>
+      </div>
+      <!-- Alcantara -->
+      <div class="mat-card">
+        <div class="mc-thumb" style="position: relative">
+          <img src="mpyke8kk-WhatsApp-Image-2026-06-02-at-00.55.27-_1_.jpeg" alt="Alcantara-style seat cover — soft premium texture">
+        </div>
+        <div class="mc-body">
+          <div class="mc-tag">002 / Alcantara</div>
+          <h3>Alcantara Fabric</h3>
+          <p>Soft-touch, premium feel. Brings a sportier, more refined look to any interior. Ideal if you want something that looks and feels different from standard leather alternatives.</p>
+        </div>
+      </div>
+      <!-- Combined — most popular -->
+      <div class="mat-card" style="position: relative">
+        <div class="mc-thumb" style="position: relative">
+          <img src="mpyke8lr-WhatsApp-Image-2026-06-02-at-00.55.28-_1_.jpeg" alt="Combined ECO Leather and Alcantara seat cover">
+          <span class="mc-popular">Most Popular</span>
+        </div>
+        <div class="mc-body">
+          <div class="mc-tag">003 / Combined</div>
+          <h3>Combined (ECO + Alcantara)</h3>
+          <p>Leather outer panels with fabric inserts — the best of both materials. Our most popular option. The contrast stitching and panel detail give a high-end finish you won't find off the shelf.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== SECTION 4 — BEFORE & AFTER GALLERY ============== -->
+<section class="section" style="border-top: 1px solid var(--hairline)" data-od-id="sc-gallery">
+  <div class="container">
+    <div style="text-align:center; margin-bottom: 56px" class="reveal">
+      <div class="eyebrow no-bar" style="margin-bottom:18px; justify-content: center">Our Work</div>
+      <h2 class="display h-md" style="margin-bottom: 14px">Our Work</h2>
+      <p class="lede" style="margin: 0 auto; text-align: center">Custom-made and fully fitted. Two material finishes — each built to order.</p>
+    </div>
+
+    <!-- FULL ECO LEATHER -->
+    <div class="ba-section reveal">
+      <div class="ba-grid-label">Full ECO Leather</div>
+      <div class="ba-grid">
+
+        <!-- Card: Saloon Chevron -->
+        <div class="ba-pair">
+          <div class="ba-row" style="grid-template-columns: 1fr">
+            <div class="ba-img">
+              <img src="sc-silver-front.jpeg" alt="Saloon — full ECO leather chevron quilt">
+            </div>
+          </div>
+        </div>
+
+        <!-- Card: Family Car Diamond -->
+        <div class="ba-pair">
+          <div class="ba-row" style="grid-template-columns: 1fr">
+            <div class="ba-img">
+              <img src="sc-diamond-front.jpeg" alt="Family car — full ECO leather diamond quilt">
+            </div>
+          </div>
+        </div>
+
+        <!-- Card: Two-Tone Black + Beige -->
+        <div class="ba-pair">
+          <div class="ba-row" style="grid-template-columns: 1fr">
+            <div class="ba-img">
+              <img src="sc-studio-4.jpeg" alt="Two-tone ECO leather — black and beige">
+            </div>
+          </div>
+        </div>
+
+        <!-- Card: Honeycomb Red Accent -->
+        <div class="ba-pair">
+          <div class="ba-row" style="grid-template-columns: 1fr">
+            <div class="ba-img">
+              <img src="sc-studio-1.jpeg" alt="ECO leather honeycomb with red accent stripe">
+            </div>
+          </div>
+        </div>
+
+        <!-- Card: Grey Sedan -->
+        <div class="ba-pair">
+          <div class="ba-row" style="grid-template-columns: 1fr">
+            <div class="ba-img">
+              <img src="mpyke8jv-WhatsApp-Image-2026-06-02-at-00.55.03.jpeg" alt="Grey sedan front — full ECO leather">
+            </div>
+          </div>
+        </div>
+
+        <!-- Card: White Hatchback Grey Rear -->
+        <div class="ba-pair">
+          <div class="ba-row" style="grid-template-columns: 1fr">
+            <div class="ba-img">
+              <img src="mpyke8k6-WhatsApp-Image-2026-06-02-at-00.55.04.jpeg" alt="White hatchback rear — grey ECO leather">
+            </div>
+          </div>
+        </div>
+
+        <!-- Card: Rear Bench Honeycomb -->
+        <div class="ba-pair">
+          <div class="ba-row" style="grid-template-columns: 1fr">
+            <div class="ba-img">
+              <img src="mpyke8kq-WhatsApp-Image-2026-06-02-at-00.55.27-_2_.jpeg" alt="Rear bench — full ECO leather honeycomb">
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ECO LEATHER + ALCANTARA -->
+    <div class="ba-section reveal">
+      <div class="ba-grid-label">ECO Leather + Alcantara</div>
+      <div class="ba-grid">
+
+        <!-- Card: VW Golf R -->
+        <div class="ba-pair">
+          <div class="ba-row" style="grid-template-columns: 1fr">
+            <div class="ba-img">
+              <img src="sc-vw-golfr-front.jpeg" alt="VW Golf R — alcantara honeycomb red stitch">
+            </div>
+          </div>
+        </div>
+
+        <!-- Card: Red Hatchback -->
+        <div class="ba-pair">
+          <div class="ba-row" style="grid-template-columns: 1fr">
+            <div class="ba-img">
+              <img src="sc-red-front.jpeg" alt="Hatchback — alcantara honeycomb black red">
+            </div>
+          </div>
+        </div>
+
+        <!-- Card: SUV Grey Alcantara -->
+        <div class="ba-pair">
+          <div class="ba-row" style="grid-template-columns: 1fr">
+            <div class="ba-img">
+              <img src="sc-grey-front.jpeg" alt="SUV — grey alcantara honeycomb">
+            </div>
+          </div>
+        </div>
+
+        <!-- Card: Saloon Alcantara Chevron -->
+        <div class="ba-pair">
+          <div class="ba-row" style="grid-template-columns: 1fr">
+            <div class="ba-img">
+              <img src="sc-studio-2.jpeg" alt="Saloon — alcantara chevron white stitch">
+            </div>
+          </div>
+        </div>
+
+        <!-- Card: Alcantara Honeycomb Grey Front -->
+        <div class="ba-pair">
+          <div class="ba-row" style="grid-template-columns: 1fr">
+            <div class="ba-img">
+              <img src="sc-studio-3.jpeg" alt="Front seats — grey alcantara honeycomb">
+            </div>
+          </div>
+        </div>
+
+        <!-- Card: Toyota ECO + Alcantara -->
+        <div class="ba-pair">
+          <div class="ba-row" style="grid-template-columns: 1fr">
+            <div class="ba-img">
+              <img src="mpyke8gp-WhatsApp-Image-2026-06-02-at-00.55.01.jpeg" alt="Toyota — ECO leather and alcantara">
+            </div>
+          </div>
+        </div>
+
+        <!-- Card: Toyota Honeycomb Green -->
+        <div class="ba-pair">
+          <div class="ba-row" style="grid-template-columns: 1fr">
+            <div class="ba-img">
+              <img src="mpyke8ks-WhatsApp-Image-2026-06-02-at-00.55.27-_3_.jpeg" alt="Toyota — alcantara honeycomb green stitch">
+            </div>
+          </div>
+        </div>
+
+        <!-- Card: Toyota Black Alcantara -->
+        <div class="ba-pair">
+          <div class="ba-row" style="grid-template-columns: 1fr">
+            <div class="ba-img">
+              <img src="mpyke8ku-WhatsApp-Image-2026-06-02-at-00.55.28.jpeg" alt="Toyota black — ECO leather and alcantara">
+            </div>
+          </div>
+        </div>
+
+        <!-- Card: Skoda Alcantara Diamond -->
+        <div class="ba-pair">
+          <div class="ba-row" style="grid-template-columns: 1fr">
+            <div class="ba-img">
+              <img src="mpyke8ks-WhatsApp-Image-2026-06-02-at-00.55.27.jpeg" alt="Skoda — alcantara diamond pattern">
+            </div>
+          </div>
+        </div>
+
+        <!-- Card: SUV Alcantara Rear -->
+        <div class="ba-pair">
+          <div class="ba-row" style="grid-template-columns: 1fr">
+            <div class="ba-img">
+              <img src="mpyke8kk-WhatsApp-Image-2026-06-02-at-00.55.27-_1_.jpeg" alt="SUV rear — alcantara honeycomb">
+            </div>
+          </div>
+        </div>
+
+        <!-- Card: SUV Rear Black -->
+        <div class="ba-pair">
+          <div class="ba-row" style="grid-template-columns: 1fr">
+            <div class="ba-img">
+              <img src="mpyke8kx-WhatsApp-Image-2026-06-02-at-00.55.28-_2_.jpeg" alt="SUV rear — ECO leather and alcantara">
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== SECTION 5 — HOW IT WORKS ============== -->
+<section class="section" style="background: var(--ink-2); border-top: 1px solid var(--hairline)" data-od-id="sc-process">
+  <div class="container">
+    <div style="text-align:center; margin-bottom: 64px" class="reveal">
+      <div class="eyebrow no-bar" style="margin-bottom:18px; justify-content:center">Process</div>
+      <h2 class="display h-md">How ordering works</h2>
+      <p class="lede" style="margin: 18px auto 0">From your first message to finished covers in your car — a straightforward four steps.</p>
+    </div>
+
+    <div class="process-steps reveal">
+      <div class="process-step">
+        <span class="ps-step-label">Step 01</span>
+        <div class="ps-num">01</div>
+        <div class="ps-rule"></div>
+        <h4>Choose &amp; configure</h4>
+        <p>Tell us your vehicle, pick material, colour and stitching. We confirm options and send a quote the same day.</p>
+      </div>
+      <div class="process-step">
+        <span class="ps-step-label">Step 02</span>
+        <div class="ps-num">02</div>
+        <div class="ps-rule"></div>
+        <h4>Measure</h4>
+        <p>Visit the studio or we come to you. Each cover is cut to your exact seat dimensions — no generic templates.</p>
+      </div>
+      <div class="process-step">
+        <span class="ps-step-label">Step 03</span>
+        <div class="ps-num">03</div>
+        <div class="ps-rule"></div>
+        <h4>Craft &amp; finish</h4>
+        <p>Hand-sewn, edge-trimmed and quality-checked in-studio before leaving our hands.</p>
+      </div>
+      <div class="process-step">
+        <span class="ps-step-label">Step 04</span>
+        <div class="ps-num">04</div>
+        <div class="ps-rule"></div>
+        <h4>Collection or delivery</h4>
+        <p>Collect from Sallins or arrange delivery anywhere in Ireland. We fit on the spot if you're local.</p>
+      </div>
+    </div>
+
+    <div style="margin-top: 48px; padding: 24px 28px; border: 1px solid var(--hairline); border-left: 2px solid var(--gold); background: var(--surface); border-radius: 2px; display: flex; gap: 24px; align-items: center; flex-wrap: wrap" class="reveal">
+      <div style="flex: 1 1 320px">
+        <div class="kicker" style="margin-bottom: 6px">Not sure what you need?</div>
+        <div style="font-family: var(--display); font-size: 22px; font-weight: 500; letter-spacing: -.01em; color: var(--cream)">
+          Come to the studio — we'll walk you through the options in person, no obligation.
+        </div>
+      </div>
+      <a href="tel:+353894655600" class="btn btn-gold-line">Call 089 465 5600 <span class="arrow"></span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============== SECTION 6 — QUOTE FORM ============== -->
+<section class="section" id="quote-form" style="border-top: 1px solid var(--hairline)" data-od-id="sc-form">
+  <div class="container tight">
+    <div style="text-align:center; margin-bottom: 56px" class="reveal">
+      <div class="eyebrow no-bar" style="margin-bottom:18px; justify-content:center">Order</div>
+      <h2 class="display h-md" style="margin-bottom: 16px">Request Your Quote</h2>
+      <p class="lede" style="margin: 0 auto; text-align: center">
+        Fill in the form below and we'll get back to you within 24 hours with a price and timeline.
+      </p>
+    </div>
+
+    <div style="background: var(--ink-2); border: 1px solid var(--hairline); border-radius: var(--radius-card); padding: clamp(28px, 4vw, 52px)" class="reveal">
+      <form id="seat-cover-form" novalidate>
+        <div class="form-grid">
+
+          <!-- Vehicle details -->
+          <div class="field">
+            <label for="sc-vehicle-type">Vehicle Type <span class="req">*</span></label>
+            <select id="sc-vehicle-type" name="vehicleType" required>
+              <option value="">Select type…</option>
+              <option value="car">Car</option>
+              <option value="van">Van</option>
+              <option value="truck">Truck</option>
+              <option value="suv">SUV / Crossover</option>
+            </select>
+            <span class="error">Please select a vehicle type</span>
+          </div>
+
+          <div class="field">
+            <label for="sc-make">Make <span class="req">*</span></label>
+            <input type="text" id="sc-make" name="make" placeholder="e.g. Toyota" required>
+            <span class="error">Please enter the vehicle make</span>
+          </div>
+
+          <div class="field">
+            <label for="sc-model">Model <span class="req">*</span></label>
+            <input type="text" id="sc-model" name="model" placeholder="e.g. Camry, Prius, Transit…">
+          </div>
+
+          <div class="field">
+            <label for="sc-year">Year <span class="req">*</span></label>
+            <select id="sc-year" name="year" required>
+              <option value="">Select year…</option>
+              <option>2026</option><option>2025</option><option>2024</option><option>2023</option>
+              <option>2022</option><option>2021</option><option>2020</option><option>2019</option>
+              <option>2018</option><option>2017</option><option>2016</option><option>2015</option>
+              <option>2014</option><option>2013</option><option>2012</option><option>2011</option>
+              <option>2010</option><option>2009</option><option>2008</option>
+              <option value="older">2007 or older</option>
+            </select>
+            <span class="error">Please select the year</span>
+          </div>
+
+          <!-- Cover preferences -->
+          <div class="field">
+            <label for="sc-seats">Seats to Cover <span class="req">*</span></label>
+            <select id="sc-seats" name="seats" required>
+              <option value="">Select…</option>
+              <option value="front-only">Front seats only</option>
+              <option value="rear-only">Rear seats only</option>
+              <option value="full-set">Full set (front + rear)</option>
+            </select>
+            <span class="error">Please select which seats</span>
+          </div>
+
+          <div class="field">
+            <label for="sc-material">Preferred Material <span class="req">*</span></label>
+            <select id="sc-material" name="material" required>
+              <option value="">Select material…</option>
+              <option value="eco-leather">ECO Leather</option>
+              <option value="alcantara">Alcantara Fabric</option>
+              <option value="combined">Combined (ECO + Alcantara) — Most Popular</option>
+            </select>
+            <span class="error">Please select a material</span>
+          </div>
+
+          <div class="field">
+            <label for="sc-colour">Preferred Cover Colour</label>
+            <select id="sc-colour" name="colour">
+              <option value="">Select colour…</option>
+              <option>Black</option>
+              <option>Dark Grey</option>
+              <option>Light Grey</option>
+              <option>Dark Brown</option>
+              <option>Beige / Cream</option>
+              <option>Navy Blue</option>
+              <option>Burgundy / Wine</option>
+              <option value="other">Other — I'll describe below</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="sc-stitching">Preferred Stitching Colour</label>
+            <select id="sc-stitching" name="stitching">
+              <option value="">Select stitching…</option>
+              <option>Black</option>
+              <option>White</option>
+              <option>Gold / Tan</option>
+              <option>Red</option>
+              <option>Blue</option>
+              <option>Grey</option>
+              <option value="match">Match cover colour</option>
+            </select>
+          </div>
+
+          <!-- Contact details -->
+          <div class="field">
+            <label for="sc-name">Your Name <span class="req">*</span></label>
+            <input type="text" id="sc-name" name="name" placeholder="Full name" required>
+            <span class="error">Please enter your name</span>
+          </div>
+
+          <div class="field">
+            <label for="sc-phone">Phone Number <span class="req">*</span></label>
+            <input type="tel" id="sc-phone" name="phone" placeholder="e.g. 089 123 4567" required>
+            <span class="error">Please enter your phone number</span>
+          </div>
+
+          <div class="field">
+            <label for="sc-contact-method">Preferred Contact Method</label>
+            <select id="sc-contact-method" name="contactMethod">
+              <option value="">Select…</option>
+              <option value="call">Call</option>
+              <option value="whatsapp">WhatsApp</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="sc-language">Preferred Language</label>
+            <select id="sc-language" name="language">
+              <option value="">Select…</option>
+              <option value="en">English</option>
+              <option value="ro">Romanian</option>
+              <option value="ru">Russian</option>
+            </select>
+          </div>
+
+          <div class="field full">
+            <label for="sc-notes">Additional Notes</label>
+            <textarea id="sc-notes" name="notes" placeholder="Any other details — embossed logo, unusual seat shapes, materials reference, deadline…"></textarea>
+          </div>
+
+          <div class="field full" style="margin-top: 8px">
+            <button type="submit" class="btn btn-primary btn-lg" style="width:100%; justify-content:center; font-size:13px">
+              Request My Quote <span class="arrow"></span>
+            </button>
+            <p class="form-note" style="margin-top: 14px; text-align: center">We'll get back to you within 24 hours.</p>
+          </div>
+
+        </div>
+      </form>
+
+      <!-- Success state -->
+      <div id="form-success" style="display:none; text-align:center; padding: 48px 24px">
+        <div style="font-family: var(--display); font-size: clamp(28px, 4vw, 44px); font-weight:500; color: var(--gold-2); margin-bottom: 16px">
+          Quote request sent.
+        </div>
+        <p style="color: var(--muted); max-width: 42ch; margin: 0 auto 28px">We'll be in touch within 24 hours. You can also reach us directly on WhatsApp or by phone.</p>
+        <div style="display:flex; gap: 14px; flex-wrap:wrap; justify-content:center">
+          <a href="tel:+353894655600" class="btn btn-gold-line">Call 089 465 5600 <span class="arrow"></span></a>
+          <a href="index.html" class="btn btn-ghost">Back to Home</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== SECTION 7 — CTA STRIP ============== -->
+<section class="cta-strip" data-od-id="sc-cta">
+  <div class="container">
+    <div class="cta-strip-inner">
+      <div>
+        <span class="phone-label">Ready to upgrade your interior?</span>
+        <div style="font-family: var(--display); font-size: clamp(24px, 3vw, 40px); font-weight: 500; letter-spacing: -0.015em; color: var(--cream); max-width: 28ch; line-height: 1.1; margin: 10px 0 12px">
+          Call us today — we'll find the right fit for your car.
+        </div>
+        <p style="color: var(--muted); margin: 0; max-width: 48ch">Mon–Sat · 09:00–18:30 · English, Romanian and Russian spoken.</p>
+      </div>
+      <div class="cta-strip-actions">
+        <a href="tel:+353894655600" class="btn btn-primary btn-lg">089 465 5600</a>
+        <a href="#quote-form" class="btn btn-ghost btn-lg">Request a Quote</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== FOOTER ============== -->
+<footer class="site-footer" data-screen-label="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="foot-col foot-brand">
+        <a class="brand" href="index.html">
+          <span class="brand-mark"><img src="assets/logo.jpg" alt=""></span>
+          <span class="brand-text">
+            <span class="b-1">EVA Car Mats</span>
+            <span class="b-2">The Best in Ireland</span>
+          </span>
+        </a>
+        <p>Made-to-measure EVA mats, professional window tinting, and custom seat covers. Based in Sallins, serving every county in Ireland by appointment or delivery.</p>
+        <div class="foot-socials">
+          <a href="https://www.facebook.com/profile.php?id=61558046664454" aria-label="Facebook" target="_blank" rel="noopener">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/evacarmatsireland/" aria-label="Instagram" target="_blank" rel="noopener">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          </a>
+          <a href="https://www.tiktok.com/@carmats_eva333" aria-label="TikTok" target="_blank" rel="noopener">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19.5 6.7a5.4 5.4 0 0 1-3.3-1.2 5.4 5.4 0 0 1-2-3.5h-3.3v13.4a2.4 2.4 0 1 1-2.4-2.4c.3 0 .6 0 .8.1V9.7a5.7 5.7 0 0 0-.8 0 5.7 5.7 0 1 0 5.7 5.7V9.5a8.7 8.7 0 0 0 5.3 1.8z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="foot-col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="terms-and-conditions.html">Terms &amp; Conditions</a></li>
+          <li><a href="cookie-policy.html">Cookie Policy</a></li>
+        </ul>
+      </div>
+
+      <div class="foot-col">
+        <h4>Studio</h4>
+        <ul>
+          <li><a href="tel:+353894655600">089 465 5600</a></li>
+          <li><a href="contact.html">Sallins, Co. Kildare</a></li>
+          <li><a href="contact.html">Mon–Sat · 09:00–18:30</a></li>
+          <li><a href="contact.html">Get directions</a></li>
+        </ul>
+      </div>
+
+      <div class="foot-col">
+        <h4>Pages</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="car-mats.html">Car Mats</a></li>
+          <li><a href="taxi-drivers.html">Taxi Drivers</a></li>
+          <li><a href="window-tinting.html">Window Tinting</a></li>
+          <li><a href="seat-covers.html">Seat Covers</a></li>
+          <li><a href="testimonials.html">Testimonials</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="foot-bottom">
+      <span>© <span data-year>2026</span> EVA Car Mats Ireland · Sallins, Co. Kildare</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============== COOKIE BANNER ============== -->
+<div class="cookie-banner" id="cookie-banner" role="dialog" aria-label="Cookie consent">
+  <p class="cookie-banner-text">We use cookies to improve your experience. By continuing to use this site, you accept our use of cookies. <a href="cookie-policy.html">Learn more</a></p>
+  <div class="cookie-banner-actions">
+    <button class="cookie-accept" id="cookie-accept">Accept</button>
+    <button class="cookie-decline" id="cookie-decline">Decline</button>
+  </div>
+</div>
+
+<script src="shared.js"></script>
+<script>
+  /* form validation + success state */
+  const form = document.getElementById('seat-cover-form');
+  const successEl = document.getElementById('form-success');
+
+  if (form) {
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      let valid = true;
+
+      form.querySelectorAll('[required]').forEach(function(field) {
+        const wrap = field.closest('.field');
+        if (!field.value.trim()) {
+          wrap.classList.add('invalid');
+          valid = false;
+        } else {
+          wrap.classList.remove('invalid');
+        }
+      });
+
+      if (valid) {
+        form.style.display = 'none';
+        successEl.style.display = 'block';
+        successEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    });
+
+    form.querySelectorAll('[required]').forEach(function(field) {
+      field.addEventListener('change', function() {
+        const wrap = field.closest('.field');
+        if (field.value.trim()) wrap.classList.remove('invalid');
+      });
+    });
+  }
+
+  /* scroll-to-form on anchor clicks */
+  document.querySelectorAll('a[href="#quote-form"]').forEach(function(a) {
+    a.addEventListener('click', function(e) {
+      e.preventDefault();
+      const target = document.getElementById('quote-form');
+      if (target) {
+        const y = target.getBoundingClientRect().top + window.pageYOffset - 80;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+      }
+    });
+  });
+</script>
+<!-- Gallery lightbox -->
+<div class="sc-lb" id="sc-lightbox" role="dialog" aria-modal="true" aria-label="Seat cover gallery">
+  <div class="sc-lb-top">
+    <button type="button" class="sc-lb-close" aria-label="Close gallery">&#10005;</button>
+  </div>
+  <div class="sc-lb-stage">
+    <button type="button" class="sc-lb-arrow sc-lb-prev" aria-label="Previous photo">&#8249;</button>
+    <div class="sc-lb-figure">
+      <img class="sc-lb-img" alt="">
+      <span class="sc-lb-label"></span>
+      <div class="sc-lb-caption"></div>
+    </div>
+    <button type="button" class="sc-lb-arrow sc-lb-next" aria-label="Next photo">&#8250;</button>
+  </div>
+  <div class="sc-lb-counter"></div>
+</div>
+
+<script>
+(function(){
+  var lb = document.getElementById('sc-lightbox');
+  if(!lb) return;
+  var imgEl = lb.querySelector('.sc-lb-img'),
+      labelEl = lb.querySelector('.sc-lb-label'),
+      captionEl = lb.querySelector('.sc-lb-caption'),
+      counterEl = lb.querySelector('.sc-lb-counter'),
+      prev = lb.querySelector('.sc-lb-prev'),
+      next = lb.querySelector('.sc-lb-next'),
+      closeBtn = lb.querySelector('.sc-lb-close');
+  var photos = [], caption = '', idx = 0;
+
+  function preload(src){ var i = new Image(); i.src = src; }
+  function render(){
+    var p = photos[idx];
+    imgEl.src = p.src;
+    imgEl.alt = p.alt || '';
+    labelEl.textContent = p.label || '';
+    labelEl.style.display = p.label ? '' : 'none';
+    captionEl.textContent = caption;
+    counterEl.textContent = (idx+1) + ' / ' + photos.length;
+    var showNav = photos.length > 1;
+    prev.style.display = next.style.display = showNav ? '' : 'none';
+    counterEl.style.display = showNav ? '' : 'none';
+    preload(photos[(idx+1)%photos.length].src);
+    preload(photos[(idx-1+photos.length)%photos.length].src);
+  }
+  function go(n){ idx = (n + photos.length) % photos.length; render(); }
+  function open(card){
+    photos = [];
+    card.querySelectorAll('.ba-img').forEach(function(fig){
+      var img = fig.querySelector('img');
+      var tag = fig.querySelector('.ba-img-tag');
+      if(!img) return;
+      photos.push({ src: img.getAttribute('src'), alt: img.getAttribute('alt') || '', label: tag ? tag.textContent.trim() : '' });
+    });
+    var cap = card.querySelector('.ba-caption');
+    caption = cap ? cap.textContent.trim() : '';
+    if(!photos.length) return;
+    idx = 0; render();
+    lb.classList.add('open');
+    document.body.classList.add('sc-lb-lock');
+  }
+  function close(){ lb.classList.remove('open'); document.body.classList.remove('sc-lb-lock'); }
+
+  document.querySelectorAll('.ba-grid .ba-pair').forEach(function(card){
+    card.addEventListener('click', function(){ open(card); });
+  });
+  prev.addEventListener('click', function(){ go(idx-1); });
+  next.addEventListener('click', function(){ go(idx+1); });
+  closeBtn.addEventListener('click', close);
+  lb.addEventListener('click', function(e){ if(e.target === lb || e.target === lb.querySelector('.sc-lb-stage')) close(); });
+  document.addEventListener('keydown', function(e){
+    if(!lb.classList.contains('open')) return;
+    if(e.key === 'Escape') close();
+    else if(e.key === 'ArrowRight') go(idx+1);
+    else if(e.key === 'ArrowLeft') go(idx-1);
+  });
+  var tx = 0;
+  var stage = lb.querySelector('.sc-lb-stage');
+  stage.addEventListener('touchstart', function(e){ tx = e.touches[0].clientX; }, {passive:true});
+  stage.addEventListener('touchend', function(e){
+    var d = tx - e.changedTouches[0].clientX;
+    if(Math.abs(d) > 40) go(idx + (d>0 ? 1 : -1));
+  });
+})();
+</script>
+</body>
+</html>

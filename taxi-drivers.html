@@ -1,0 +1,1129 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Taxi Driver EVA Mats — Heavy-Duty Sets for Ireland's Drivers · EVA Car Mats Ireland</title>
+<meta name="description" content="Heavy-duty EVA mats for Irish taxi drivers. Built for high-mileage, easy-clean, professional finish. Ideal for drivers on Free Now, Uber, Bolt, Lynk and local Kildare fleets.">
+<link rel="stylesheet" href="shared.css?v=3">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link id="gf-bricolage" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&display=swap">
+<link id="gf-anton" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&display=swap">
+<link id="gf-fraunces" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,400..700,30,0..1&display=swap">
+<link id="gf-bigshoulders" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@400;500;600;700;800&display=swap">
+<style>
+  /* taxi-page specific subtle accent — slightly amped industrial feel */
+  .taxi-stat{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius-card);
+    overflow: hidden;
+  }
+  .taxi-stat > div{
+    padding: 28px 24px;
+    border-right: 1px solid var(--hairline);
+    background: var(--ink-2);
+  }
+  .taxi-stat > div:last-child{border-right: none}
+  .taxi-stat .num{
+    font-family: var(--display);
+    font-size: clamp(34px, 4vw, 54px);
+    font-weight: 600;
+    color: var(--gold-2);
+    letter-spacing: -0.02em;
+    line-height: 1;
+    white-space: nowrap;
+  }
+  .taxi-stat .num.num--text{
+    font-size: clamp(34px, 4vw, 54px);
+    letter-spacing: -0.02em;
+  }
+  .taxi-stat .lbl{
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 12px;
+  }
+  @media (max-width: 720px){
+    .taxi-stat{grid-template-columns: repeat(2,1fr)}
+    .taxi-stat > div:nth-child(2){border-right: none}
+    .taxi-stat > div:nth-child(1),
+    .taxi-stat > div:nth-child(2){border-bottom: 1px solid var(--hairline)}
+  }
+  .platform-row{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0;
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius-card);
+    overflow: hidden;
+  }
+  .platform-row > div{
+    flex: 1 1 180px;
+    padding: 28px 24px;
+    text-align: center;
+    border-right: 1px solid var(--hairline);
+    background: var(--ink-2);
+  }
+  .platform-row > div:last-child{border-right: none}
+  .platform-row .p-name{
+    font-family: var(--display);
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--cream);
+  }
+  .platform-row .p-meta{
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 6px;
+  }
+  .platform-row .p-logo{
+    display: block;
+    height: 58px;
+    width: auto;
+    max-width: 116px;
+    object-fit: contain;
+    border-radius: 8px;
+    margin: 0 auto 14px;
+  }
+  .p-fleet-icon{
+    display: block;
+    width: 48px;
+    height: 48px;
+    margin: 0 auto 14px;
+  }
+
+  /* ---------- model carousel (taxi page only) ---------- */
+  .model-carousel{ position: relative }
+  .model-carousel .model-grid{
+    display: flex;
+    grid-template-columns: none;
+    gap: 18px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    padding: 4px 4px 8px;
+    margin: 0 -4px;
+  }
+  .model-carousel .model-grid::-webkit-scrollbar{ display: none }
+  .model-carousel .model-card{
+    flex: 0 0 calc((100% - 36px) / 3);
+    scroll-snap-align: start;
+    background: #ffffff;
+    border: 1px solid rgba(0,0,0,0.10);
+    color: #1a1a1a;
+    min-width: 0;
+    padding: 22px 22px 24px;
+  }
+  .model-carousel .model-card .m-img{
+    height: 280px;
+    width: 100%;
+    object-fit: cover;
+    object-position: center 42%;
+    border-radius: 10px;
+    margin-bottom: 18px;
+    background: #0e0e0f;
+  }
+  .model-carousel .model-card .m-make{
+    color: #8a6d1e;
+  }
+  .model-carousel .model-card .m-model{
+    color: #1a1a1a;
+  }
+  .model-carousel .model-card .m-tag{
+    color: #6b5d3f;
+  }
+  .model-carousel .model-card:hover{
+    border-color: var(--gold);
+    transform: translateY(-2px);
+  }
+  .model-carousel .model-card.selected{
+    border-color: var(--gold);
+    background: color-mix(in oklab, var(--gold) 10%, #ffffff);
+  }
+  .model-carousel .model-card .m-check{
+    border-color: rgba(0,0,0,0.18);
+  }
+  .model-carousel .model-card.selected .m-check{
+    border-color: var(--gold);
+    background: var(--gold);
+  }
+  .model-carousel .model-card.selected .m-check::after{
+    border-right-color: #1a1a1a;
+    border-bottom-color: #1a1a1a;
+  }
+
+  .car-arrow{
+    position: absolute;
+    top: calc(50% - 24px);
+    transform: translateY(-50%);
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--ink-2);
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 4;
+    transition: all .2s var(--ease);
+    font-family: var(--display);
+    font-size: 30px;
+    line-height: 1;
+    padding: 0;
+  }
+  .car-arrow:hover{
+    background: var(--gold);
+    color: var(--ink);
+  }
+  .car-arrow:disabled{
+    opacity: .3;
+    cursor: not-allowed;
+  }
+  .car-arrow.prev{ left: -28px }
+  .car-arrow.next{ right: -28px }
+
+  .car-dots{
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    margin-top: 28px;
+  }
+  .car-dot{
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--hairline-2);
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: all .2s var(--ease);
+  }
+  .car-dot.active{
+    background: var(--gold);
+    width: 24px;
+    border-radius: 4px;
+  }
+
+  @media (max-width: 980px){
+    .model-carousel .model-card{ flex-basis: calc((100% - 18px) / 2) }
+    .car-arrow.prev{ left: 8px }
+    .car-arrow.next{ right: 8px }
+  }
+  @media (max-width: 720px){
+    .model-carousel .model-card{ flex-basis: 100% }
+    .model-carousel .model-card .m-img{ height: 230px }
+    .car-arrow{
+      width: 48px;
+      height: 48px;
+      font-size: 26px;
+    }
+    .car-arrow.prev{ left: 4px }
+    .car-arrow.next{ right: 4px }
+  }
+</style>
+<!-- SEO-INJECT -->
+<link rel="canonical" href="https://evacarmats.ie/taxi-drivers.html">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#0a0a0b">
+<meta name="author" content="EVA Car Mats Ireland">
+<meta name="geo.region" content="IE-KE">
+<meta name="geo.placename" content="Sallins, Co. Kildare">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="EVA Car Mats Ireland">
+<meta property="og:locale" content="en_IE">
+<meta property="og:title" content="Taxi Driver EVA Mats — Heavy-Duty Sets for Ireland&#x27;s Drivers · EVA Car Mats Ireland">
+<meta property="og:description" content="Heavy-duty EVA mats for Irish taxi drivers. Built for high-mileage, easy-clean, professional finish. Ideal for drivers on Free Now, Uber, Bolt, Lynk and local Kildare fleets.">
+<meta property="og:url" content="https://evacarmats.ie/taxi-drivers.html">
+<meta property="og:image" content="https://evacarmats.ie/hero-home.jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Taxi Driver EVA Mats — Heavy-Duty Sets for Ireland&#x27;s Drivers · EVA Car Mats Ireland">
+<meta name="twitter:description" content="Heavy-duty EVA mats for Irish taxi drivers. Built for high-mileage, easy-clean, professional finish. Ideal for drivers on Free Now, Uber, Bolt, Lynk and local Kildare fleets.">
+<meta name="twitter:image" content="https://evacarmats.ie/hero-home.jpeg">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+</head>
+<body>
+
+<!-- ============== HEADER ============== -->
+<header class="site-header" data-screen-label="header">
+  <div class="nav-wrap">
+    <a class="brand" href="index.html" aria-label="EVA Car Mats Ireland home">
+      <span class="brand-mark"><img src="assets/logo.jpg" alt=""></span>
+      <span class="brand-text">
+        <span class="b-1">EVA Car Mats</span>
+      </span>
+    </a>
+    <nav aria-label="Primary" class="nav-primary">
+      <button class="nav-close" aria-label="Close menu">✕</button>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li class="nav-has-dropdown active">
+          <button class="nav-dropdown-toggle" aria-expanded="false">Services <span class="nav-chevron">›</span></button>
+          <ul class="nav-dropdown">
+            <li><a href="car-mats.html">Car Mats</a></li>
+            <li><a href="taxi-drivers.html" class="active">Taxi Drivers</a></li>
+            <li><a href="window-tinting.html">Window Tinting</a></li>
+            <li><a href="seat-covers.html">Seat Covers</a></li>
+          </ul>
+        </li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="testimonials.html">Reviews</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <a class="nav-mobile-phone" href="tel:+353894655600">089 465 5600</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="nav-phone" href="tel:+353894655600">089 465 5600</a>
+      <a class="btn-nav-cta" href="#taxi-quote">Taxi Quote</a>
+      <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ============== PAGE HEAD ============== -->
+<section class="page-head" data-screen-label="page-head">
+  <div class="ph-bg">
+    <img src="assets/work-grey-textured.jpg" alt="">
+  </div>
+  <div class="container ph-inner">
+    <div style="max-width: 920px">
+      <h1 class="display h-lg" style="font-family: 'Bricolage Grotesque', var(--display), sans-serif; font-size: 68px; line-height: 0.96; letter-spacing: -1.4px; color: #e8c275; margin-bottom: 28px">
+        <span style="color: #f3f0eb">Built for the</span><br>
+        <span style="color: var(--gold-2); font-style: italic; font-weight:500">long shift.</span>
+      </h1>
+      <p class="lede" style="margin-bottom: 32px">
+        Heavy-duty EVA sets for drivers who put twelve hours a day into a cabin. Cleans in minutes, lasts years, looks the part for every fare you pick up.
+      </p>
+      <div style="display:flex; gap:14px; flex-wrap: wrap">
+        <a href="#taxi-quote" class="btn btn-primary btn-lg">Taxi Quote <span class="arrow"></span></a>
+        <a href="tel:+353894655600" class="btn btn-ghost btn-lg">Call 089 465 5600</a>
+      </div>
+
+      <div style="margin-top: 56px; max-width: 860px; grid-template-columns: repeat(3, 1fr)" class="taxi-stat">
+        <div><div class="num">12 hr</div><div class="lbl">Per-shift wear-rated</div></div>
+        <div><div class="num">5 min</div><div class="lbl">Hose-down cycle</div></div>
+        <div><div class="num num--text">Velcro &amp; Clips</div><div class="lbl">Stays fixed between fares</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== WHY EVA FOR TAXI ============== -->
+<section class="section">
+  <div class="container">
+    <div style="display:grid; grid-template-columns: 1fr 1.4fr; gap: 80px; align-items: flex-end; margin-bottom: 56px" class="reveal">
+      <div style="margin: 0px 0px 0px 20px">
+        <div class="eyebrow" style="margin-bottom: 18px">The case</div>
+        <h2 class="display h-md">Why drivers fit EVA — and don't go back.</h2>
+      </div>
+      <p class="lede" style="margin: 0">
+        Carpet mats turn into a sponge by month six. Rubber traps mud and cracks in cold weather. EVA was made for this exact job — high traffic, wet boots, spilled coffee, school runs, late nights, repeat.
+      </p>
+    </div>
+
+    <div class="benefit-grid reveal">
+      <div>
+        <div class="b-num">Durability</div>
+        <h3>High-mileage tested</h3>
+        <p>Drivers report sets looking new after 18+ months of full-time service.</p>
+      </div>
+      <div>
+        <div class="b-num">Cleaning</div>
+        <h3>Hose between shifts</h3>
+        <p>Pull, rinse, dry, replace. No vacuum, no shampoo, no specialist cleaners.</p>
+      </div>
+      <div>
+        <div class="b-num">Hygiene</div>
+        <h3>Odour-resistant</h3>
+        <p>Closed-cell foam doesn't hold moisture. No carpet smell after wet fares.</p>
+      </div>
+      <div>
+        <div class="b-num">Presentation</div>
+        <h3>Looks professional</h3>
+        <p>Five-star ratings start with five-star presentation. Clean mats every fare.</p>
+      </div>
+      <div>
+        <div class="b-num">Value</div>
+        <h3>Pays for itself</h3>
+        <p>Protects factory carpet — better resale. Lasts the life of the car for most drivers.</p>
+      </div>
+      <div>
+        <div class="b-num">Coverage</div>
+        <h3>Full cabin + boot</h3>
+        <p>Driver, passenger, rear, boot, sliding rails. We do the whole interior to one standard.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== PLATFORMS ============== -->
+<section class="section dense" style="background: var(--ink-2); border-top: 1px solid var(--hairline)">
+  <div class="container">
+    <div style="text-align: center; margin-bottom: 36px" class="reveal">
+      <div class="kicker">Built for</div>
+      <h2 class="display" style="font-size: clamp(26px, 3vw, 38px); margin-top: 14px; font-weight: 500">Ideal for drivers working with</h2>
+    </div>
+    <div class="platform-row reveal">
+      <div>
+        <img class="p-logo" src="mpz54deq-images.png" alt="Free Now">
+        <div class="p-name">Free Now</div>
+        <div class="p-meta">Hailo successor</div>
+      </div>
+      <div>
+        <img class="p-logo" src="mpz54d1y-2cea3e7494f8f6f763216b708c21f4f2.jpg" alt="Uber">
+        <div class="p-name">Uber</div>
+        <div class="p-meta">Premier · Comfort</div>
+      </div>
+      <div>
+        <img class="p-logo" src="mpz54d89-f1a3b92907aa71d8ff6a1b9770cdb321.jpg" alt="Bolt">
+        <div class="p-name">Bolt</div>
+        <div class="p-meta">Standard · XL</div>
+      </div>
+      <div>
+        <img class="p-logo" src="mpz54dhk-lynk_ireland_logo.jpeg" alt="Lynk">
+        <div class="p-name">Lynk</div>
+        <div class="p-meta">Hackney</div>
+      </div>
+      <div>
+        <img class="p-logo" src="tap-a-taxi.jpeg" alt="Tap a Taxi">
+        <div class="p-name">Tap a Taxi</div>
+        <div class="p-meta">Book &amp; ride</div>
+      </div>
+    </div>
+    <p style="text-align: center; margin: 30px auto 0; color: var(--muted); font-size: 13px; max-width: 60ch">
+      Not an official partner of the above — we build mats for drivers who work with them, every day.
+    </p>
+  </div>
+</section>
+
+<!-- ============== MODEL GRID ============== -->
+<section class="section">
+  <div class="container">
+    <div style="display:flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 32px; margin-bottom: 36px" class="reveal">
+      <div>
+        <div class="eyebrow" style="margin-bottom: 18px">Popular Models</div>
+        <h2 class="display h-md">Most-fitted in Ireland</h2>
+      </div>
+      <p class="lede" style="margin: 0; max-width: 38ch">
+        Our most requested vehicles — templates ready to cut.
+      </p>
+    </div>
+
+    <div style="margin-bottom: 12px" class="label">Select your vehicle</div>
+
+    <div class="model-carousel reveal">
+    <button type="button" class="car-arrow prev" aria-label="Previous models">‹</button>
+    <button type="button" class="car-arrow next" aria-label="Next models">›</button>
+    <div class="model-grid" data-multi="false">
+      <button type="button" class="model-card" data-value="Volkswagen Caddy">
+        <img class="m-img" src="vwcaddy-ext.jpeg" alt="Volkswagen Caddy" loading="lazy">
+        <div class="m-make">Volkswagen</div>
+        <div class="m-model">Caddy</div>
+        <div class="m-check"></div>
+      </button>
+      <button type="button" class="model-card" data-value="Ford Tourneo Custom">
+        <img class="m-img" src="ftc-cover.jpeg" alt="Ford Tourneo Custom" loading="lazy">
+        <div class="m-make">Ford</div>
+        <div class="m-model">Tourneo Custom</div>
+        <div class="m-check"></div>
+      </button>
+      <button type="button" class="model-card" data-value="Ford Transit Kombi">
+        <img class="m-img" src="uploads/eva-gallery-images/ford-transit-kombi-1.jpg" alt="Ford Transit Kombi" loading="lazy">
+        <div class="m-make">Ford</div>
+        <div class="m-model">Transit Kombi</div>
+        <div class="m-check"></div>
+      </button>
+      <button type="button" class="model-card" data-value="Ford Tourneo Connect">
+        <img class="m-img" src="uploads/eva-gallery-images/ford-tourneo-connect-4.jpg" alt="Ford Tourneo Connect" loading="lazy">
+        <div class="m-make">Ford</div>
+        <div class="m-model">Tourneo Connect</div>
+        <div class="m-check"></div>
+      </button>
+      <button type="button" class="model-card" data-value="Volkswagen ID.4">
+        <img class="m-img" src="uploads/eva-gallery-images/vw-id4-ext.jpg" alt="Volkswagen ID.4" loading="lazy">
+        <div class="m-make">Volkswagen</div>
+        <div class="m-model">ID.4</div>
+        <div class="m-check"></div>
+      </button>
+      <button type="button" class="model-card" data-value="Skoda Enyaq">
+        <img class="m-img" src="uploads/eva-gallery-images/skoda-enyaq-2.jpg" alt="Skoda Enyaq" loading="lazy">
+        <div class="m-make">Skoda</div>
+        <div class="m-model">Enyaq</div>
+        <div class="m-check"></div>
+      </button>
+      <button type="button" class="model-card" data-value="Toyota Prius">
+        <img class="m-img" src="uploads/eva-gallery-images/toyota-prius-5.jpg" alt="Toyota Prius" loading="lazy">
+        <div class="m-make">Toyota</div>
+        <div class="m-model">Prius</div>
+        <div class="m-check"></div>
+      </button>
+      <button type="button" class="model-card" data-value="Toyota Prius 7-Seat">
+        <img class="m-img" src="uploads/eva-gallery-images/toyota-prius-7-1.jpg" alt="Toyota Prius 7-Seat" loading="lazy">
+        <div class="m-make">Toyota</div>
+        <div class="m-model">Prius 7-Seat</div>
+        <div class="m-check"></div>
+      </button>
+      <button type="button" class="model-card" data-value="Toyota BZ4X">
+        <img class="m-img" src="uploads/eva-gallery-images/toyota-bz4x-1.jpg" alt="Toyota BZ4X" loading="lazy">
+        <div class="m-make">Toyota</div>
+        <div class="m-model">BZ4X</div>
+        <div class="m-check"></div>
+      </button>
+      <button type="button" class="model-card" data-value="Toyota Corolla">
+        <img class="m-img" src="uploads/eva-gallery-images/toyota-corolla-3.jpg" alt="Toyota Corolla" loading="lazy">
+        <div class="m-make">Toyota</div>
+        <div class="m-model">Corolla</div>
+        <div class="m-check"></div>
+      </button>
+      <button type="button" class="model-card" data-value="Toyota Camry">
+        <img class="m-img" src="uploads/eva-gallery-images/toyota-camry-2.jpg" alt="Toyota Camry" loading="lazy">
+        <div class="m-make">Toyota</div>
+        <div class="m-model">Camry</div>
+        <div class="m-check"></div>
+      </button>
+      <button type="button" class="model-card" data-value="Toyota RAV4">
+        <img class="m-img" src="uploads/eva-gallery-images/toyota-rav4-3.jpg" alt="Toyota RAV4" loading="lazy">
+        <div class="m-make">Toyota</div>
+        <div class="m-model">RAV4</div>
+        <div class="m-check"></div>
+      </button>
+      <button type="button" class="model-card" data-value="BYD Sealion 7">
+        <img class="m-img" src="uploads/eva-gallery-images/byd-sealion-7-3.jpg" alt="BYD Sealion 7" loading="lazy">
+        <div class="m-make">BYD</div>
+        <div class="m-model">Sealion 7</div>
+        <div class="m-check"></div>
+      </button>
+      <button type="button" class="model-card" data-value="BYD Seal">
+        <img class="m-img" src="uploads/eva-gallery-images/byd-seal-3.jpg" alt="BYD Seal" loading="lazy">
+        <div class="m-make">BYD</div>
+        <div class="m-model">Seal</div>
+        <div class="m-check"></div>
+      </button>
+      <button type="button" class="model-card" data-value="Tesla Model Y">
+        <img class="m-img" src="uploads/eva-gallery-images/tesla-model-y-3.jpg" alt="Tesla Model Y" loading="lazy">
+        <div class="m-make">Tesla</div>
+        <div class="m-model">Model Y</div>
+        <div class="m-check"></div>
+      </button>
+      <button type="button" class="model-card" data-value="Peugeot Partner">
+        <img class="m-img" src="uploads/eva-gallery-images/peugeot-partner-3.jpg" alt="Peugeot Partner" loading="lazy">
+        <div class="m-make">Peugeot</div>
+        <div class="m-model">Partner</div>
+        <div class="m-check"></div>
+      </button>
+      <button type="button" class="model-card" data-value="Volkswagen Caddy WAV">
+        <img class="m-img" src="vwcaddy-wav-hq.jpeg" alt="Volkswagen Caddy WAV" loading="lazy">
+        <div class="m-make">Volkswagen</div>
+        <div class="m-model">Caddy WAV</div>
+        <div class="m-check"></div>
+      </button>
+    </div>
+    <div class="car-dots" aria-hidden="true"></div>
+    </div>
+
+    <p style="margin-top: 24px; color: var(--muted); font-size: 14px">
+      Don't see your vehicle? <a href="#taxi-quote" style="color: var(--gold-2); border-bottom: 1px solid var(--gold-deep)">Add it in the form</a> — we hold over 800 templates and add new ones every week.
+    </p>
+  </div>
+</section>
+
+
+<!-- ============== OUR WORK ============== -->
+<section class="section" id="our-work">
+  <div class="container">
+    <div style="text-align:center; margin-bottom: 56px" class="reveal">
+      <div class="eyebrow no-bar" style="margin-bottom:18px; justify-content:center">Our Work</div>
+      <h2 class="display h-md">Fitted to real cars</h2>
+      <p class="lede" style="margin: 18px auto 0">A selection of custom EVA sets we've made, sorted by model.</p>
+    </div>
+
+    <div class="model-grid">
+        <button type="button" class="model-card" data-name="BYD Seal" data-tag="EV · Saloon" data-photos="[&quot;uploads/eva-gallery-images/byd-seal-1.jpg&quot;,&quot;uploads/eva-gallery-images/byd-seal-2.jpg&quot;,&quot;uploads/eva-gallery-images/byd-seal-3.jpg&quot;,&quot;uploads/eva-gallery-images/byd-seal-4.jpg&quot;,&quot;uploads/eva-gallery-images/byd-seal-5.jpg&quot;,&quot;uploads/eva-gallery-images/byd-seal-6.jpg&quot;]">
+          <span class="mc-count">6 photos</span>
+          <span class="mc-imgwrap"><img src="uploads/eva-gallery-images/byd-seal-3.jpg" alt="Custom EVA mats fitted in BYD Seal" loading="lazy"></span>
+          <span class="mc-meta">
+            <span class="mc-name">BYD Seal</span>
+            <span class="mc-tag">EV · Saloon</span>
+          </span>
+        </button>
+        <button type="button" class="model-card" data-name="BYD Sealion 7" data-tag="EV · SUV" data-photos="[&quot;uploads/eva-gallery-images/byd-sealion-7-1.jpg&quot;,&quot;uploads/eva-gallery-images/byd-sealion-7-2.jpg&quot;,&quot;uploads/eva-gallery-images/byd-sealion-7-3.jpg&quot;,&quot;uploads/eva-gallery-images/byd-sealion-7-4.jpg&quot;,&quot;uploads/eva-gallery-images/byd-sealion-7-5.jpg&quot;,&quot;uploads/eva-gallery-images/byd-sealion-7-6.jpg&quot;]">
+          <span class="mc-count">6 photos</span>
+          <span class="mc-imgwrap"><img src="uploads/eva-gallery-images/byd-sealion-7-3.jpg" alt="Custom EVA mats fitted in BYD Sealion 7" loading="lazy"></span>
+          <span class="mc-meta">
+            <span class="mc-name">BYD Sealion 7</span>
+            <span class="mc-tag">EV · SUV</span>
+          </span>
+        </button>
+        <button type="button" class="model-card" data-name="Ford Tourneo Connect" data-tag="7-seat · Compact" data-photos="[&quot;uploads/eva-gallery-images/ford-tourneo-connect-1.jpg&quot;,&quot;uploads/eva-gallery-images/ford-tourneo-connect-2.jpg&quot;,&quot;uploads/eva-gallery-images/ford-tourneo-connect-3.jpg&quot;,&quot;uploads/eva-gallery-images/ford-tourneo-connect-4.jpg&quot;,&quot;uploads/eva-gallery-images/ford-tourneo-connect-5.jpg&quot;,&quot;uploads/eva-gallery-images/ford-tourneo-connect-6.jpg&quot;]">
+          <span class="mc-count">6 photos</span>
+          <span class="mc-imgwrap"><img src="uploads/eva-gallery-images/ford-tourneo-connect-4.jpg" alt="Custom EVA mats fitted in Ford Tourneo Connect" loading="lazy"></span>
+          <span class="mc-meta">
+            <span class="mc-name">Ford Tourneo Connect</span>
+            <span class="mc-tag">7-seat · Compact</span>
+          </span>
+        </button>
+        <button type="button" class="model-card" data-name="Ford Tourneo Custom" data-tag="8-seat · Minibus" data-photos="[&quot;ftc-cover.jpeg&quot;,&quot;ftc-02.jpeg&quot;,&quot;ftc-03.jpeg&quot;,&quot;ftc-04.jpeg&quot;,&quot;ftc-05.jpeg&quot;,&quot;ftc-06.jpeg&quot;,&quot;ftc-07.jpeg&quot;,&quot;ftc-08.jpeg&quot;,&quot;ftc-09.jpeg&quot;,&quot;ftc-10.jpeg&quot;,&quot;ftc-11.jpeg&quot;,&quot;ftc-12.jpeg&quot;]">
+          <span class="mc-count">12 photos</span>
+          <span class="mc-imgwrap"><img src="ftc-cover.jpeg" alt="Custom EVA mats fitted in Ford Tourneo Custom" loading="lazy"></span>
+          <span class="mc-meta">
+            <span class="mc-name">Ford Tourneo Custom</span>
+            <span class="mc-tag">8-seat · Minibus</span>
+          </span>
+        </button>
+        <button type="button" class="model-card" data-name="Ford Transit Kombi" data-tag="9-seat · Van" data-photos="[&quot;uploads/eva-gallery-images/ford-transit-kombi-1.jpg&quot;,&quot;uploads/eva-gallery-images/ford-transit-kombi-2.jpg&quot;,&quot;uploads/eva-gallery-images/ford-transit-kombi-3.jpg&quot;,&quot;uploads/eva-gallery-images/ford-transit-kombi-4.jpg&quot;,&quot;uploads/eva-gallery-images/ford-transit-kombi-5.jpg&quot;,&quot;uploads/eva-gallery-images/ford-transit-kombi-6.jpg&quot;]">
+          <span class="mc-count">6 photos</span>
+          <span class="mc-imgwrap"><img src="uploads/eva-gallery-images/ford-transit-kombi-1.jpg" alt="Custom EVA mats fitted in Ford Transit Kombi" loading="lazy"></span>
+          <span class="mc-meta">
+            <span class="mc-name">Ford Transit Kombi</span>
+            <span class="mc-tag">9-seat · Van</span>
+          </span>
+        </button>
+        <button type="button" class="model-card" data-name="Peugeot Partner" data-tag="Van · Compact" data-photos="[&quot;uploads/eva-gallery-images/peugeot-partner-1.jpg&quot;,&quot;uploads/eva-gallery-images/peugeot-partner-2.jpg&quot;,&quot;uploads/eva-gallery-images/peugeot-partner-3.jpg&quot;,&quot;uploads/eva-gallery-images/peugeot-partner-4.jpg&quot;,&quot;uploads/eva-gallery-images/peugeot-partner-5.jpg&quot;,&quot;uploads/eva-gallery-images/peugeot-partner-6.jpg&quot;]">
+          <span class="mc-count">6 photos</span>
+          <span class="mc-imgwrap"><img src="uploads/eva-gallery-images/peugeot-partner-3.jpg" alt="Custom EVA mats fitted in Peugeot Partner" loading="lazy"></span>
+          <span class="mc-meta">
+            <span class="mc-name">Peugeot Partner</span>
+            <span class="mc-tag">Van · Compact</span>
+          </span>
+        </button>
+        <button type="button" class="model-card" data-name="Peugeot Rifter" data-tag="MPV · 5-seat" data-photos="[&quot;uploads/eva-gallery-images/peugeot-rifter-ext.jpg&quot;,&quot;uploads/eva-gallery-images/peugeot-rifter-1.jpg&quot;,&quot;uploads/eva-gallery-images/peugeot-rifter-2.jpg&quot;,&quot;uploads/eva-gallery-images/peugeot-rifter-4.jpg&quot;,&quot;uploads/eva-gallery-images/peugeot-rifter-5.jpg&quot;,&quot;uploads/eva-gallery-images/peugeot-rifter-6.jpg&quot;]">
+          <span class="mc-count">6 photos</span>
+          <span class="mc-imgwrap"><img src="uploads/eva-gallery-images/peugeot-rifter-ext.jpg" alt="Custom EVA mats fitted in Peugeot Rifter" loading="lazy"></span>
+          <span class="mc-meta">
+            <span class="mc-name">Peugeot Rifter</span>
+            <span class="mc-tag">MPV · 5-seat</span>
+          </span>
+        </button>
+        <button type="button" class="model-card" data-name="Skoda Enyaq" data-tag="EV · SUV" data-photos="[&quot;uploads/eva-gallery-images/skoda-enyaq-1.jpg&quot;,&quot;uploads/eva-gallery-images/skoda-enyaq-2.jpg&quot;,&quot;uploads/eva-gallery-images/skoda-enyaq-3.jpg&quot;,&quot;uploads/eva-gallery-images/skoda-enyaq-4.jpg&quot;,&quot;uploads/eva-gallery-images/skoda-enyaq-5.jpg&quot;,&quot;uploads/eva-gallery-images/skoda-enyaq-6.jpg&quot;]">
+          <span class="mc-count">6 photos</span>
+          <span class="mc-imgwrap"><img src="uploads/eva-gallery-images/skoda-enyaq-2.jpg" alt="Custom EVA mats fitted in Skoda Enyaq" loading="lazy"></span>
+          <span class="mc-meta">
+            <span class="mc-name">Skoda Enyaq</span>
+            <span class="mc-tag">EV · SUV</span>
+          </span>
+        </button>
+        <button type="button" class="model-card" data-name="Tesla Model Y" data-tag="EV · SUV" data-photos="[&quot;uploads/eva-gallery-images/tesla-model-y-1.jpg&quot;,&quot;uploads/eva-gallery-images/tesla-model-y-2.jpg&quot;,&quot;uploads/eva-gallery-images/tesla-model-y-3.jpg&quot;,&quot;uploads/eva-gallery-images/tesla-model-y-4.jpg&quot;,&quot;uploads/eva-gallery-images/tesla-model-y-5.jpg&quot;,&quot;uploads/eva-gallery-images/tesla-model-y-6.jpg&quot;]">
+          <span class="mc-count">6 photos</span>
+          <span class="mc-imgwrap"><img src="uploads/eva-gallery-images/tesla-model-y-3.jpg" alt="Custom EVA mats fitted in Tesla Model Y" loading="lazy"></span>
+          <span class="mc-meta">
+            <span class="mc-name">Tesla Model Y</span>
+            <span class="mc-tag">EV · SUV</span>
+          </span>
+        </button>
+        <button type="button" class="model-card" data-name="Toyota BZ4X" data-tag="EV · SUV" data-photos="[&quot;uploads/eva-gallery-images/toyota-bz4x-1.jpg&quot;,&quot;uploads/eva-gallery-images/toyota-bz4x-2.jpg&quot;,&quot;uploads/eva-gallery-images/toyota-bz4x-3.jpg&quot;,&quot;uploads/eva-gallery-images/toyota-bz4x-4.jpg&quot;,&quot;uploads/eva-gallery-images/toyota-bz4x-5.jpg&quot;,&quot;uploads/eva-gallery-images/toyota-bz4x-6.jpg&quot;]">
+          <span class="mc-count">6 photos</span>
+          <span class="mc-imgwrap"><img src="uploads/eva-gallery-images/toyota-bz4x-1.jpg" alt="Custom EVA mats fitted in Toyota BZ4X" loading="lazy"></span>
+          <span class="mc-meta">
+            <span class="mc-name">Toyota BZ4X</span>
+            <span class="mc-tag">EV · SUV</span>
+          </span>
+        </button>
+        <button type="button" class="model-card" data-name="Toyota Camry" data-tag="Hybrid · Saloon" data-photos="[&quot;uploads/eva-gallery-images/toyota-camry-1.jpg&quot;,&quot;uploads/eva-gallery-images/toyota-camry-2.jpg&quot;,&quot;uploads/eva-gallery-images/toyota-camry-3.jpg&quot;,&quot;uploads/eva-gallery-images/toyota-camry-4.jpg&quot;,&quot;uploads/eva-gallery-images/toyota-camry-5.jpg&quot;,&quot;uploads/eva-gallery-images/toyota-camry-6.jpg&quot;]">
+          <span class="mc-count">6 photos</span>
+          <span class="mc-imgwrap"><img src="uploads/eva-gallery-images/toyota-camry-2.jpg" alt="Custom EVA mats fitted in Toyota Camry" loading="lazy"></span>
+          <span class="mc-meta">
+            <span class="mc-name">Toyota Camry</span>
+            <span class="mc-tag">Hybrid · Saloon</span>
+          </span>
+        </button>
+        <button type="button" class="model-card" data-name="Toyota Corolla" data-tag="Hybrid · Saloon" data-photos="[&quot;uploads/eva-gallery-images/toyota-corolla-1.jpg&quot;,&quot;uploads/eva-gallery-images/toyota-corolla-2.jpg&quot;,&quot;uploads/eva-gallery-images/toyota-corolla-3.jpg&quot;,&quot;uploads/eva-gallery-images/toyota-corolla-4.jpg&quot;,&quot;uploads/eva-gallery-images/toyota-corolla-5.jpg&quot;]">
+          <span class="mc-count">5 photos</span>
+          <span class="mc-imgwrap"><img src="uploads/eva-gallery-images/toyota-corolla-3.jpg" alt="Custom EVA mats fitted in Toyota Corolla" loading="lazy"></span>
+          <span class="mc-meta">
+            <span class="mc-name">Toyota Corolla</span>
+            <span class="mc-tag">Hybrid · Saloon</span>
+          </span>
+        </button>
+        <button type="button" class="model-card" data-name="Toyota Prius" data-tag="Hybrid · #1 Taxi" data-photos="[&quot;uploads/eva-gallery-images/toyota-prius-1.jpg&quot;,&quot;uploads/eva-gallery-images/toyota-prius-2.jpg&quot;,&quot;uploads/eva-gallery-images/toyota-prius-3.jpg&quot;,&quot;uploads/eva-gallery-images/toyota-prius-4.jpg&quot;,&quot;uploads/eva-gallery-images/toyota-prius-5.jpg&quot;,&quot;uploads/eva-gallery-images/toyota-prius-6.jpg&quot;]">
+          <span class="mc-count">6 photos</span>
+          <span class="mc-imgwrap"><img src="uploads/eva-gallery-images/toyota-prius-5.jpg" alt="Custom EVA mats fitted in Toyota Prius" loading="lazy"></span>
+          <span class="mc-meta">
+            <span class="mc-name">Toyota Prius</span>
+            <span class="mc-tag">Hybrid · #1 Taxi</span>
+          </span>
+        </button>
+        <button type="button" class="model-card" data-name="Toyota Prius 7-Seat" data-tag="Hybrid · 7-seat" data-photos="[&quot;uploads/eva-gallery-images/toyota-prius-7-1.jpg&quot;,&quot;uploads/eva-gallery-images/toyota-prius-7-2.jpg&quot;,&quot;uploads/eva-gallery-images/toyota-prius-7-3.jpg&quot;,&quot;uploads/eva-gallery-images/toyota-prius-7-4.jpg&quot;,&quot;uploads/eva-gallery-images/toyota-prius-7-5.jpg&quot;,&quot;uploads/eva-gallery-images/toyota-prius-7-6.jpg&quot;]">
+          <span class="mc-count">6 photos</span>
+          <span class="mc-imgwrap"><img src="uploads/eva-gallery-images/toyota-prius-7-1.jpg" alt="Custom EVA mats fitted in Toyota Prius 7-Seat" loading="lazy"></span>
+          <span class="mc-meta">
+            <span class="mc-name">Toyota Prius 7-Seat</span>
+            <span class="mc-tag">Hybrid · 7-seat</span>
+          </span>
+        </button>
+        <button type="button" class="model-card" data-name="Toyota RAV4" data-tag="Hybrid · SUV" data-photos="[&quot;uploads/eva-gallery-images/toyota-rav4-1.jpg&quot;,&quot;uploads/eva-gallery-images/toyota-rav4-2.jpg&quot;,&quot;uploads/eva-gallery-images/toyota-rav4-3.jpg&quot;,&quot;uploads/eva-gallery-images/toyota-rav4-4.jpg&quot;,&quot;uploads/eva-gallery-images/toyota-rav4-5.jpg&quot;,&quot;uploads/eva-gallery-images/toyota-rav4-6.jpg&quot;]">
+          <span class="mc-count">6 photos</span>
+          <span class="mc-imgwrap"><img src="uploads/eva-gallery-images/toyota-rav4-3.jpg" alt="Custom EVA mats fitted in Toyota RAV4" loading="lazy"></span>
+          <span class="mc-meta">
+            <span class="mc-name">Toyota RAV4</span>
+            <span class="mc-tag">Hybrid · SUV</span>
+          </span>
+        </button>
+        <button type="button" class="model-card" data-name="Volkswagen ID.4" data-tag="EV · SUV" data-photos="[&quot;uploads/eva-gallery-images/vw-id4-ext.jpg&quot;,&quot;vwid4-n1.jpeg&quot;,&quot;vwid4-n2.jpeg&quot;,&quot;vwid4-n3.jpeg&quot;,&quot;vwid4-n4.jpeg&quot;,&quot;vwid4-n5.jpeg&quot;,&quot;vwid4-n6.jpeg&quot;]">
+          <span class="mc-count">7 photos</span>
+          <span class="mc-imgwrap"><img src="uploads/eva-gallery-images/vw-id4-ext.jpg" alt="Custom EVA mats fitted in Volkswagen ID.4" loading="lazy"></span>
+          <span class="mc-meta">
+            <span class="mc-name">Volkswagen ID.4</span>
+            <span class="mc-tag">EV · SUV</span>
+          </span>
+        </button>
+        <button type="button" class="model-card" data-name="Volkswagen Caddy" data-tag="MPV · Taxi" data-photos="[&quot;vwcaddy-ext.jpeg&quot;,&quot;vwcaddy-1.jpeg&quot;,&quot;vwcaddy-2.jpeg&quot;,&quot;vwcaddy-3.jpeg&quot;,&quot;vwcaddy-4.jpeg&quot;,&quot;vwcaddy-5.jpeg&quot;,&quot;vwcaddy-6.jpeg&quot;,&quot;vwcaddy-7.jpeg&quot;,&quot;vwcaddy-8.jpeg&quot;]">
+          <span class="mc-count">9 photos</span>
+          <span class="mc-imgwrap"><img src="vwcaddy-ext.jpeg" alt="Custom EVA mats fitted in Volkswagen Caddy" loading="lazy"></span>
+          <span class="mc-meta">
+            <span class="mc-name">Volkswagen Caddy</span>
+            <span class="mc-tag">MPV · Taxi</span>
+          </span>
+        </button>
+        <button type="button" class="model-card" data-name="Volkswagen Caddy" data-tag="WAV · Taxi" data-photos="[&quot;vwcaddy2-ext.jpeg&quot;,&quot;vwcaddy2-1.jpeg&quot;,&quot;vwcaddy2-2.jpeg&quot;,&quot;vwcaddy2-3.jpeg&quot;,&quot;vwcaddy2-4.jpeg&quot;,&quot;vwcaddy2-5.jpeg&quot;,&quot;vwcaddy2-6.jpeg&quot;]">
+          <span class="mc-count">7 photos</span>
+          <span class="mc-imgwrap"><img src="vwcaddy2-ext.jpeg" alt="Custom EVA mats fitted in Volkswagen Caddy wheelchair-accessible taxi" loading="lazy"></span>
+          <span class="mc-meta">
+            <span class="mc-name">Volkswagen Caddy</span>
+            <span class="mc-tag">WAV · Taxi</span>
+          </span>
+        </button>
+    </div>
+  </div>
+</section>
+
+<!-- Lightbox (Our Work) -->
+<div class="lightbox" id="work-lightbox" role="dialog" aria-modal="true" aria-label="Gallery">
+  <div class="lb-top">
+    <div class="lb-title"><span class="lb-model"></span><span class="lb-counter"></span></div>
+    <button type="button" class="lb-close" aria-label="Close gallery">&#10005;</button>
+  </div>
+  <div class="lb-stage">
+    <button type="button" class="lb-arrow lb-prev" aria-label="Previous photo">&#8249;</button>
+    <img class="lb-img" alt="">
+    <button type="button" class="lb-arrow lb-next" aria-label="Next photo">&#8250;</button>
+  </div>
+  <div class="lb-dots"></div>
+</div>
+
+<!-- ============== CTA STRIP ============== -->
+<section class="cta-strip" style="padding: 72px 0px 72px 20px">
+  <div class="container">
+    <div class="cta-strip-inner">
+      <div>
+        <span class="phone-label">Direct line</span>
+        <a href="tel:+353894655600" class="phone-big">+353 89 465 5600</a>
+        <p style="color: var(--muted); margin: 14px 0 0; max-width: 50ch">English, Romanian, Russian — fluent. Out-of-hours messages returned next morning.</p>
+      </div>
+      <div class="cta-strip-actions">
+        <a href="tel:+353894655600" class="btn btn-primary btn-lg">Call Now</a>
+        <a href="#taxi-quote" class="btn btn-ghost btn-lg">Online Quote</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== QUOTE FORM ============== -->
+<section class="section" id="taxi-quote">
+  <div class="container tight">
+    <div style="text-align:center; margin-bottom: 48px" class="reveal">
+      <div class="eyebrow no-bar" style="margin-bottom:18px; justify-content:center">Taxi Driver Quote</div>
+      <h2 class="display h-md">Get a price the same day</h2>
+      <p class="lede" style="margin: 18px auto 0; white-space: nowrap; max-width: none">Same-day quote during studio hours. A discount applies from 3 sets ordered.</p>
+      <p class="lede" style="margin: 12px auto 0">Measuring takes approx. 40–60 min for 5 and 7-seat cars, and 1.5–2 hours for vans with 8–9 seats.</p>
+    </div>
+
+    <form class="card dark" data-form="" style="padding: 40px" novalidate="">
+      <div style="display:flex; justify-content: space-between; align-items: center; margin-bottom: 32px; padding-bottom: 24px; border-bottom: 1px solid var(--hairline)">
+        <div class="kicker">FORM · TAXI QUOTE</div>
+        <div class="label">Driver pricing</div>
+      </div>
+
+      <!-- Vehicle -->
+      <div style="margin-bottom: 32px">
+        <h3 class="display h-sm" style="margin-bottom: 24px; font-size: 22px">01 · Your vehicle</h3>
+        <div class="form-grid">
+          <div class="field">
+            <label>Vehicle type <span class="req">*</span></label>
+            <select required="" name="vehicle_type">
+              <option value="">Select…</option>
+              <option>Saloon</option>
+              <option>Hatchback</option>
+              <option>SUV / Crossover</option>
+              <option>Estate</option>
+              <option>People carrier (7+ seats)</option>
+              <option>Wheelchair-accessible vehicle</option>
+            </select>
+            <span class="error">Required</span>
+          </div>
+          <div class="field">
+            <label>Configuration</label>
+            <select name="config">
+              <option value="">Select…</option>
+              <option>Driver only (1 mat)</option>
+              <option>Driver + front passenger</option>
+              <option>Driver + full rear (4 mats)</option>
+              <option>Full set + boot mat</option>
+              <option>Hackney layout — 6+ seats</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Make <span class="req">*</span></label>
+            <select required="" name="make" data-make="taxi"></select>
+            <span class="error">Required</span>
+          </div>
+          <div class="field">
+            <label>Model <span class="req">*</span></label>
+            <select required="" name="model" data-model="" data-pair="taxi"></select>
+            <span class="error">Required</span>
+          </div>
+          <div class="field">
+            <label>Year <span class="req">*</span></label>
+            <select required="" name="year" data-year-select=""></select>
+            <span class="error">Required</span>
+          </div>
+          <div class="field">
+            <label>Platform / fleet</label>
+            <select name="platform">
+              <option value="">Select…</option>
+              <option>Free Now</option>
+              <option>Uber</option>
+              <option>Bolt</option>
+              <option>Lynk</option>
+              <option>Local fleet</option>
+              <option>Independent / hackney</option>
+            </select>
+          </div>
+        </div>
+        <input type="hidden" data-model-target="" name="model_selection">
+      </div>
+
+      <!-- Colours -->
+      <div style="margin-bottom: 32px">
+        <h3 class="display h-sm" style="margin-bottom: 24px; font-size: 22px">02 · Look</h3>
+        <div class="field full" style="margin-bottom: 18px">
+          <label>Diamond (Romb) — Mat colours</label>
+          <div class="color-swatches">
+            <label class="swatch" title="Black"><input type="radio" name="mat_color" value="Diamond · Black"><span style="background:#0c0c0d"></span></label>
+            <label class="swatch" title="Grey"><input type="radio" name="mat_color" value="Diamond · Grey"><span style="background:#4a4a4c"></span></label>
+            <label class="swatch" title="Red"><input type="radio" name="mat_color" value="Diamond · Red"><span style="background:#c8281e"></span></label>
+            <label class="swatch" title="Bordeaux"><input type="radio" name="mat_color" value="Diamond · Bordeaux"><span style="background:#5c0a1e"></span></label>
+            <label class="swatch" title="Beige"><input type="radio" name="mat_color" value="Diamond · Beige"><span style="background:#d8c9aa"></span></label>
+            <label class="swatch" title="Blue"><input type="radio" name="mat_color" value="Diamond · Blue"><span style="background:#1f3559"></span></label>
+            <label class="swatch" title="Yellow"><input type="radio" name="mat_color" value="Diamond · Yellow"><span style="background:#d4a800"></span></label>
+            <label class="swatch" title="Orange"><input type="radio" name="mat_color" value="Diamond · Orange"><span style="background:#d4601a"></span></label>
+          </div>
+        </div>
+        <div class="field full" style="margin-bottom: 24px">
+          <label>Honeycomb — Mat colours</label>
+          <div class="color-swatches">
+            <label class="swatch" title="Brown"><input type="radio" name="mat_color" value="Honeycomb · Brown"><span style="background:#5c3317"></span></label>
+            <label class="swatch" title="Dark Beige"><input type="radio" name="mat_color" value="Honeycomb · Dark Beige"><span style="background:#b89e7a"></span></label>
+          </div>
+        </div>
+        <div class="field full">
+          <label>Trim / border colour</label>
+          <div class="color-swatches">
+            <label class="swatch" title="Black"><input type="radio" name="trim_color" value="Black"><span style="background:#0c0c0d"></span></label>
+            <label class="swatch" title="Grey"><input type="radio" name="trim_color" value="Grey"><span style="background:#4a4a4c"></span></label>
+            <label class="swatch" title="Blue"><input type="radio" name="trim_color" value="Blue"><span style="background:#1f3559"></span></label>
+            <label class="swatch" title="Red"><input type="radio" name="trim_color" value="Red"><span style="background:#c8281e"></span></label>
+            <label class="swatch" title="Bordeaux"><input type="radio" name="trim_color" value="Bordeaux"><span style="background:#5c0a1e"></span></label>
+            <label class="swatch" title="Yellow"><input type="radio" name="trim_color" value="Yellow"><span style="background:#d4a800"></span></label>
+            <label class="swatch" title="Orange"><input type="radio" name="trim_color" value="Orange"><span style="background:#d4601a"></span></label>
+            <label class="swatch" title="Brown"><input type="radio" name="trim_color" value="Brown"><span style="background:#5c3317"></span></label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact -->
+      <div style="margin-bottom: 32px">
+        <h3 class="display h-sm" style="margin-bottom: 24px; font-size: 22px">03 · You</h3>
+        <div class="form-grid">
+          <div class="field">
+            <label>Name <span class="req">*</span></label>
+            <input type="text" name="name" required="">
+            <span class="error">Required</span>
+          </div>
+          <div class="field">
+            <label>Phone <span class="req">*</span></label>
+            <input type="tel" name="phone" required="" placeholder="089 …">
+            <span class="error">Required</span>
+          </div>
+          <div class="field">
+            <label>Preferred contact</label>
+            <select name="contact_method">
+              <option>Call</option>
+              <option>WhatsApp</option>
+              <option>SMS</option>
+              <option>Viber</option>
+              <option>Telegram</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Fleet enquiry?</label>
+            <select name="fleet">
+              <option>No — single vehicle</option>
+              <option>Yes — 2–5 vehicles</option>
+              <option>Yes — 6+ vehicles</option>
+            </select>
+          </div>
+          <div class="field full">
+            <label>Language for contact back</label>
+            <div class="radio-row">
+              <input type="radio" name="language" value="English" id="tx-lang-en" checked=""><label for="tx-lang-en">English</label>
+              <input type="radio" name="language" value="Romanian" id="tx-lang-ro"><label for="tx-lang-ro">Română</label>
+              <input type="radio" name="language" value="Russian" id="tx-lang-ru"><label for="tx-lang-ru">Русский</label>
+            </div>
+          </div>
+          <div class="field full">
+            <label>Notes</label>
+            <textarea name="notes" placeholder="Boot mat, child seat fittings, sliding rails, special fittings…"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:flex; justify-content: space-between; align-items: center; gap: 18px; flex-wrap: wrap">
+        <p style="color: var(--muted); font-size: 13px; margin: 0; max-width: 36ch">Same-day quote during studio hours. A discount applies from 3 sets ordered.</p>
+        <button type="submit" class="btn btn-primary btn-lg">Send Quote Request <span class="arrow"></span></button>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- ============== FLEET ============== -->
+<section class="section" style="background: var(--ink-2); border-top: 1px solid var(--hairline)">
+  <div class="container">
+    <div style="max-width: 720px" class="reveal">
+      <div style="margin: 0px 0px 0px 20px">
+        <div class="eyebrow" style="margin-bottom: 18px">Fleet &amp; Repeat</div>
+        <h2 class="display h-md" style="margin-bottom: 24px">Running a fleet?</h2>
+        <p class="lede" style="margin-bottom: 20px">
+          Three vehicles or thirty — we work with private hire operators, local hackney bases and limousine fleets across Leinster.
+        </p>
+        <ul style="list-style: none; padding: 0; margin: 0 0 28px; display: flex; flex-direction: column; gap: 12px">
+          <li style="display: flex; gap: 14px; color: var(--text); font-size: 15px"><span style="color: var(--gold); font-family: var(--mono); font-size: 12px; letter-spacing:.18em">+</span> Volume pricing past 3 sets</li>
+          <li style="display: flex; gap: 14px; color: var(--text); font-size: 15px"><span style="color: var(--gold); font-family: var(--mono); font-size: 12px; letter-spacing:.18em">+</span> Scheduled fittings around shift rotas</li>
+          <li style="display: flex; gap: 14px; color: var(--text); font-size: 15px"><span style="color: var(--gold); font-family: var(--mono); font-size: 12px; letter-spacing:.18em">+</span> Single invoicing &amp; PO support</li>
+          <li style="display: flex; gap: 14px; color: var(--text); font-size: 15px"><span style="color: var(--gold); font-family: var(--mono); font-size: 12px; letter-spacing:.18em">+</span> Brand-consistent colourways across vehicles</li>
+          <li style="display: flex; gap: 14px; color: var(--text); font-size: 15px"><span style="color: var(--gold); font-family: var(--mono); font-size: 12px; letter-spacing:.18em">+</span> Replacement-only orders priced lower</li>
+        </ul>
+        <a href="contact.html" class="btn btn-primary">Talk Fleet <span class="arrow"></span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== FOOTER ============== -->
+<footer class="site-footer" data-screen-label="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="foot-col foot-brand">
+        <a class="brand" href="index.html">
+          <span class="brand-mark"><img src="assets/logo.jpg" alt=""></span>
+          <span class="brand-text">
+            <span class="b-1">EVA Car Mats</span>
+            <span class="b-2">The Best in Ireland</span>
+          </span>
+        </a>
+        <p>Made-to-measure EVA mats and professional window tinting. Based in Sallins, serving every county in Ireland.</p>
+        <div class="foot-socials">
+          <a href="https://www.facebook.com/profile.php?id=61558046664454" aria-label="Facebook" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z"></path></svg></a>
+          <a href="https://www.instagram.com/evacarmatsireland/" aria-label="Instagram" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"></circle></svg></a>
+          <a href="https://www.tiktok.com/@carmats_eva333" aria-label="TikTok" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19.5 6.7a5.4 5.4 0 0 1-3.3-1.2 5.4 5.4 0 0 1-2-3.5h-3.3v13.4a2.4 2.4 0 1 1-2.4-2.4c.3 0 .6 0 .8.1V9.7a5.7 5.7 0 0 0-.8 0 5.7 5.7 0 1 0 5.7 5.7V9.5a8.7 8.7 0 0 0 5.3 1.8z"></path></svg></a>
+        </div>
+      </div>
+      <div class="foot-col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="terms-and-conditions.html">Terms &amp; Conditions</a></li>
+          <li><a href="cookie-policy.html">Cookie Policy</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Studio</h4>
+        <ul>
+          <li><a href="tel:+353894655600">089 465 5600</a></li>
+          <li><a href="contact.html">Sallins, Co. Kildare</a></li>
+          <li><a href="contact.html">Mon–Sat · 09:00–18:30</a></li>
+          <li><a href="contact.html">Get directions</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Pages</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="car-mats.html">Car Mats</a></li>
+          <li><a href="taxi-drivers.html">Taxi Drivers</a></li>
+          <li><a href="window-tinting.html">Window Tinting</a></li>
+          <li><a href="seat-covers.html">Seat Covers</a></li>
+          <li><a href="testimonials.html">Testimonials</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span data-year="">2026</span> EVA Car Mats Ireland · Sallins, Co. Kildare</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============== COOKIE BANNER ============== -->
+<div class="cookie-banner" id="cookie-banner" role="dialog" aria-label="Cookie consent">
+  <p class="cookie-banner-text">We use cookies to improve your experience. By continuing to use this site, you accept our use of cookies. <a href="cookie-policy.html">Learn more</a></p>
+  <div class="cookie-banner-actions">
+    <button class="cookie-accept" id="cookie-accept">Accept</button>
+    <button class="cookie-decline" id="cookie-decline">Decline</button>
+  </div>
+</div>
+
+<script src="shared.js"></script>
+
+<script>
+(function(){
+  const carousel = document.querySelector('.model-carousel');
+  if(!carousel) return;
+  const track = carousel.querySelector('.model-grid');
+  const prev  = carousel.querySelector('.car-arrow.prev');
+  const next  = carousel.querySelector('.car-arrow.next');
+  const dots  = carousel.querySelector('.car-dots');
+  const cards = Array.from(track.querySelectorAll('.model-card'));
+
+  function visibleCount(){
+    const w = window.innerWidth;
+    if(w <= 720) return 1;
+    if(w <= 980) return 2;
+    return 3;
+  }
+  function step(){
+    const card = cards[0];
+    if(!card) return 0;
+    const gap = parseInt(getComputedStyle(track).gap) || 18;
+    return card.getBoundingClientRect().width + gap;
+  }
+  function pageCount(){
+    return Math.max(1, Math.ceil(cards.length / visibleCount()));
+  }
+  function currentPage(){
+    const s = step() * visibleCount();
+    if(s <= 0) return 0;
+    return Math.round(track.scrollLeft / s);
+  }
+  function buildDots(){
+    dots.innerHTML = '';
+    const total = pageCount();
+    for(let i = 0; i < total; i++){
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'car-dot' + (i === 0 ? ' active' : '');
+      b.setAttribute('aria-label', 'Page ' + (i + 1));
+      b.addEventListener('click', () => {
+        track.scrollTo({ left: i * step() * visibleCount(), behavior: 'smooth' });
+      });
+      dots.appendChild(b);
+    }
+  }
+  function updateState(){
+    const p = currentPage();
+    const total = pageCount();
+    Array.from(dots.children).forEach((d, i) => d.classList.toggle('active', i === p));
+    prev.disabled = p <= 0;
+    next.disabled = p >= total - 1;
+  }
+  prev.addEventListener('click', () => {
+    track.scrollBy({ left: -step() * visibleCount(), behavior: 'smooth' });
+  });
+  next.addEventListener('click', () => {
+    track.scrollBy({ left: step() * visibleCount(), behavior: 'smooth' });
+  });
+  let scrollTimer;
+  track.addEventListener('scroll', () => {
+    clearTimeout(scrollTimer);
+    scrollTimer = setTimeout(updateState, 80);
+  });
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      buildDots();
+      updateState();
+    }, 120);
+  });
+  buildDots();
+  updateState();
+})();
+</script>
+
+
+<script>
+(function(){
+  var lb = document.getElementById('work-lightbox');
+  if(!lb) return;
+  var imgEl = lb.querySelector('.lb-img'),
+      modelEl = lb.querySelector('.lb-model'),
+      counterEl = lb.querySelector('.lb-counter'),
+      dotsEl = lb.querySelector('.lb-dots'),
+      prev = lb.querySelector('.lb-prev'),
+      next = lb.querySelector('.lb-next'),
+      closeBtn = lb.querySelector('.lb-close');
+  var photos = [], idx = 0;
+  function preload(src){ var i = new Image(); i.src = src; }
+  function render(){
+    imgEl.src = photos[idx];
+    counterEl.textContent = (idx+1) + ' / ' + photos.length;
+    dotsEl.innerHTML = '';
+    photos.forEach(function(_, i){
+      var d = document.createElement('button');
+      d.className = 'lb-dot' + (i===idx ? ' active' : '');
+      d.setAttribute('aria-label', 'Photo ' + (i+1));
+      d.addEventListener('click', function(){ idx = i; render(); });
+      dotsEl.appendChild(d);
+    });
+    var n = (idx+1) % photos.length, p = (idx-1+photos.length) % photos.length;
+    preload(photos[n]); preload(photos[p]);
+  }
+  function go(n){ idx = (n + photos.length) % photos.length; render(); }
+  function open(card){
+    photos = JSON.parse(card.getAttribute('data-photos'));
+    idx = 0;
+    modelEl.textContent = card.getAttribute('data-name');
+    render();
+    lb.classList.add('open');
+    document.body.classList.add('lb-lock');
+  }
+  function close(){ lb.classList.remove('open'); document.body.classList.remove('lb-lock'); }
+  document.querySelectorAll('#our-work .model-card').forEach(function(card){
+    card.addEventListener('click', function(){ open(card); });
+  });
+  prev.addEventListener('click', function(){ go(idx-1); });
+  next.addEventListener('click', function(){ go(idx+1); });
+  closeBtn.addEventListener('click', close);
+  lb.addEventListener('click', function(e){ if(e.target === lb) close(); });
+  document.addEventListener('keydown', function(e){
+    if(!lb.classList.contains('open')) return;
+    if(e.key === 'Escape') close();
+    else if(e.key === 'ArrowRight') go(idx+1);
+    else if(e.key === 'ArrowLeft') go(idx-1);
+  });
+  var tx = 0;
+  lb.querySelector('.lb-stage').addEventListener('touchstart', function(e){ tx = e.touches[0].clientX; }, {passive:true});
+  lb.querySelector('.lb-stage').addEventListener('touchend', function(e){
+    var d = tx - e.changedTouches[0].clientX;
+    if(Math.abs(d) > 40) go(idx + (d>0 ? 1 : -1));
+  });
+})();
+</script>
+</body></html>

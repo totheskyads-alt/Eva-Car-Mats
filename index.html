@@ -1,0 +1,978 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EVA Car Mats Ireland — Custom Tailored Mats &amp; Window Tinting · Sallins, Co. Kildare</title>
+<meta name="description" content="EVA Car Mats Ireland — premium custom-fit EVA mats made to measure for every vehicle. Window tinting and detailing services in Sallins, Co. Kildare. Call 089 465 5600.">
+<link rel="stylesheet" href="shared.css?v=3">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+
+<!-- Pre-load all four tweakable display faces so the standalone bundler can inline them -->
+<link id="gf-bricolage" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&amp;display=swap">
+<link id="gf-anton" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&amp;display=swap">
+<link id="gf-fraunces" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,400..700,30,0..1&amp;display=swap">
+<link id="gf-bigshoulders" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@400;500;600;700;800&amp;display=swap">
+
+<!-- Splash thumbnail for the standalone bundle -->
+<template id="__bundler_thumbnail" data-bg-color="#0a0a0b">
+  <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#e8c275"></stop>
+        <stop offset="1" stop-color="#c79849"></stop>
+      </linearGradient>
+    </defs>
+    <circle cx="200" cy="200" r="176" fill="none" stroke="url(#g)" stroke-width="2"></circle>
+    <text x="200" y="218" text-anchor="middle" font-family="Georgia, serif" font-weight="700" font-size="110" letter-spacing="6" fill="url(#g)">EVA</text>
+    <text x="200" y="262" text-anchor="middle" font-family="ui-monospace, monospace" font-size="14" letter-spacing="6" fill="#8a857c">CAR·MATS·IRELAND</text>
+  </svg>
+</template>
+<style>
+  /* ===== Tweak-driven mood variants ===== */
+  /* Workshop — gritty, denser, raw studio feel */
+  body.mood-workshop{
+    --hairline: #2e2d28;
+    --hairline-2: #3a3933;
+  }
+  body.mood-workshop::before{
+    content:"";
+    position: fixed; inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    opacity: .55;
+    mix-blend-mode: overlay;
+    background: repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,.03) 2px,rgba(0,0,0,.03) 4px);
+  }
+  body.mood-workshop .section{ padding: clamp(48px, 6vw, 92px) 0 }
+  body.mood-workshop .hero{ min-height: 86vh }
+  body.mood-workshop .display{ letter-spacing: -0.025em }
+  body.mood-workshop .eyebrow,
+  body.mood-workshop .kicker,
+  body.mood-workshop .label{ letter-spacing: 0.26em }
+  body.mood-workshop .marquee{ padding: 30px 0 }
+  body.mood-workshop .benefit-grid > div{ padding: 32px 26px }
+
+  /* Gallery — airy, editorial, museum-floor poise */
+  body.mood-gallery{
+    --ink: #060607;
+    --ink-2: #0a0a0c;
+    --surface: #0f0f12;
+    --hairline: #1e1e1c;
+  }
+  body.mood-gallery .section{ padding: clamp(96px, 12vw, 176px) 0 }
+  body.mood-gallery .hero{ min-height: 100vh }
+  body.mood-gallery .hero-inner{ padding-bottom: 96px }
+  body.mood-gallery .display{ letter-spacing: -0.012em; line-height: 0.92 }
+  body.mood-gallery h1.h-xl{ font-size: clamp(56px, 9.5vw, 168px) }
+  body.mood-gallery h2.h-md{ font-size: clamp(38px, 5.5vw, 84px) }
+  body.mood-gallery .lede{ font-size: clamp(17px, 1.5vw, 21px); line-height: 1.6 }
+  body.mood-gallery .eyebrow,
+  body.mood-gallery .kicker,
+  body.mood-gallery .label{ letter-spacing: 0.34em }
+  body.mood-gallery .container{ max-width: 1240px }
+  body.mood-gallery .benefit-grid > div{ padding: 56px 40px }
+  body.mood-gallery .steps .step{ padding: 52px 36px }
+  body.mood-gallery .marquee{ padding: 40px 0 }
+
+  /* tweaks-root holder */
+  #tweaks-root{ position: relative; z-index: 2147483647 }
+
+  /* ---- photo strip ---- */
+  @keyframes photo-scroll {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+  .photo-strip { overflow: hidden; border-top: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline); }
+  .photo-strip-track {
+    display: flex; gap: 6px;
+    animation: photo-scroll 55s linear infinite;
+    width: max-content;
+  }
+  .photo-strip-track:hover { animation-play-state: paused; }
+  .photo-strip-track img { cursor: zoom-in; transition: filter .2s, transform .2s; }
+  .photo-strip-track img:hover { filter: brightness(1.08); }
+  .photo-strip-track img {
+    height: 300px; width: auto;
+    object-fit: cover; display: block; flex-shrink: 0;
+  }
+  @media (max-width: 768px) {
+    .photo-strip-track img { height: 200px; }
+  }
+
+  /* ---- reviews carousel ---- */
+  .rv-wrap{ position: relative; }
+  .rv-carousel{ display: flex; align-items: center; gap: 12px; }
+  .rv-outer{ overflow: hidden; flex: 1; min-width: 0; }
+  .rv-track{ display: flex; gap: 18px; transition: transform .4s cubic-bezier(.4,0,.2,1); will-change: transform; }
+  .rv-slide{ min-width: 0; display: flex; flex-direction: column; }
+  .rv-slide .review{ flex: 1; }
+  .rv-btn{
+    width: 44px; height: 44px; flex-shrink: 0;
+    background: var(--ink-2); border: 1px solid var(--gold);
+    color: var(--gold); font-size: 22px; line-height: 1;
+    border-radius: 3px; cursor: pointer;
+    transition: background .2s;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .rv-btn:hover{ background: rgba(199,152,73,.15); }
+  .rv-btn:disabled{ opacity: .3; cursor: default; }
+  .rv-dots{ display: flex; justify-content: center; gap: 7px; margin-top: 20px; flex-wrap: wrap; }
+  .rv-dot{ width: 7px; height: 7px; border-radius: 50%; background: var(--hairline); border: none; cursor: pointer; padding: 0; transition: background .2s, transform .2s; }
+  .rv-dot.active{ background: var(--gold); transform: scale(1.3); }
+  @media (max-width: 640px){ .rv-btn{ width: 36px; height: 36px; font-size: 18px; } }
+</style>
+<!-- SEO-INJECT -->
+<link rel="canonical" href="https://evacarmats.ie/">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#0a0a0b">
+<meta name="author" content="EVA Car Mats Ireland">
+<meta name="geo.region" content="IE-KE">
+<meta name="geo.placename" content="Sallins, Co. Kildare">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="EVA Car Mats Ireland">
+<meta property="og:locale" content="en_IE">
+<meta property="og:title" content="EVA Car Mats Ireland — Custom Tailored Mats &amp; Window Tinting · Sallins, Co. Kildare">
+<meta property="og:description" content="EVA Car Mats Ireland — premium custom-fit EVA mats made to measure for every vehicle. Window tinting and detailing services in Sallins, Co. Kildare. Call 089 465 5600.">
+<meta property="og:url" content="https://evacarmats.ie/">
+<meta property="og:image" content="https://evacarmats.ie/hero-home.jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="EVA Car Mats Ireland — Custom Tailored Mats &amp; Window Tinting · Sallins, Co. Kildare">
+<meta name="twitter:description" content="EVA Car Mats Ireland — premium custom-fit EVA mats made to measure for every vehicle. Window tinting and detailing services in Sallins, Co. Kildare. Call 089 465 5600.">
+<meta name="twitter:image" content="https://evacarmats.ie/hero-home.jpeg">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "AutoPartsStore",
+  "@id": "https://evacarmats.ie/#business",
+  "name": "EVA Car Mats Ireland",
+  "image": "https://evacarmats.ie/hero-home.jpeg",
+  "url": "https://evacarmats.ie/",
+  "telephone": "+353894655600",
+  "priceRange": "€€",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Sallins",
+    "addressRegion": "Co. Kildare",
+    "addressCountry": "IE"
+  },
+  "areaServed": { "@type": "Country", "name": "Ireland" },
+  "openingHoursSpecification": [
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "09:00", "closes": "18:30" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "10:00", "closes": "16:00" }
+  ],
+  "sameAs": [
+    "https://www.facebook.com/profile.php?id=61558046664454",
+    "https://www.instagram.com/evacarmatsireland/",
+    "https://www.tiktok.com/@carmats_eva333"
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "https://evacarmats.ie/#website",
+  "url": "https://evacarmats.ie/",
+  "name": "EVA Car Mats Ireland",
+  "publisher": { "@id": "https://evacarmats.ie/#business" }
+}
+</script>
+</head>
+<body>
+
+<!-- ============== HEADER ============== -->
+<header class="site-header" data-screen-label="header">
+  <div class="nav-wrap">
+    <a class="brand" href="index.html" aria-label="EVA Car Mats Ireland home">
+      <span class="brand-mark"><img src="assets/logo.jpg" alt=""></span>
+      <span class="brand-text">
+        <span class="b-1">EVA Car Mats</span>
+      </span>
+    </a>
+    <nav aria-label="Primary" class="nav-primary">
+      <button class="nav-close" aria-label="Close menu">✕</button>
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li class="nav-has-dropdown">
+          <button class="nav-dropdown-toggle" aria-expanded="false">Services <span class="nav-chevron">›</span></button>
+          <ul class="nav-dropdown">
+            <li><a href="car-mats.html">Car Mats</a></li>
+            <li><a href="taxi-drivers.html">Taxi Drivers</a></li>
+            <li><a href="window-tinting.html">Window Tinting</a></li>
+            <li><a href="seat-covers.html">Seat Covers</a></li>
+          </ul>
+        </li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="testimonials.html">Reviews</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <a class="nav-mobile-phone" href="tel:+353894655600">089 465 5600</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="nav-phone" href="tel:+353894655600">089 465 5600</a>
+      <a class="btn-nav-cta" href="contact.html">Get a Quote</a>
+      <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ============== HERO ============== -->
+<section class="hero" data-screen-label="hero" style="align-items: flex-start">
+  <div class="hero-bg">
+    <img src="hero-home.jpeg" alt="Custom EVA car mats with M-Sport badge, full bespoke set for one vehicle" style="transform: scale(1.18); object-position: center 42%">
+    <div style="position:absolute; inset:0; background: linear-gradient(180deg, rgba(8,8,9,0.72) 0%, rgba(8,8,9,0.42) 38%, rgba(8,8,9,0.55) 72%, rgba(8,8,9,0.95) 100%)"></div>
+  </div>
+  <div class="hero-inner" style="padding-top: clamp(48px, 7vh, 96px); padding-bottom: clamp(56px, 8vh, 96px); padding: 90px 0px 56px">
+    <div class="container">
+      <div style="max-width: 920px">
+        <h1 class="display h-xl reveal" style="font-family: 'Bricolage Grotesque', var(--display), sans-serif; font-size: 68px; line-height: 0.96; letter-spacing: -1.4px; color: #e8c275; margin-bottom: 28px">
+          <span style="color: #f3f1ed">Tailored car mats,</span><br>
+          <span style="color: var(--gold-2); font-style: italic; font-weight: 500">crafted in Sallins.</span>
+        </h1>
+        <p class="lede reveal" style="margin-bottom: 36px">
+          We make individual, made-to-measure EVA mats for every car, van and truck in Ireland — engineered to fit, easy to wash, and finished to a standard you'd expect from a premium dealership. Now offering professional window tinting.
+        </p>
+        <div class="reveal" style="display:flex; gap:14px; flex-wrap: wrap">
+          <a href="car-mats.html" class="btn btn-primary btn-lg">
+            Order Custom Mats <span class="arrow"></span>
+          </a>
+          <a href="contact.html" class="btn btn-ghost btn-lg">Book Measuring</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- PHOTO STRIP -->
+<div class="photo-strip" aria-hidden="true">
+  <div class="photo-strip-track">
+    <img src="ps-01.jpeg" alt="" loading="lazy">
+    <img src="ps-02.jpeg" alt="" loading="lazy">
+    <img src="ps-03.jpeg" alt="" loading="lazy">
+    <img src="ps-05.jpeg" alt="" loading="lazy">
+    <img src="ps-06.jpeg" alt="" loading="lazy">
+    <img src="ps-07.jpeg" alt="" loading="lazy">
+    <img src="ps-15.jpeg" alt="" loading="lazy">
+    <img src="ps-22.jpeg" alt="" loading="lazy">
+    <img src="ps-26.jpeg" alt="" loading="lazy">
+    <img src="vwid4-01.jpeg" alt="" loading="lazy">
+    <img src="vwid4-02.jpeg" alt="" loading="lazy">
+    <img src="vwid4-03.jpeg" alt="" loading="lazy">
+    <img src="vwid4-04.jpeg" alt="" loading="lazy">
+    <img src="vwid4-05.jpeg" alt="" loading="lazy">
+    <img src="vwid4-06.jpeg" alt="" loading="lazy">
+    <!-- duplicate set for seamless loop -->
+    <img src="ps-01.jpeg" alt="" loading="lazy">
+    <img src="ps-02.jpeg" alt="" loading="lazy">
+    <img src="ps-03.jpeg" alt="" loading="lazy">
+    <img src="ps-05.jpeg" alt="" loading="lazy">
+    <img src="ps-06.jpeg" alt="" loading="lazy">
+    <img src="ps-07.jpeg" alt="" loading="lazy">
+    <img src="ps-15.jpeg" alt="" loading="lazy">
+    <img src="ps-22.jpeg" alt="" loading="lazy">
+    <img src="ps-26.jpeg" alt="" loading="lazy">
+    <img src="vwid4-01.jpeg" alt="" loading="lazy">
+    <img src="vwid4-02.jpeg" alt="" loading="lazy">
+    <img src="vwid4-03.jpeg" alt="" loading="lazy">
+    <img src="vwid4-04.jpeg" alt="" loading="lazy">
+    <img src="vwid4-05.jpeg" alt="" loading="lazy">
+    <img src="vwid4-06.jpeg" alt="" loading="lazy">
+  </div>
+</div>
+
+<!-- ============== MARQUEE STRIP ============== -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>Custom Fit <em class="dot">●</em> Waterproof <em class="dot">●</em> Anti-Slip <em class="dot">●</em> Odour-Free <em class="dot">●</em> Made in Sallins <em class="dot">●</em> Cars · Vans · Trucks <em class="dot">●</em> Window Tinting <em class="dot">●</em> </span>
+    <span>Custom Fit <em class="dot">●</em> Waterproof <em class="dot">●</em> Anti-Slip <em class="dot">●</em> Odour-Free <em class="dot">●</em> Made in Sallins <em class="dot">●</em> Cars · Vans · Trucks <em class="dot">●</em> Window Tinting <em class="dot">●</em> </span>
+  </div>
+</div>
+
+<!-- ============== INTRO SPLIT ============== -->
+<section class="section">
+  <div class="container">
+    <div class="split">
+      <div class="reveal">
+        <div class="eyebrow" style="margin-bottom: 24px">STUDIO</div>
+        <h2 class="display h-md" style="margin-bottom: 28px">
+          Every mat begins with <em style="color:var(--gold-2); font-weight:500">your</em> vehicle.
+        </h2>
+        <p class="lede" style="margin-bottom: 18px">
+          We don't sell universal mats. Each set is individually cut from premium EVA — a dense, lightweight foam laminate engineered for automotive interiors. We hold thousands of vehicle templates and we'll measure yours in person if we don't.
+        </p>
+        <p style="color: var(--muted); max-width: 56ch; margin-bottom: 32px">
+          The result is a flush, edge-to-edge fit that captures water, mud and grit. Hose it off, dry it in minutes, drop it back in. Built for Irish weather and Irish miles.
+        </p>
+        <div style="display:flex; gap: 14px; flex-wrap: wrap">
+          <a href="car-mats.html" class="btn btn-gold-line">Explore Mats <span class="arrow"></span></a>
+          <a href="tel:+353894655600" class="btn btn-ghost">Call 089 465 5600</a>
+        </div>
+      </div>
+      <div class="reveal" style="position:relative">
+        <div style="position:absolute; inset: -16px; border: 1px solid var(--hairline); pointer-events: none"></div>
+        <img src="studio-cream.jpeg" alt="Beige custom EVA mat fitted in a Mercedes-Benz S-Class with cream leather interior" style="border-radius: var(--radius-card); border: 1px solid var(--hairline); width: 100%; height: 100%; object-fit: cover; aspect-ratio: 4/5">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== SERVICE CARDS ============== -->
+<section class="section dense" style="border-top: 1px solid var(--hairline)">
+  <div class="container">
+    <div style="display:flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 32px; margin-bottom: 48px">
+      <div class="reveal">
+        <div class="eyebrow" style="margin-bottom:18px">SERVICES</div>
+        <h2 class="display h-md">Four services. One standard.</h2>
+      </div>
+      <p class="reveal" style="color: var(--muted); max-width: 38ch; margin: 0">
+        Choose the service that fits your vehicle. Each pathway begins with measurement and ends with a finish you can be proud of.
+      </p>
+    </div>
+
+    <div class="service-cards reveal">
+      <a href="car-mats.html" class="service-card">
+        <div class="sc-img" style="background-image:url('service-mats-red.jpeg')"></div>
+        <div class="sc-body">
+          <div class="sc-num">
+</div>
+          <h3>Custom Car Mats</h3>
+          <p>Tailored EVA mats for cars, vans &amp; trucks. Made to your trim &amp; colour.</p>
+          <span class="sc-link">View Service <span class="arrow"></span></span>
+        </div>
+      </a>
+      <a href="taxi-drivers.html" class="service-card">
+        <div class="sc-img" style="background-image:url('assets/work-grey-textured.jpg'); background-position: center 70%"></div>
+        <div class="sc-body">
+          <div class="sc-num">
+</div>
+          <h3>Built for Taxi</h3>
+          <p>Heavy-duty sets for drivers on Free Now, Uber, Bolt, Lynk &amp; local fleets.</p>
+          <span class="sc-link">View Service <span class="arrow"></span></span>
+        </div>
+      </a>
+      <a href="window-tinting.html" class="service-card">
+        <div class="sc-img" style="background-image:url('assets/tinting-side.jpg')"></div>
+        <div class="sc-body">
+          <div class="sc-num">
+</div>
+          <h3>Window Tinting</h3>
+          <p>Professional film application for privacy, heat &amp; glare control.</p>
+          <span class="sc-link">View Service <span class="arrow"></span></span>
+        </div>
+      </a>
+      <a href="seat-covers.html" class="service-card">
+        <div class="sc-img" style="background-image:url('mpyke8f0-ChatGPT-Image-Jun-3_-2026_-11_10_32-PM.jpg'); background-position: center"></div>
+        <div class="sc-body">
+          <div class="sc-num">
+</div>
+          <h3>Seat Covers</h3>
+          <p>Custom-made seat covers tailored to your vehicle. ECO leather, Alcantara, or combined.</p>
+          <span class="sc-link">View Service <span class="arrow"></span></span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============== WHY CHOOSE US ============== -->
+<section class="section">
+  <div class="container">
+    <div style="display:grid; grid-template-columns: 1fr 1.4fr; gap: 80px; align-items: flex-end; margin-bottom: 56px" class="reveal">
+      <div>
+        <div class="eyebrow" style="margin-bottom:18px">WHY EVA</div>
+        <h2 class="display h-md">Six reasons<br>drivers don't go back.</h2>
+      </div>
+      <p class="lede" style="margin: 0">
+        EVA — ethylene-vinyl acetate — is a closed-cell foam laminate. It doesn't absorb water, doesn't hold odour, and doesn't tear. We take that material and build it around your floorpan.
+      </p>
+    </div>
+
+    <div class="benefit-grid reveal">
+      <div>
+        <div class="b-num">01</div>
+        <h3>Waterproof core</h3>
+        <p>Closed-cell foam means liquid sits on top, never soaks in. Rain, slush, coffee — all stay on the mat.</p>
+      </div>
+      <div>
+        <div class="b-num">02</div>
+        <h3>Wash in minutes</h3>
+        <p>Pull out, hose down, shake dry. No deep-cleaning, no specialist products, no carpet residue.</p>
+      </div>
+      <div>
+        <div class="b-num">03</div>
+        <h3>Odour-free</h3>
+        <p>EVA doesn't trap moisture, so it doesn't grow the smell that ages a car's interior.</p>
+      </div>
+      <div>
+        <div class="b-num">04</div>
+        <h3>Anti-slip system</h3>
+        <p>A grip-textured underside plus OEM-style fastenings hold the mat exactly where it should be.</p>
+      </div>
+      <div>
+        <div class="b-num">05</div>
+        <h3>Made to measure</h3>
+        <p>Cut from your vehicle's template — every cut-out, edge and tunnel mapped to your floorpan.</p>
+      </div>
+      <div>
+        <div class="b-num">06</div>
+        <h3>Your colour, your trim</h3>
+        <p>Twelve mat colours, ten trim colours. Match your interior or stand it apart.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============== OUR WORK ============== -->
+<section class="section" id="our-work">
+  <div class="container">
+    <div style="text-align:center; margin-bottom: 56px" class="reveal">
+      <div class="eyebrow no-bar" style="margin-bottom:18px; justify-content:center">Our Work</div>
+      <h2 class="display h-md">Fitted to real cars</h2>
+      <p class="lede" style="margin: 18px auto 0">A selection of custom EVA sets we've made, sorted by model.</p>
+    </div>
+
+    <div class="model-grid">
+        <button type="button" class="model-card" data-name="BYD Seal" data-tag="EV · Saloon" data-photos="[&quot;uploads/eva-gallery-images/byd-seal-1.jpg&quot;,&quot;uploads/eva-gallery-images/byd-seal-2.jpg&quot;,&quot;uploads/eva-gallery-images/byd-seal-3.jpg&quot;,&quot;uploads/eva-gallery-images/byd-seal-4.jpg&quot;,&quot;uploads/eva-gallery-images/byd-seal-5.jpg&quot;,&quot;uploads/eva-gallery-images/byd-seal-6.jpg&quot;]">
+          <span class="mc-count">6 photos</span>
+          <span class="mc-imgwrap"><img src="uploads/eva-gallery-images/byd-seal-3.jpg" alt="Custom EVA mats fitted in BYD Seal" loading="lazy"></span>
+          <span class="mc-meta">
+            <span class="mc-name">BYD Seal</span>
+            <span class="mc-tag">EV · Saloon</span>
+          </span>
+        </button>
+        <button type="button" class="model-card" data-name="BYD Sealion 7" data-tag="EV · SUV" data-photos="[&quot;uploads/eva-gallery-images/byd-sealion-7-1.jpg&quot;,&quot;uploads/eva-gallery-images/byd-sealion-7-2.jpg&quot;,&quot;uploads/eva-gallery-images/byd-sealion-7-3.jpg&quot;,&quot;uploads/eva-gallery-images/byd-sealion-7-4.jpg&quot;,&quot;uploads/eva-gallery-images/byd-sealion-7-5.jpg&quot;,&quot;uploads/eva-gallery-images/byd-sealion-7-6.jpg&quot;]">
+          <span class="mc-count">6 photos</span>
+          <span class="mc-imgwrap"><img src="uploads/eva-gallery-images/byd-sealion-7-3.jpg" alt="Custom EVA mats fitted in BYD Sealion 7" loading="lazy"></span>
+          <span class="mc-meta">
+            <span class="mc-name">BYD Sealion 7</span>
+            <span class="mc-tag">EV · SUV</span>
+          </span>
+        </button>
+        <button type="button" class="model-card" data-name="Ford Tourneo Connect" data-tag="7-seat · Compact" data-photos="[&quot;uploads/eva-gallery-images/ford-tourneo-connect-1.jpg&quot;,&quot;uploads/eva-gallery-images/ford-tourneo-connect-2.jpg&quot;,&quot;uploads/eva-gallery-images/ford-tourneo-connect-3.jpg&quot;,&quot;uploads/eva-gallery-images/ford-tourneo-connect-4.jpg&quot;,&quot;uploads/eva-gallery-images/ford-tourneo-connect-5.jpg&quot;,&quot;uploads/eva-gallery-images/ford-tourneo-connect-6.jpg&quot;]">
+          <span class="mc-count">6 photos</span>
+          <span class="mc-imgwrap"><img src="uploads/eva-gallery-images/ford-tourneo-connect-4.jpg" alt="Custom EVA mats fitted in Ford Tourneo Connect" loading="lazy"></span>
+          <span class="mc-meta">
+            <span class="mc-name">Ford Tourneo Connect</span>
+            <span class="mc-tag">7-seat · Compact</span>
+          </span>
+        </button>
+        <button type="button" class="model-card" data-name="Ford Tourneo Custom" data-tag="8-seat · Minibus" data-photos="[&quot;ftc-cover.jpeg&quot;,&quot;ftc-02.jpeg&quot;,&quot;ftc-03.jpeg&quot;,&quot;ftc-04.jpeg&quot;,&quot;ftc-05.jpeg&quot;,&quot;ftc-06.jpeg&quot;,&quot;ftc-07.jpeg&quot;,&quot;ftc-08.jpeg&quot;,&quot;ftc-09.jpeg&quot;,&quot;ftc-10.jpeg&quot;,&quot;ftc-11.jpeg&quot;,&quot;ftc-12.jpeg&quot;]">
+          <span class="mc-count">12 photos</span>
+          <span class="mc-imgwrap"><img src="ftc-cover.jpeg" alt="Custom EVA mats fitted in Ford Tourneo Custom" loading="lazy"></span>
+          <span class="mc-meta">
+            <span class="mc-name">Ford Tourneo Custom</span>
+            <span class="mc-tag">8-seat · Minibus</span>
+          </span>
+        </button>
+        <button type="button" class="model-card" data-name="Ford Transit Kombi" data-tag="9-seat · Van" data-photos="[&quot;uploads/eva-gallery-images/ford-transit-kombi-1.jpg&quot;,&quot;uploads/eva-gallery-images/ford-transit-kombi-2.jpg&quot;,&quot;uploads/eva-gallery-images/ford-transit-kombi-3.jpg&quot;,&quot;uploads/eva-gallery-images/ford-transit-kombi-4.jpg&quot;,&quot;uploads/eva-gallery-images/ford-transit-kombi-5.jpg&quot;,&quot;uploads/eva-gallery-images/ford-transit-kombi-6.jpg&quot;]">
+          <span class="mc-count">6 photos</span>
+          <span class="mc-imgwrap"><img src="uploads/eva-gallery-images/ford-transit-kombi-1.jpg" alt="Custom EVA mats fitted in Ford Transit Kombi" loading="lazy"></span>
+          <span class="mc-meta">
+            <span class="mc-name">Ford Transit Kombi</span>
+            <span class="mc-tag">9-seat · Van</span>
+          </span>
+        </button>
+        <button type="button" class="model-card" data-name="Peugeot Partner" data-tag="Van · Compact" data-photos="[&quot;uploads/eva-gallery-images/peugeot-partner-1.jpg&quot;,&quot;uploads/eva-gallery-images/peugeot-partner-2.jpg&quot;,&quot;uploads/eva-gallery-images/peugeot-partner-3.jpg&quot;,&quot;uploads/eva-gallery-images/peugeot-partner-4.jpg&quot;,&quot;uploads/eva-gallery-images/peugeot-partner-5.jpg&quot;,&quot;uploads/eva-gallery-images/peugeot-partner-6.jpg&quot;]">
+          <span class="mc-count">6 photos</span>
+          <span class="mc-imgwrap"><img src="uploads/eva-gallery-images/peugeot-partner-3.jpg" alt="Custom EVA mats fitted in Peugeot Partner" loading="lazy"></span>
+          <span class="mc-meta">
+            <span class="mc-name">Peugeot Partner</span>
+            <span class="mc-tag">Van · Compact</span>
+          </span>
+        </button>
+        <button type="button" class="model-card" data-name="Peugeot Rifter" data-tag="MPV · 5-seat" data-photos="[&quot;uploads/eva-gallery-images/peugeot-rifter-ext.jpg&quot;,&quot;uploads/eva-gallery-images/peugeot-rifter-1.jpg&quot;,&quot;uploads/eva-gallery-images/peugeot-rifter-2.jpg&quot;,&quot;uploads/eva-gallery-images/peugeot-rifter-4.jpg&quot;,&quot;uploads/eva-gallery-images/peugeot-rifter-5.jpg&quot;,&quot;uploads/eva-gallery-images/peugeot-rifter-6.jpg&quot;]">
+          <span class="mc-count">6 photos</span>
+          <span class="mc-imgwrap"><img src="uploads/eva-gallery-images/peugeot-rifter-ext.jpg" alt="Custom EVA mats fitted in Peugeot Rifter" loading="lazy"></span>
+          <span class="mc-meta">
+            <span class="mc-name">Peugeot Rifter</span>
+            <span class="mc-tag">MPV · 5-seat</span>
+          </span>
+        </button>
+        <button type="button" class="model-card" data-name="Skoda Enyaq" data-tag="EV · SUV" data-photos="[&quot;uploads/eva-gallery-images/skoda-enyaq-1.jpg&quot;,&quot;uploads/eva-gallery-images/skoda-enyaq-2.jpg&quot;,&quot;uploads/eva-gallery-images/skoda-enyaq-3.jpg&quot;,&quot;uploads/eva-gallery-images/skoda-enyaq-4.jpg&quot;,&quot;uploads/eva-gallery-images/skoda-enyaq-5.jpg&quot;,&quot;uploads/eva-gallery-images/skoda-enyaq-6.jpg&quot;]">
+          <span class="mc-count">6 photos</span>
+          <span class="mc-imgwrap"><img src="uploads/eva-gallery-images/skoda-enyaq-2.jpg" alt="Custom EVA mats fitted in Skoda Enyaq" loading="lazy"></span>
+          <span class="mc-meta">
+            <span class="mc-name">Skoda Enyaq</span>
+            <span class="mc-tag">EV · SUV</span>
+          </span>
+        </button>
+        <button type="button" class="model-card" data-name="Tesla Model Y" data-tag="EV · SUV" data-photos="[&quot;uploads/eva-gallery-images/tesla-model-y-1.jpg&quot;,&quot;uploads/eva-gallery-images/tesla-model-y-2.jpg&quot;,&quot;uploads/eva-gallery-images/tesla-model-y-3.jpg&quot;,&quot;uploads/eva-gallery-images/tesla-model-y-4.jpg&quot;,&quot;uploads/eva-gallery-images/tesla-model-y-5.jpg&quot;,&quot;uploads/eva-gallery-images/tesla-model-y-6.jpg&quot;]">
+          <span class="mc-count">6 photos</span>
+          <span class="mc-imgwrap"><img src="uploads/eva-gallery-images/tesla-model-y-3.jpg" alt="Custom EVA mats fitted in Tesla Model Y" loading="lazy"></span>
+          <span class="mc-meta">
+            <span class="mc-name">Tesla Model Y</span>
+            <span class="mc-tag">EV · SUV</span>
+          </span>
+        </button>
+        <button type="button" class="model-card" data-name="Toyota BZ4X" data-tag="EV · SUV" data-photos="[&quot;uploads/eva-gallery-images/toyota-bz4x-1.jpg&quot;,&quot;uploads/eva-gallery-images/toyota-bz4x-2.jpg&quot;,&quot;uploads/eva-gallery-images/toyota-bz4x-3.jpg&quot;,&quot;uploads/eva-gallery-images/toyota-bz4x-4.jpg&quot;,&quot;uploads/eva-gallery-images/toyota-bz4x-5.jpg&quot;,&quot;uploads/eva-gallery-images/toyota-bz4x-6.jpg&quot;]">
+          <span class="mc-count">6 photos</span>
+          <span class="mc-imgwrap"><img src="uploads/eva-gallery-images/toyota-bz4x-1.jpg" alt="Custom EVA mats fitted in Toyota BZ4X" loading="lazy"></span>
+          <span class="mc-meta">
+            <span class="mc-name">Toyota BZ4X</span>
+            <span class="mc-tag">EV · SUV</span>
+          </span>
+        </button>
+        <button type="button" class="model-card" data-name="Toyota Camry" data-tag="Hybrid · Saloon" data-photos="[&quot;uploads/eva-gallery-images/toyota-camry-1.jpg&quot;,&quot;uploads/eva-gallery-images/toyota-camry-2.jpg&quot;,&quot;uploads/eva-gallery-images/toyota-camry-3.jpg&quot;,&quot;uploads/eva-gallery-images/toyota-camry-4.jpg&quot;,&quot;uploads/eva-gallery-images/toyota-camry-5.jpg&quot;,&quot;uploads/eva-gallery-images/toyota-camry-6.jpg&quot;]">
+          <span class="mc-count">6 photos</span>
+          <span class="mc-imgwrap"><img src="uploads/eva-gallery-images/toyota-camry-2.jpg" alt="Custom EVA mats fitted in Toyota Camry" loading="lazy"></span>
+          <span class="mc-meta">
+            <span class="mc-name">Toyota Camry</span>
+            <span class="mc-tag">Hybrid · Saloon</span>
+          </span>
+        </button>
+        <button type="button" class="model-card" data-name="Toyota Corolla" data-tag="Hybrid · Saloon" data-photos="[&quot;uploads/eva-gallery-images/toyota-corolla-1.jpg&quot;,&quot;uploads/eva-gallery-images/toyota-corolla-2.jpg&quot;,&quot;uploads/eva-gallery-images/toyota-corolla-3.jpg&quot;,&quot;uploads/eva-gallery-images/toyota-corolla-4.jpg&quot;,&quot;uploads/eva-gallery-images/toyota-corolla-5.jpg&quot;]">
+          <span class="mc-count">5 photos</span>
+          <span class="mc-imgwrap"><img src="uploads/eva-gallery-images/toyota-corolla-3.jpg" alt="Custom EVA mats fitted in Toyota Corolla" loading="lazy"></span>
+          <span class="mc-meta">
+            <span class="mc-name">Toyota Corolla</span>
+            <span class="mc-tag">Hybrid · Saloon</span>
+          </span>
+        </button>
+        <button type="button" class="model-card" data-name="Toyota Prius" data-tag="Hybrid · #1 Taxi" data-photos="[&quot;uploads/eva-gallery-images/toyota-prius-1.jpg&quot;,&quot;uploads/eva-gallery-images/toyota-prius-2.jpg&quot;,&quot;uploads/eva-gallery-images/toyota-prius-3.jpg&quot;,&quot;uploads/eva-gallery-images/toyota-prius-4.jpg&quot;,&quot;uploads/eva-gallery-images/toyota-prius-5.jpg&quot;,&quot;uploads/eva-gallery-images/toyota-prius-6.jpg&quot;]">
+          <span class="mc-count">6 photos</span>
+          <span class="mc-imgwrap"><img src="uploads/eva-gallery-images/toyota-prius-5.jpg" alt="Custom EVA mats fitted in Toyota Prius" loading="lazy"></span>
+          <span class="mc-meta">
+            <span class="mc-name">Toyota Prius</span>
+            <span class="mc-tag">Hybrid · #1 Taxi</span>
+          </span>
+        </button>
+        <button type="button" class="model-card" data-name="Toyota Prius 7-Seat" data-tag="Hybrid · 7-seat" data-photos="[&quot;uploads/eva-gallery-images/toyota-prius-7-1.jpg&quot;,&quot;uploads/eva-gallery-images/toyota-prius-7-2.jpg&quot;,&quot;uploads/eva-gallery-images/toyota-prius-7-3.jpg&quot;,&quot;uploads/eva-gallery-images/toyota-prius-7-4.jpg&quot;,&quot;uploads/eva-gallery-images/toyota-prius-7-5.jpg&quot;,&quot;uploads/eva-gallery-images/toyota-prius-7-6.jpg&quot;]">
+          <span class="mc-count">6 photos</span>
+          <span class="mc-imgwrap"><img src="uploads/eva-gallery-images/toyota-prius-7-1.jpg" alt="Custom EVA mats fitted in Toyota Prius 7-Seat" loading="lazy"></span>
+          <span class="mc-meta">
+            <span class="mc-name">Toyota Prius 7-Seat</span>
+            <span class="mc-tag">Hybrid · 7-seat</span>
+          </span>
+        </button>
+        <button type="button" class="model-card" data-name="Toyota RAV4" data-tag="Hybrid · SUV" data-photos="[&quot;uploads/eva-gallery-images/toyota-rav4-1.jpg&quot;,&quot;uploads/eva-gallery-images/toyota-rav4-2.jpg&quot;,&quot;uploads/eva-gallery-images/toyota-rav4-3.jpg&quot;,&quot;uploads/eva-gallery-images/toyota-rav4-4.jpg&quot;,&quot;uploads/eva-gallery-images/toyota-rav4-5.jpg&quot;,&quot;uploads/eva-gallery-images/toyota-rav4-6.jpg&quot;]">
+          <span class="mc-count">6 photos</span>
+          <span class="mc-imgwrap"><img src="uploads/eva-gallery-images/toyota-rav4-3.jpg" alt="Custom EVA mats fitted in Toyota RAV4" loading="lazy"></span>
+          <span class="mc-meta">
+            <span class="mc-name">Toyota RAV4</span>
+            <span class="mc-tag">Hybrid · SUV</span>
+          </span>
+        </button>
+        <button type="button" class="model-card" data-name="Volkswagen ID.4" data-tag="EV · SUV" data-photos="[&quot;uploads/eva-gallery-images/vw-id4-ext.jpg&quot;,&quot;vwid4-n1.jpeg&quot;,&quot;vwid4-n2.jpeg&quot;,&quot;vwid4-n3.jpeg&quot;,&quot;vwid4-n4.jpeg&quot;,&quot;vwid4-n5.jpeg&quot;,&quot;vwid4-n6.jpeg&quot;]">
+          <span class="mc-count">7 photos</span>
+          <span class="mc-imgwrap"><img src="uploads/eva-gallery-images/vw-id4-ext.jpg" alt="Custom EVA mats fitted in Volkswagen ID.4" loading="lazy"></span>
+          <span class="mc-meta">
+            <span class="mc-name">Volkswagen ID.4</span>
+            <span class="mc-tag">EV · SUV</span>
+          </span>
+        </button>
+        <button type="button" class="model-card" data-name="Volkswagen Caddy" data-tag="MPV · Taxi" data-photos="[&quot;vwcaddy-ext.jpeg&quot;,&quot;vwcaddy-1.jpeg&quot;,&quot;vwcaddy-2.jpeg&quot;,&quot;vwcaddy-3.jpeg&quot;,&quot;vwcaddy-4.jpeg&quot;,&quot;vwcaddy-5.jpeg&quot;,&quot;vwcaddy-6.jpeg&quot;,&quot;vwcaddy-7.jpeg&quot;,&quot;vwcaddy-8.jpeg&quot;]">
+          <span class="mc-count">9 photos</span>
+          <span class="mc-imgwrap"><img src="vwcaddy-ext.jpeg" alt="Custom EVA mats fitted in Volkswagen Caddy" loading="lazy"></span>
+          <span class="mc-meta">
+            <span class="mc-name">Volkswagen Caddy</span>
+            <span class="mc-tag">MPV · Taxi</span>
+          </span>
+        </button>
+        <button type="button" class="model-card" data-name="Volkswagen Caddy" data-tag="WAV · Taxi" data-photos="[&quot;vwcaddy2-ext.jpeg&quot;,&quot;vwcaddy2-1.jpeg&quot;,&quot;vwcaddy2-2.jpeg&quot;,&quot;vwcaddy2-3.jpeg&quot;,&quot;vwcaddy2-4.jpeg&quot;,&quot;vwcaddy2-5.jpeg&quot;,&quot;vwcaddy2-6.jpeg&quot;]">
+          <span class="mc-count">7 photos</span>
+          <span class="mc-imgwrap"><img src="vwcaddy2-ext.jpeg" alt="Custom EVA mats fitted in Volkswagen Caddy wheelchair-accessible taxi" loading="lazy"></span>
+          <span class="mc-meta">
+            <span class="mc-name">Volkswagen Caddy</span>
+            <span class="mc-tag">WAV · Taxi</span>
+          </span>
+        </button>
+    </div>
+  </div>
+</section>
+
+<!-- Lightbox (Our Work) -->
+<div class="lightbox" id="work-lightbox" role="dialog" aria-modal="true" aria-label="Gallery">
+  <div class="lb-top">
+    <div class="lb-title"><span class="lb-model"></span><span class="lb-counter"></span></div>
+    <button type="button" class="lb-close" aria-label="Close gallery">&#10005;</button>
+  </div>
+  <div class="lb-stage">
+    <button type="button" class="lb-arrow lb-prev" aria-label="Previous photo">&#8249;</button>
+    <img class="lb-img" alt="">
+    <button type="button" class="lb-arrow lb-next" aria-label="Next photo">&#8250;</button>
+  </div>
+  <div class="lb-dots"></div>
+</div>
+
+<!-- ============== HOW IT WORKS ============== -->
+<section class="section" style="background: var(--ink-2); border-top: 1px solid var(--hairline)">
+  <div class="container">
+    <div style="text-align:center; margin-bottom: 64px" class="reveal">
+      <div class="eyebrow no-bar" style="margin-bottom:18px; justify-content:center">PROCESS</div>
+      <h2 class="display h-md">How ordering works</h2>
+      <p class="lede" style="margin: 18px auto 0">From first message to finished mats in your boot — usually within a week.</p>
+    </div>
+
+    <div class="steps reveal">
+      <div class="step">
+        <div class="s-num">01</div>
+        <h4>Tell us your vehicle</h4>
+        <p>Send make, model, year and any trim notes — by form, phone or social. We'll confirm what we hold on file.</p>
+      </div>
+      <div class="step">
+        <div class="s-num">02</div>
+        <h4>Choose colours</h4>
+        <p>Pick your mat colour and trim. We'll send a digital preview so you see it before we cut.</p>
+      </div>
+      <div class="step">
+        <div class="s-num">03</div>
+        <h4>We measure or cut</h4>
+        <p>If we already hold your vehicle's template we go straight to cutting. If not, drive to Sallins — measuring takes 40 - 60 minutes.</p>
+      </div>
+      <div class="step">
+        <div class="s-num">04</div>
+        <h4>Fitted &amp; finished</h4>
+        <p>Collect from the studio or arrange delivery. We fit them on the spot if you wait, and you drive home with new floors.</p>
+      </div>
+    </div>
+
+    <div style="margin-top: 48px; padding: 24px 28px; border: 1px solid var(--hairline); border-left: 2px solid var(--gold); background: var(--surface); border-radius: 2px; display: flex; gap: 24px; align-items: center; flex-wrap: wrap" class="reveal">
+      <div style="flex: 1 1 320px">
+        <div class="kicker" style="margin-bottom: 6px">Don't have measurements?</div>
+        <div style="font-family: var(--display); font-size: 22px; font-weight: 500; letter-spacing: -.01em; color: var(--cream)">
+          Visit the studio and we'll measure your vehicle for you — no obligation.
+        </div>
+      </div>
+      <a href="contact.html" class="btn btn-gold-line">Book Measuring <span class="arrow"></span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============== CTA STRIP — PHONE ============== -->
+<section class="cta-strip">
+  <div class="container">
+    <div class="cta-strip-inner">
+      <div>
+        <span class="phone-label">Talk to the studio</span>
+        <a href="tel:+353894655600" class="phone-big">+353 89 465 5600</a>
+        <p style="color: var(--muted); margin: 14px 0 0; max-width: 50ch">Mon–Sat · 09:00–18:30 · English, Romanian and Russian spoken in-house.</p>
+      </div>
+      <div class="cta-strip-actions">
+        <a href="tel:+353894655600" class="btn btn-primary btn-lg">Call Now</a>
+        <a href="contact.html" class="btn btn-ghost btn-lg">Send a Message</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== GALLERY ============== -->
+<section class="section">
+  <div class="container">
+    <div style="display:flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 32px; margin-bottom: 40px" class="reveal">
+      <div>
+        <div class="eyebrow" style="margin-bottom:18px">RECENT WORK</div>
+        <h2 class="display h-md">Out of the studio</h2>
+      </div>
+      <a href="testimonials.html" class="btn btn-gold-line">View full gallery <span class="arrow"></span></a>
+    </div>
+
+    <div class="gallery reveal">
+      <div class="g w-4 h-1"><img src="assets/work-red-side.jpg" alt="VW Golf with red EVA mats"></div>
+      <div class="g w-4 h-1"><img src="assets/work-grey-rear.jpg" alt="Grey EVA rear mats"></div>
+      <div class="g w-4 h-1"><img src="assets/work-blue-trim.jpg" alt="Black mats with blue trim"></div>
+      <div class="g w-4 h-1"><img src="assets/work-red-rear.jpg" alt="Red rear mats"></div>
+      <div class="g w-4 h-1"><img src="assets/work-grey-textured.jpg" alt="Grey textured rear mats"></div>
+      <div class="g w-4 h-1"><img src="assets/work-van-interior.jpg" alt="Van interior with EVA mats"></div>
+      <div class="g w-4 h-1"><img src="ps-11.jpeg" alt="Complete black EVA mat set with honeycomb cells"></div>
+      <div class="g w-4 h-1"><img src="vwid4-02.jpeg" alt="EVA driver mat with blue edge fitted in a VW ID.4"></div>
+      <div class="g w-4 h-1"><img src="vwid4-03.jpeg" alt="EVA rear mat with blue edge fitted in a VW ID.4"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== TINTING TEASER ============== -->
+<section class="section" style="padding-top: 0">
+  <div class="container">
+    <div style="position: relative; overflow: hidden; border-radius: var(--radius-card); border: 1px solid var(--hairline)" class="reveal">
+      <div style="position:absolute; inset: 0; z-index: 0">
+        <img src="assets/tinting-hero.jpg" alt="Black sedan with professionally tinted windows" style="width:100%; height:100%; object-fit:cover">
+        <div style="position:absolute; inset:0; background: linear-gradient(90deg, rgba(10,10,11,.95) 0%, rgba(10,10,11,.7) 50%, rgba(10,10,11,.2) 100%)"></div>
+      </div>
+      <div style="position:relative; z-index:1; padding: clamp(40px, 6vw, 88px); max-width: 600px">
+        <div class="eyebrow" style="margin-bottom: 20px">New Service</div>
+        <h2 class="display" style="font-size: clamp(34px, 4.5vw, 60px); font-weight: 500; margin: 0 0 20px">
+          Window tinting,<br>now in studio.
+        </h2>
+        <p style="color: var(--text); max-width: 44ch; margin: 0 0 30px; font-size: 17px">
+          Premium automotive film for privacy, glare control and a cleaner profile. Booked alongside your mats or as a standalone fit-out.
+        </p>
+        <div style="display:flex; gap: 14px; flex-wrap: wrap">
+          <a href="window-tinting.html" class="btn btn-primary">Explore Tinting</a>
+          <a href="contact.html" class="btn btn-ghost">Book Now</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== REVIEWS ============== -->
+<section class="section" style="background: var(--ink-2); border-top: 1px solid var(--hairline)">
+  <div class="container">
+    <div style="display:flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 32px; margin-bottom: 48px" class="reveal">
+      <div>
+        <div class="eyebrow" style="margin-bottom:18px">REVIEWS</div>
+        <h2 class="display h-md">From the drivers' seat</h2>
+      </div>
+      <div style="text-align:right">
+        <div style="font-family: var(--display); font-size: 44px; font-weight: 600; color: var(--gold-2); line-height: 1">4.9 / 5</div>
+        <div class="label" style="margin-top: 6px">Average across 140+ reviews</div>
+      </div>
+    </div>
+
+    <div class="rv-wrap reveal">
+      <div class="rv-carousel">
+        <button class="rv-btn rv-prev" aria-label="Previous review">&#8249;</button>
+        <div class="rv-outer">
+          <div class="rv-track">
+            <div class="rv-slide">
+              <article class="review">
+                <div class="stars" aria-label="5 out of 5"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></div>
+                <blockquote>&#8220;Fits like the OEM mats but actually keeps the wet out. Hosed them off after a wet rally weekend and they were spotless in five minutes.&#8221;</blockquote>
+                <div class="who"><span class="name">Conor M.</span><span class="meta">Naas &middot; Skoda Octavia 2021</span></div>
+              </article>
+            </div>
+            <div class="rv-slide">
+              <article class="review">
+                <div class="stars" aria-label="5 out of 5"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></div>
+                <blockquote>&#8220;Drive Free Now full-time. After 14 months these mats look the same as the day they went in. Best money I&#8217;ve spent on the car.&#8221;</blockquote>
+                <div class="who"><span class="name">Andrei P.</span><span class="meta">Dublin &middot; Toyota Prius 2019</span></div>
+              </article>
+            </div>
+            <div class="rv-slide">
+              <article class="review">
+                <div class="stars" aria-label="5 out of 5"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></div>
+                <blockquote>&#8220;They measured my van in their own time, sent me a preview the next day, fitted within a week. Lads who care about what they do.&#8221;</blockquote>
+                <div class="who"><span class="name">Pat C.</span><span class="meta">Newbridge &middot; Ford Transit 2022</span></div>
+              </article>
+            </div>
+          </div>
+        </div>
+        <button class="rv-btn rv-next" aria-label="Next review">&#8250;</button>
+      </div>
+      <div class="rv-dots"></div>
+    </div>
+
+    <div style="margin-top: 40px; text-align: center" class="reveal">
+      <a href="testimonials.html" class="btn btn-gold-line">All Reviews <span class="arrow"></span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============== FOOTER ============== -->
+<footer class="site-footer" data-screen-label="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="foot-col foot-brand">
+        <a class="brand" href="index.html">
+          <span class="brand-mark"><img src="assets/logo.jpg" alt=""></span>
+          <span class="brand-text">
+            <span class="b-1">EVA Car Mats</span>
+            <span class="b-2">The Best in Ireland</span>
+          </span>
+        </a>
+        <p>Made-to-measure EVA mats and professional window tinting. Based in Sallins, serving every county in Ireland by appointment or delivery.</p>
+        <div class="foot-socials">
+          <a href="https://www.facebook.com/profile.php?id=61558046664454" aria-label="Facebook" target="_blank" rel="noopener">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z"></path></svg>
+          </a>
+          <a href="https://www.instagram.com/evacarmatsireland/" aria-label="Instagram" target="_blank" rel="noopener">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"></circle></svg>
+          </a>
+          <a href="https://www.tiktok.com/@carmats_eva333" aria-label="TikTok" target="_blank" rel="noopener">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19.5 6.7a5.4 5.4 0 0 1-3.3-1.2 5.4 5.4 0 0 1-2-3.5h-3.3v13.4a2.4 2.4 0 1 1-2.4-2.4c.3 0 .6 0 .8.1V9.7a5.7 5.7 0 0 0-.8 0 5.7 5.7 0 1 0 5.7 5.7V9.5a8.7 8.7 0 0 0 5.3 1.8z"></path></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="foot-col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="terms-and-conditions.html">Terms &amp; Conditions</a></li>
+          <li><a href="cookie-policy.html">Cookie Policy</a></li>
+        </ul>
+      </div>
+
+      <div class="foot-col">
+        <h4>Studio</h4>
+        <ul>
+          <li><a href="tel:+353894655600">089 465 5600</a></li>
+          <li><a href="contact.html">Sallins, Co. Kildare</a></li>
+          <li><a href="contact.html">Mon–Sat · 09:00–18:30</a></li>
+          <li><a href="contact.html">Get directions</a></li>
+        </ul>
+      </div>
+
+      <div class="foot-col">
+        <h4>Pages</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="car-mats.html">Car Mats</a></li>
+          <li><a href="taxi-drivers.html">Taxi Drivers</a></li>
+          <li><a href="window-tinting.html">Window Tinting</a></li>
+          <li><a href="seat-covers.html">Seat Covers</a></li>
+          <li><a href="testimonials.html">Testimonials</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="foot-bottom">
+      <span>© <span data-year="">2026</span> EVA Car Mats Ireland · Sallins, Co. Kildare</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============== COOKIE BANNER ============== -->
+<div class="cookie-banner" id="cookie-banner" role="dialog" aria-label="Cookie consent">
+  <p class="cookie-banner-text">We use cookies to improve your experience. By continuing to use this site, you accept our use of cookies. <a href="cookie-policy.html">Learn more</a></p>
+  <div class="cookie-banner-actions">
+    <button class="cookie-accept" id="cookie-accept">Accept</button>
+    <button class="cookie-decline" id="cookie-decline">Decline</button>
+  </div>
+</div>
+
+<script src="shared.js"></script>
+<script>
+(function(){
+  function initRV(wrap){
+    var outer=wrap.querySelector('.rv-outer'),track=wrap.querySelector('.rv-track'),
+        dots=wrap.querySelector('.rv-dots'),prev=wrap.querySelector('.rv-prev'),next=wrap.querySelector('.rv-next'),cur=0;
+    function vis(){return Array.from(track.children).filter(function(s){return s.style.display!=='none';});}
+    function getV(){var w=outer.offsetWidth;return w<640?1:w<900?2:3;}
+    function pages(){return Math.max(1,vis().length-getV()+1);}
+    function render(){
+      var v=getV(),gap=18,sw=(outer.offsetWidth-gap*(v-1))/v;
+      Array.from(track.children).forEach(function(s){if(s.style.display!=='none')s.style.flex='0 0 '+sw+'px';});
+      cur=Math.min(cur,pages()-1);
+      track.style.transform='translateX(-'+(cur*(sw+gap))+'px)';
+      var p=pages();dots.innerHTML='';
+      for(var i=0;i<p;i++){(function(i){
+        var d=document.createElement('button');d.className='rv-dot'+(i===cur?' active':'');
+        d.setAttribute('aria-label','Slide '+(i+1));
+        d.addEventListener('click',function(){goTo(i);});dots.appendChild(d);
+      })(i);}
+      if(prev)prev.disabled=cur===0;
+      if(next)next.disabled=cur>=p-1;
+    }
+    function goTo(n){cur=Math.max(0,Math.min(n,pages()-1));render();}
+    if(prev)prev.addEventListener('click',function(){goTo(cur-1);});
+    if(next)next.addEventListener('click',function(){goTo(cur+1);});
+    var tx=0;
+    track.addEventListener('touchstart',function(e){tx=e.touches[0].clientX;},{passive:true});
+    track.addEventListener('touchend',function(e){var d=tx-e.changedTouches[0].clientX;if(Math.abs(d)>40)goTo(cur+(d>0?1:-1));});
+    window.addEventListener('resize',function(){cur=0;render();});
+    wrap._rv={goTo:goTo,render:render,reset:function(){cur=0;render();}};
+    render();
+  }
+  document.querySelectorAll('.rv-wrap').forEach(function(w){initRV(w);});
+})();
+</script>
+
+<!-- ============== TWEAKS PANEL ============== -->
+<div id="tweaks-root"></div>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+<script type="text/babel" src="tweaks-app.jsx"></script>
+
+
+
+<script>
+(function(){
+  var lb = document.getElementById('work-lightbox');
+  if(!lb) return;
+  var imgEl = lb.querySelector('.lb-img'),
+      modelEl = lb.querySelector('.lb-model'),
+      counterEl = lb.querySelector('.lb-counter'),
+      dotsEl = lb.querySelector('.lb-dots'),
+      prev = lb.querySelector('.lb-prev'),
+      next = lb.querySelector('.lb-next'),
+      closeBtn = lb.querySelector('.lb-close');
+  var photos = [], idx = 0;
+
+  function preload(src){ var i = new Image(); i.src = src; }
+  function render(){
+    imgEl.src = photos[idx];
+    counterEl.textContent = (idx+1) + ' / ' + photos.length;
+    dotsEl.innerHTML = '';
+    photos.forEach(function(_, i){
+      var d = document.createElement('button');
+      d.className = 'lb-dot' + (i===idx ? ' active' : '');
+      d.setAttribute('aria-label', 'Photo ' + (i+1));
+      d.addEventListener('click', function(){ idx = i; render(); });
+      dotsEl.appendChild(d);
+    });
+    var n = (idx+1) % photos.length, p = (idx-1+photos.length) % photos.length;
+    preload(photos[n]); preload(photos[p]);
+  }
+  function go(n){ idx = (n + photos.length) % photos.length; render(); }
+  function open(card){
+    photos = JSON.parse(card.getAttribute('data-photos'));
+    idx = 0;
+    modelEl.textContent = card.getAttribute('data-name');
+    render();
+    lb.classList.add('open');
+    document.body.classList.add('lb-lock');
+  }
+  function close(){ lb.classList.remove('open'); document.body.classList.remove('lb-lock'); }
+
+  document.querySelectorAll('.model-card').forEach(function(card){
+    card.addEventListener('click', function(){ open(card); });
+  });
+  prev.addEventListener('click', function(){ go(idx-1); });
+  next.addEventListener('click', function(){ go(idx+1); });
+  closeBtn.addEventListener('click', close);
+  lb.addEventListener('click', function(e){ if(e.target === lb) close(); });
+  document.addEventListener('keydown', function(e){
+    if(!lb.classList.contains('open')) return;
+    if(e.key === 'Escape') close();
+    else if(e.key === 'ArrowRight') go(idx+1);
+    else if(e.key === 'ArrowLeft') go(idx-1);
+  });
+  // touch swipe
+  var tx = 0;
+  lb.querySelector('.lb-stage').addEventListener('touchstart', function(e){ tx = e.touches[0].clientX; }, {passive:true});
+  lb.querySelector('.lb-stage').addEventListener('touchend', function(e){
+    var d = tx - e.changedTouches[0].clientX;
+    if(Math.abs(d) > 40) go(idx + (d>0 ? 1 : -1));
+  });
+})();
+</script>
+<!-- Photo strip lightbox -->
+<div id="strip-lightbox" role="dialog" aria-modal="true" aria-label="Photo" style="position:fixed; inset:0; z-index:9999; display:none; align-items:center; justify-content:center; background:rgba(8,8,9,0.94); padding:32px; cursor:zoom-out;">
+  <button type="button" id="strip-lb-close" aria-label="Close" style="position:absolute; top:20px; right:24px; width:48px; height:48px; border:1px solid rgba(255,255,255,0.25); background:rgba(0,0,0,0.3); color:#fff; font-size:24px; border-radius:6px; cursor:pointer; line-height:1;">&times;</button>
+  <img id="strip-lb-img" alt="" style="max-width:92vw; max-height:88vh; width:auto; height:auto; object-fit:contain; border-radius:8px; box-shadow:0 30px 80px rgba(0,0,0,0.6);">
+</div>
+
+<script>
+(function(){
+  var lb = document.getElementById('strip-lightbox'),
+      img = document.getElementById('strip-lb-img'),
+      closeBtn = document.getElementById('strip-lb-close'),
+      strip = document.querySelector('.photo-strip-track');
+  if(!lb || !strip) return;
+  function open(src){ img.src = src; lb.style.display = 'flex'; document.body.style.overflow = 'hidden'; }
+  function close(){ lb.style.display = 'none'; img.removeAttribute('src'); document.body.style.overflow = ''; }
+  strip.addEventListener('click', function(e){
+    var t = e.target.closest('img');
+    if(t && t.src) open(t.src);
+  });
+  closeBtn.addEventListener('click', close);
+  lb.addEventListener('click', function(e){ if(e.target === lb) close(); });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && lb.style.display === 'flex') close(); });
+})();
+</script>
+</body></html>

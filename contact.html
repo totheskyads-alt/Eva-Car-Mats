@@ -1,0 +1,589 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contact &amp; Visit — EVA Car Mats Ireland · Sallins, Co. Kildare</title>
+<meta name="description" content="Visit the EVA Car Mats Ireland studio in Sallins, Co. Kildare. Phone 089 465 5600. Book a measuring slot, send an enquiry or just drop in.">
+<link rel="stylesheet" href="shared.css?v=3">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link id="gf-bricolage" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&display=swap">
+<link id="gf-anton" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&display=swap">
+<link id="gf-fraunces" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,400..700,30,0..1&display=swap">
+<link id="gf-bigshoulders" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@400;500;600;700;800&display=swap">
+<style>
+  .contact-hero{
+    display: block;
+    max-width: 780px;
+  }
+  .info-block{
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius-card);
+    overflow: hidden;
+  }
+  .info-row{
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 24px;
+    padding: 22px 28px;
+    border-bottom: 1px solid var(--hairline);
+    align-items: center;
+  }
+  .info-row:last-child{border-bottom: none}
+  .info-row .lbl{
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+  .info-row .val{
+    font-family: var(--display);
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--cream);
+    letter-spacing: -0.005em;
+  }
+  .info-row .val a{ color: var(--cream); border-bottom: 1px solid transparent; transition: border-color .2s }
+  .info-row .val a:hover{ border-bottom-color: var(--gold) }
+  .info-row .sub{ font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: .12em; margin-top: 6px; text-transform: uppercase; display: block}
+
+  /* mock map */
+  .map-mock{
+    position: relative;
+    aspect-ratio: 4/3;
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    background:
+      radial-gradient(circle at 38% 52%, rgba(199,152,73,.18) 0%, transparent 18%),
+      var(--ink-2);
+  }
+  .map-grid{
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(199,152,73,.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(199,152,73,.06) 1px, transparent 1px);
+    background-size: 60px 60px;
+    background-position: -1px -1px;
+  }
+  .map-roads{
+    position: absolute; inset: 0;
+  }
+  .map-pin{
+    position: absolute;
+    left: 38%; top: 52%;
+    width: 22px; height: 22px;
+    transform: translate(-50%, -100%);
+  }
+  .map-pin::before{
+    content:""; position: absolute;
+    inset: 0;
+    background: var(--gold);
+    border-radius: 50% 50% 50% 0;
+    transform: rotate(-45deg);
+    box-shadow: 0 0 0 4px rgba(199,152,73,.18), 0 8px 22px rgba(0,0,0,.5);
+  }
+  .map-pin::after{
+    content:""; position: absolute;
+    left: 50%; top: 50%;
+    transform: translate(-50%,-50%) rotate(-45deg);
+    width: 6px; height: 6px;
+    background: var(--ink);
+    border-radius: 50%;
+  }
+  .map-pulse{
+    position: absolute; left: 38%; top: 52%;
+    width: 6px; height: 6px;
+    margin-left: -3px; margin-top: -3px;
+    border-radius: 50%;
+    border: 1px solid var(--gold);
+    animation: pulse-ring 2.4s infinite var(--ease);
+  }
+  @keyframes pulse-ring{
+    0%{transform: scale(1); opacity: 1}
+    100%{transform: scale(8); opacity: 0}
+  }
+  .map-label{
+    position: absolute;
+    bottom: 18px; left: 18px;
+    background: rgba(10,10,11,.85);
+    border: 1px solid var(--hairline-2);
+    backdrop-filter: blur(8px);
+    padding: 14px 18px;
+    border-radius: 2px;
+    max-width: 260px;
+  }
+  .map-label .ml-name{ font-family: var(--display); font-size: 18px; color: var(--cream); font-weight: 500}
+  .map-label .ml-addr{ font-size: 12.5px; color: var(--muted); margin-top: 4px}
+  .map-corner{
+    position: absolute;
+    font-family: var(--mono); font-size: 10px;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--muted);
+  }
+  .map-corner.tl{ top: 14px; left: 14px }
+  .map-corner.tr{ top: 14px; right: 14px }
+  .map-corner.br{ bottom: 14px; right: 14px }
+
+  .hours{
+    display: grid;
+    gap: 0;
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius-card);
+    overflow: hidden;
+  }
+  .hours .hr{
+    display: grid;
+    grid-template-columns: 1fr auto;
+    padding: 16px 22px;
+    border-bottom: 1px solid var(--hairline);
+    font-size: 15px;
+    align-items: center;
+    background: var(--ink-2);
+  }
+  .hours .hr:last-child{border-bottom: none}
+  .hours .hr .day{ color: var(--cream); font-family: var(--display); font-weight: 500 }
+  .hours .hr .time{ font-family: var(--mono); font-size: 12.5px; letter-spacing: 0.06em; color: var(--gold-2) }
+  .hours .hr.closed .time{ color: var(--muted); text-decoration: line-through }
+  .hours .hr.today{ background: rgba(199,152,73,.05) }
+  .hours .hr.today .day::before{
+    content:""; display: none;
+  }
+
+  .quick-actions{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+  }
+  .quick-action{
+    border: 1px solid var(--hairline);
+    background: var(--ink-2);
+    padding: 28px;
+    border-radius: var(--radius-card);
+    text-align: left;
+    transition: all .25s var(--ease);
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    text-decoration: none;
+    color: inherit;
+  }
+  .quick-action:hover{ border-color: var(--gold); transform: translateY(-2px) }
+  .quick-action .qa-icon{
+    width: 40px; height: 40px;
+    border: 1px solid var(--gold);
+    display: grid; place-items: center;
+    border-radius: 50%;
+    color: var(--gold-2);
+  }
+  .quick-action h3{
+    font-family: var(--display);
+    font-size: 22px;
+    font-weight: 500;
+    margin: 0;
+    letter-spacing: -0.01em;
+    color: var(--cream);
+  }
+  .quick-action p{
+    margin: 0;
+    color: var(--muted);
+    font-size: 14px;
+  }
+  @media (max-width: 720px){
+    .quick-actions{grid-template-columns: 1fr}
+  }
+</style>
+<!-- SEO-INJECT -->
+<link rel="canonical" href="https://evacarmats.ie/contact.html">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#0a0a0b">
+<meta name="author" content="EVA Car Mats Ireland">
+<meta name="geo.region" content="IE-KE">
+<meta name="geo.placename" content="Sallins, Co. Kildare">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="EVA Car Mats Ireland">
+<meta property="og:locale" content="en_IE">
+<meta property="og:title" content="Contact &amp; Visit — EVA Car Mats Ireland · Sallins, Co. Kildare">
+<meta property="og:description" content="Visit the EVA Car Mats Ireland studio in Sallins, Co. Kildare. Phone 089 465 5600. Book a measuring slot, send an enquiry or just drop in.">
+<meta property="og:url" content="https://evacarmats.ie/contact.html">
+<meta property="og:image" content="https://evacarmats.ie/hero-home.jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Contact &amp; Visit — EVA Car Mats Ireland · Sallins, Co. Kildare">
+<meta name="twitter:description" content="Visit the EVA Car Mats Ireland studio in Sallins, Co. Kildare. Phone 089 465 5600. Book a measuring slot, send an enquiry or just drop in.">
+<meta name="twitter:image" content="https://evacarmats.ie/hero-home.jpeg">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "AutoPartsStore",
+  "@id": "https://evacarmats.ie/#business",
+  "name": "EVA Car Mats Ireland",
+  "image": "https://evacarmats.ie/hero-home.jpeg",
+  "url": "https://evacarmats.ie/",
+  "telephone": "+353894655600",
+  "priceRange": "€€",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Sallins",
+    "addressRegion": "Co. Kildare",
+    "addressCountry": "IE"
+  },
+  "areaServed": { "@type": "Country", "name": "Ireland" },
+  "openingHoursSpecification": [
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "09:00", "closes": "18:30" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "10:00", "closes": "16:00" }
+  ],
+  "sameAs": [
+    "https://www.facebook.com/profile.php?id=61558046664454",
+    "https://www.instagram.com/evacarmatsireland/",
+    "https://www.tiktok.com/@carmats_eva333"
+  ]
+}
+</script>
+</head>
+<body>
+
+<!-- ============== HEADER ============== -->
+<header class="site-header" data-screen-label="header">
+  <div class="nav-wrap">
+    <a class="brand" href="index.html" aria-label="EVA Car Mats Ireland home">
+      <span class="brand-mark"><img src="assets/logo.jpg" alt=""></span>
+      <span class="brand-text">
+        <span class="b-1">EVA Car Mats</span>
+      </span>
+    </a>
+    <nav aria-label="Primary" class="nav-primary">
+      <button class="nav-close" aria-label="Close menu">✕</button>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li class="nav-has-dropdown">
+          <button class="nav-dropdown-toggle" aria-expanded="false">Services <span class="nav-chevron">›</span></button>
+          <ul class="nav-dropdown">
+            <li><a href="car-mats.html">Car Mats</a></li>
+            <li><a href="taxi-drivers.html">Taxi Drivers</a></li>
+            <li><a href="window-tinting.html">Window Tinting</a></li>
+            <li><a href="seat-covers.html">Seat Covers</a></li>
+          </ul>
+        </li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="testimonials.html">Reviews</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+      </ul>
+      <a class="nav-mobile-phone" href="tel:+353894655600">089 465 5600</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="nav-phone" href="tel:+353894655600">089 465 5600</a>
+      <a class="btn-nav-cta" href="#message">Message</a>
+      <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ============== HERO ============== -->
+<section style="padding: clamp(96px, 14vh, 160px) 0 60px; border-bottom: 1px solid var(--hairline)">
+  <div class="container">
+    <div class="contact-hero">
+      <div>
+        <h1 class="display h-xl" style="font-family: 'Bricolage Grotesque', var(--display), sans-serif; font-size: 68px; line-height: 0.96; letter-spacing: -1.4px; color: #e8c275; margin-bottom: 28px">
+          <span style="color: #f3f1ed">Talk to the</span><br>
+          <span style="color: var(--gold-2); font-style: italic; font-weight: 500">studio.</span>
+        </h1>
+        <p class="lede" style="margin-bottom: 36px">
+          The fastest way is a phone call — we usually pick up inside three rings. Or drop in. Or send a message and we'll come back the same working day.
+        </p>
+        <div style="display: flex; gap: 14px; flex-wrap: wrap">
+          <a href="tel:+353894655600" class="btn btn-primary btn-lg">Call 089 465 5600 <span class="arrow"></span></a>
+          <a href="#message" class="btn btn-ghost btn-lg">Send a Message</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============== QUICK ACTIONS ============== -->
+<section class="section dense">
+  <div class="container">
+    <div class="quick-actions reveal">
+      <a class="quick-action" href="tel:+353894655600">
+        <span class="qa-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.86 19.86 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.86 19.86 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+        </span>
+        <div>
+          <h3>Call the studio</h3>
+          <p>089 465 5600 · Pickup typically inside three rings during open hours.</p>
+        </div>
+        <span style="font-family: var(--mono); font-size: 11px; color: var(--gold-2); letter-spacing: .16em; text-transform: uppercase">Call · 089 465 5600 →</span>
+      </a>
+      <a class="quick-action" href="#message">
+        <span class="qa-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </span>
+        <div>
+          <h3>Send a message</h3>
+          <p>The form below routes to the studio inbox. Replies within one working day.</p>
+        </div>
+        <span style="font-family: var(--mono); font-size: 11px; color: var(--gold-2); letter-spacing: .16em; text-transform: uppercase">Open form →</span>
+      </a>
+      <a class="quick-action" href="https://www.instagram.com/evacarmatsireland/" target="_blank" rel="noopener">
+        <span class="qa-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+        </span>
+        <div>
+          <h3>DM on Instagram</h3>
+          <p>@evacarmatsireland — pictures of recent work, daily.</p>
+        </div>
+        <span style="font-family: var(--mono); font-size: 11px; color: var(--gold-2); letter-spacing: .16em; text-transform: uppercase">Open Instagram →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============== INFO + HOURS ============== -->
+<section class="section">
+  <div class="container">
+    <div style="display: grid; grid-template-columns: 1.4fr 1fr; gap: 56px; align-items: flex-start" class="reveal">
+      <div>
+        <div class="eyebrow" style="margin-bottom: 18px">Studio Details</div>
+        <h2 class="display h-md" style="margin-bottom: 28px">Where to find us.</h2>
+
+        <div class="info-block">
+          <div class="info-row">
+            <div class="lbl">Phone</div>
+            <div>
+              <div class="val"><a href="tel:+353894655600">089 465 5600</a></div>
+              <span class="sub">Mon–Sat · 09:00–18:30</span>
+            </div>
+          </div>
+          <div class="info-row">
+            <div class="lbl">Studio</div>
+            <div>
+              <div class="val">Sallins, Co. Kildare</div>
+              <span class="sub">Co. Kildare · Eircode W91</span>
+            </div>
+          </div>
+          <div class="info-row">
+            <div class="lbl">Service area</div>
+            <div>
+              <div class="val">All 32 counties</div>
+              <span class="sub">Studio fitting in Sallins · Delivery nationwide</span>
+            </div>
+          </div>
+          <div class="info-row">
+            <div class="lbl">Languages</div>
+            <div>
+              <div class="val">English · Romanian · Russian</div>
+              <span class="sub">Fluent in-house</span>
+            </div>
+          </div>
+          <div class="info-row">
+            <div class="lbl">Social</div>
+            <div>
+              <div class="foot-socials" style="margin: 0">
+                <a href="https://www.facebook.com/profile.php?id=61558046664454" aria-label="Facebook" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z"/></svg></a>
+                <a href="https://www.instagram.com/evacarmatsireland/" aria-label="Instagram" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+                <a href="https://www.tiktok.com/@carmats_eva333" aria-label="TikTok" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19.5 6.7a5.4 5.4 0 0 1-3.3-1.2 5.4 5.4 0 0 1-2-3.5h-3.3v13.4a2.4 2.4 0 1 1-2.4-2.4c.3 0 .6 0 .8.1V9.7a5.7 5.7 0 0 0-.8 0 5.7 5.7 0 1 0 5.7 5.7V9.5a8.7 8.7 0 0 0 5.3 1.8z"/></svg></a>
+              </div>
+              <span class="sub" style="margin-top: 12px">@evacarmatsireland · @carmats_eva333</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="eyebrow" style="margin-bottom: 18px">Opening Hours</div>
+        <h2 class="display h-md" style="margin-bottom: 28px">When we're open.</h2>
+
+        <div class="hours" id="hours-list">
+          <div class="hr" data-day="1"><span class="day">Monday</span><span class="time">09:00 — 18:30</span></div>
+          <div class="hr" data-day="2"><span class="day">Tuesday</span><span class="time">09:00 — 18:30</span></div>
+          <div class="hr" data-day="3"><span class="day">Wednesday</span><span class="time">09:00 — 18:30</span></div>
+          <div class="hr" data-day="4"><span class="day">Thursday</span><span class="time">09:00 — 18:30</span></div>
+          <div class="hr" data-day="5"><span class="day">Friday</span><span class="time">09:00 — 18:30</span></div>
+          <div class="hr" data-day="6"><span class="day">Saturday</span><span class="time">10:00 — 16:00</span></div>
+          <div class="hr closed" data-day="0"><span class="day">Sunday</span><span class="time">Closed</span></div>
+        </div>
+
+        <p style="margin-top: 22px; color: var(--muted); font-size: 13.5px">
+          Out-of-hours messages are returned the next working morning. Bank-holiday hours posted on Instagram.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== CTA STRIP ============== -->
+<section class="cta-strip">
+  <div class="container">
+    <div class="cta-strip-inner">
+      <div>
+        <span class="phone-label">Direct line</span>
+        <a href="tel:+353894655600" class="phone-big">+353 89 465 5600</a>
+      </div>
+      <div class="cta-strip-actions">
+        <a href="tel:+353894655600" class="btn btn-primary btn-lg">Call Now</a>
+        <a href="#message" class="btn btn-ghost btn-lg">Send a Message</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== MESSAGE FORM ============== -->
+<section class="section" id="message">
+  <div class="container tight">
+    <div style="text-align:center; margin-bottom: 48px" class="reveal">
+      <div class="eyebrow no-bar" style="margin-bottom:18px; justify-content:center">General Enquiry</div>
+      <h2 class="display h-md">Send a message</h2>
+      <p class="lede" style="margin: 18px auto 0">Quotes, bookings, questions, fleet enquiries — everything lands in the same inbox.</p>
+    </div>
+
+    <form class="card dark" data-form style="padding: 40px" novalidate>
+      <div style="display:flex; justify-content: space-between; align-items: center; margin-bottom: 32px; padding-bottom: 24px; border-bottom: 1px solid var(--hairline)">
+        <div class="kicker">FORM · C-000 / GENERAL</div>
+        <div class="label">Studio inbox</div>
+      </div>
+
+      <div class="form-grid">
+        <div class="field">
+          <label>Name <span class="req">*</span></label>
+          <input type="text" name="name" required>
+          <span class="error">Required</span>
+        </div>
+        <div class="field">
+          <label>Phone <span class="req">*</span></label>
+          <input type="tel" name="phone" required placeholder="089 …">
+          <span class="error">Required</span>
+        </div>
+        <div class="field">
+          <label>Email</label>
+          <input type="email" name="email">
+        </div>
+        <div class="field">
+          <label>I'm interested in</label>
+          <select name="interest">
+            <option>Custom car mats</option>
+            <option>Taxi driver set</option>
+            <option>Van or truck mats</option>
+            <option>Window tinting</option>
+            <option>Studio measuring</option>
+            <option>Fleet / multi-vehicle</option>
+            <option>Other / general question</option>
+          </select>
+        </div>
+        <div class="field full">
+          <label>Preferred contact</label>
+          <div class="radio-row">
+            <input type="radio" name="contact_method" value="Phone call" id="m-phone" checked><label for="m-phone">Phone call</label>
+            <input type="radio" name="contact_method" value="WhatsApp" id="m-wa"><label for="m-wa">WhatsApp</label>
+            <input type="radio" name="contact_method" value="SMS" id="m-sms"><label for="m-sms">SMS</label>
+            <input type="radio" name="contact_method" value="Email" id="m-email"><label for="m-email">Email</label>
+          </div>
+        </div>
+        <div class="field full">
+          <label>Preferred language</label>
+          <div class="radio-row">
+            <input type="radio" name="language" value="English" id="m-en" checked><label for="m-en">English</label>
+            <input type="radio" name="language" value="Romanian" id="m-ro"><label for="m-ro">Română</label>
+            <input type="radio" name="language" value="Russian" id="m-ru"><label for="m-ru">Русский</label>
+          </div>
+        </div>
+        <div class="field full">
+          <label>Your message <span class="req">*</span></label>
+          <textarea name="message" required placeholder="Tell us about your vehicle and what you'd like — mats, tint, measuring, anything."></textarea>
+          <span class="error">Required</span>
+        </div>
+      </div>
+
+      <div style="display:flex; justify-content: space-between; align-items: center; gap: 18px; flex-wrap: wrap; margin-top: 28px">
+        <p style="color: var(--muted); font-size: 13px; margin: 0; max-width: 40ch">We don't use your details for marketing. You'll only hear back from us about this enquiry.</p>
+        <button type="submit" class="btn btn-primary btn-lg">Send Message <span class="arrow"></span></button>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- ============== FOOTER ============== -->
+<footer class="site-footer" data-screen-label="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="foot-col foot-brand">
+        <a class="brand" href="index.html">
+          <span class="brand-mark"><img src="assets/logo.jpg" alt=""></span>
+          <span class="brand-text">
+            <span class="b-1">EVA Car Mats</span>
+            <span class="b-2">The Best in Ireland</span>
+          </span>
+        </a>
+        <p>Made-to-measure EVA mats and professional window tinting. Based in Sallins, serving every county in Ireland.</p>
+        <div class="foot-socials">
+          <a href="https://www.facebook.com/profile.php?id=61558046664454" aria-label="Facebook" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z"/></svg></a>
+          <a href="https://www.instagram.com/evacarmatsireland/" aria-label="Instagram" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+          <a href="https://www.tiktok.com/@carmats_eva333" aria-label="TikTok" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19.5 6.7a5.4 5.4 0 0 1-3.3-1.2 5.4 5.4 0 0 1-2-3.5h-3.3v13.4a2.4 2.4 0 1 1-2.4-2.4c.3 0 .6 0 .8.1V9.7a5.7 5.7 0 0 0-.8 0 5.7 5.7 0 1 0 5.7 5.7V9.5a8.7 8.7 0 0 0 5.3 1.8z"/></svg></a>
+        </div>
+      </div>
+      <div class="foot-col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="terms-and-conditions.html">Terms &amp; Conditions</a></li>
+          <li><a href="cookie-policy.html">Cookie Policy</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Studio</h4>
+        <ul>
+          <li><a href="tel:+353894655600">089 465 5600</a></li>
+          <li><a href="contact.html">Sallins, Co. Kildare</a></li>
+          <li><a href="contact.html">Mon–Sat · 09:00–18:30</a></li>
+          <li><a href="contact.html">Get directions</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Pages</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="car-mats.html">Car Mats</a></li>
+          <li><a href="taxi-drivers.html">Taxi Drivers</a></li>
+          <li><a href="window-tinting.html">Window Tinting</a></li>
+          <li><a href="seat-covers.html">Seat Covers</a></li>
+          <li><a href="testimonials.html">Testimonials</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span data-year>2026</span> EVA Car Mats Ireland · Sallins, Co. Kildare</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============== COOKIE BANNER ============== -->
+<div class="cookie-banner" id="cookie-banner" role="dialog" aria-label="Cookie consent">
+  <p class="cookie-banner-text">We use cookies to improve your experience. By continuing to use this site, you accept our use of cookies. <a href="cookie-policy.html">Learn more</a></p>
+  <div class="cookie-banner-actions">
+    <button class="cookie-accept" id="cookie-accept">Accept</button>
+    <button class="cookie-decline" id="cookie-decline">Decline</button>
+  </div>
+</div>
+
+<script src="shared.js"></script>
+<script>
+  // highlight today's row in hours
+  (function(){
+    const today = new Date().getDay(); // 0=Sun
+    const row = document.querySelector(`.hours .hr[data-day="${today}"]`);
+    if(row) row.classList.add('today');
+  })();
+</script>
+</body>
+</html>

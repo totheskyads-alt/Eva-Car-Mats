@@ -234,19 +234,37 @@
   // ---- cookie consent banner ----
   (function(){
     const banner = document.getElementById('cookie-banner');
-    if(!banner) return;
+    const setH = (h) => document.documentElement.style.setProperty('--cookie-h', h + 'px');
+    if(!banner){ setH(0); return; }
     const consent = localStorage.getItem('eva-cookie-consent');
-    if(consent){ banner.classList.add('hidden'); return; }
-    setTimeout(() => banner.classList.add('visible'), 800);
+    if(consent){ banner.classList.add('hidden'); setH(0); return; }
+    const updateH = () => setH(banner.classList.contains('visible') ? banner.offsetHeight : 0);
+    setTimeout(() => { banner.classList.add('visible'); updateH(); }, 800);
+    window.addEventListener('resize', updateH);
     const accept = document.getElementById('cookie-accept');
     const decline = document.getElementById('cookie-decline');
     const dismiss = (choice) => {
       localStorage.setItem('eva-cookie-consent', choice);
       banner.classList.remove('visible');
+      setH(0);
       setTimeout(() => banner.classList.add('hidden'), 400);
     };
     if(accept) accept.addEventListener('click', () => dismiss('accepted'));
     if(decline) decline.addEventListener('click', () => dismiss('declined'));
+  })();
+
+  // ---- WhatsApp floating button ----
+  (function(){
+    if(document.querySelector('.wa-fab')) return;
+    const a = document.createElement('a');
+    a.href = 'https://wa.me/353894655600?text=' + encodeURIComponent("Hi, I'm interested in EVA car mats.");
+    a.className = 'wa-fab';
+    a.target = '_blank';
+    a.rel = 'noopener';
+    a.setAttribute('aria-label', 'Chat with us on WhatsApp');
+    a.title = 'Chat on WhatsApp';
+    a.innerHTML = '<svg viewBox="0 0 32 32" width="27" height="27" aria-hidden="true"><path fill="currentColor" d="M16.04 4C9.96 4 5 8.95 5 15.02c0 2.13.6 4.13 1.64 5.84L5 28l7.33-1.6a11.1 11.1 0 0 0 3.7.64h.01c6.08 0 11.04-4.95 11.04-11.02C27.08 8.95 22.12 4 16.04 4Zm0 20.13h-.01c-1.16 0-2.3-.31-3.3-.9l-.24-.14-3.94.86.84-3.84-.16-.25a8.86 8.86 0 0 1-1.36-4.74c0-4.92 4.01-8.92 8.94-8.92 2.39 0 4.63.93 6.32 2.62a8.86 8.86 0 0 1 2.62 6.31c0 4.92-4.01 8.94-8.95 8.94Zm4.9-6.68c-.27-.13-1.59-.78-1.83-.87-.25-.09-.43-.13-.61.13-.18.27-.7.87-.86 1.05-.16.18-.32.2-.59.07-.27-.13-1.13-.42-2.16-1.33-.8-.71-1.34-1.59-1.5-1.86-.16-.27-.02-.41.12-.54.12-.12.27-.32.4-.48.13-.16.18-.27.27-.45.09-.18.04-.34-.02-.48-.07-.13-.61-1.46-.83-2-.22-.53-.44-.46-.61-.46l-.52-.01c-.18 0-.48.07-.73.34-.25.27-.96.94-.96 2.29 0 1.35.98 2.65 1.12 2.83.13.18 1.93 2.95 4.68 4.14.65.28 1.16.45 1.56.58.65.21 1.25.18 1.72.11.52-.08 1.59-.65 1.82-1.28.22-.63.22-1.17.16-1.28-.07-.11-.25-.18-.52-.31Z"/></svg>';
+    document.body.appendChild(a);
   })();
 
 })();

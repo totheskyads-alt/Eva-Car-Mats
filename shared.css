@@ -1920,3 +1920,6 @@ body.lb-lock{ overflow: hidden; }
   .wa-fab{ transition: none; }
   .wa-fab::after{ animation: none; }
 }
+
+/* anti-bot honeypot */
+.eva-hp{position:absolute!important;left:-9999px!important;top:auto;width:1px;height:1px;overflow:hidden}

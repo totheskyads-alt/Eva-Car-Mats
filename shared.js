@@ -131,10 +131,41 @@
     });
   });
 
+
+  // ---- WhatsApp click-to-chat + anti-bot helpers ----
+  const WA_NUMBER = '353894655600';
+  function evaLabel(n){
+    const map={name:'Name',phone:'Phone',email:'Email',make:'Make',model:'Model',year:'Year',
+      vehicleType:'Vehicle type',material:'Material',colour:'Colour',color:'Colour',stitching:'Stitching',
+      seats:'Seats',interest:'Interested in',contactMethod:'Preferred contact',contact_method:'Preferred contact',
+      language:'Language',message:'Message',mats:'Mats',edging:'Edging',tint:'Tint',notes:'Notes',
+      registration:'Registration',fleet:'Fleet size',service:'Service'};
+    return map[n] || (n.charAt(0).toUpperCase()+n.slice(1).replace(/[_-]/g,' '));
+  }
+  function evaHoneypotTripped(form){ const h=form.querySelector('[name="website_url"]'); return !!(h && h.value.trim()); }
+  function evaTooFast(form){ const t=parseInt(form.getAttribute('data-loaded-at')||'0',10); return t>0 && (Date.now()-t)<1500; }
+  function evaFormToText(form){
+    const parts=[];
+    form.querySelectorAll('input,select,textarea').forEach(el=>{
+      const n=el.name; if(!n||n==='website_url') return;
+      if((el.type==='radio'||el.type==='checkbox')&&!el.checked) return;
+      const v=(el.value||'').trim(); if(!v) return;
+      parts.push(evaLabel(n)+': '+v);
+    });
+    return parts;
+  }
+  function evaSendWhatsApp(form){
+    const text='New enquiry — EVA Car Mats website\n\n'+evaFormToText(form).join('\n');
+    const url='https://wa.me/'+WA_NUMBER+'?text='+encodeURIComponent(text);
+    const w=window.open(url,'_blank'); if(!w) window.location.href=url;
+  }
+  $$('form').forEach(f=>f.setAttribute('data-loaded-at',String(Date.now())));
+
   // ---- form handling: validate + simulate submission ----
   $$('form[data-form]').forEach(form => {
     form.addEventListener('submit', (e) => {
       e.preventDefault();
+      if(evaHoneypotTripped(form)||evaTooFast(form)){ form.reset(); toast('Thanks — we\'ll be in touch shortly.'); return; }
       let ok = true;
       const required = form.querySelectorAll('[required]');
       required.forEach(input => {
@@ -155,19 +186,19 @@
         btn.disabled = true;
         const orig = btn.innerHTML;
         btn.innerHTML = 'Sending…';
+        evaSendWhatsApp(form);
         setTimeout(() => {
           btn.disabled = false;
           btn.innerHTML = orig;
           form.reset();
-          // clear swatches/models
           form.querySelectorAll('.swatch').forEach(s => s.classList.remove('selected'));
           form.querySelectorAll('.swatch:first-child').forEach(s => {
             s.classList.add('selected');
             const i = s.querySelector('input'); if(i) i.checked = true;
           });
           form.querySelectorAll('.model-card').forEach(c => c.classList.remove('selected'));
-          toast('Thanks — we\'ll be in touch shortly.');
-        }, 900);
+          toast('Opening WhatsApp to send your enquiry — just press send.');
+        }, 600);
       }
     });
     // clear invalid on input
@@ -245,12 +276,17 @@
     const decline = document.getElementById('cookie-decline');
     const dismiss = (choice) => {
       localStorage.setItem('eva-cookie-consent', choice);
+      const granted = choice==='accepted';
+      const v = granted ? 'granted' : 'denied';
+      if(typeof gtag==='function'){ gtag('consent','update',{ad_storage:v,analytics_storage:v,ad_user_data:v,ad_personalization:v}); }
+      (window.dataLayer=window.dataLayer||[]).push({event: granted?'consent_accepted':'consent_rejected'});
       banner.classList.remove('visible');
       setH(0);
       setTimeout(() => banner.classList.add('hidden'), 400);
     };
     if(accept) accept.addEventListener('click', () => dismiss('accepted'));
     if(decline) decline.addEventListener('click', () => dismiss('declined'));
+    window.evaOpenCookieSettings=function(){ banner.classList.remove('hidden'); void banner.offsetWidth; banner.classList.add('visible'); updateH(); };
   })();
 
   // ---- WhatsApp floating button ----
@@ -267,4 +303,6 @@
     document.body.appendChild(a);
   })();
 
+
+  window.evaSendWhatsApp=evaSendWhatsApp;window.evaHoneypotTripped=evaHoneypotTripped;window.evaTooFast=evaTooFast;
 })();

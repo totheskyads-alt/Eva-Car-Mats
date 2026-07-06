@@ -1,5 +1,16 @@
 <!doctype html>
 <html lang="en"><head>
+<!-- Consent Mode v2 default (denied) — must run before GTM -->
+<script>
+window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+(function(){try{var c=localStorage.getItem("eva-cookie-consent");if(c==="accepted"){gtag("consent","default",{ad_storage:"granted",analytics_storage:"granted",ad_user_data:"granted",ad_personalization:"granted"});return;}}catch(e){}
+gtag("consent","default",{ad_storage:"denied",analytics_storage:"denied",ad_user_data:"denied",ad_personalization:"denied",wait_for_update:500});
+gtag("set","ads_data_redaction",true);gtag("set","url_passthrough",true);})();
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-KFMDJZR2');</script>
+<!-- End Google Tag Manager -->
+
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Custom EVA Car Mats — Cars, Vans &amp; Trucks · EVA Car Mats Ireland</title>
@@ -127,19 +138,24 @@
 <meta property="og:title" content="Custom EVA Car Mats — Cars, Vans &amp; Trucks · EVA Car Mats Ireland">
 <meta property="og:description" content="Made-to-measure EVA car mats for every make and model. Ten mat colours across Diamond and Honeycomb textures, eight trim colours, custom-fit to your vehicle. Order online or visit our Sallins studio.">
 <meta property="og:url" content="https://evacarmats.ie/car-mats.html">
-<meta property="og:image" content="https://evacarmats.ie/hero-home.jpeg">
+<meta property="og:image" content="https://evacarmats.ie/og-image.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Custom EVA Car Mats — Cars, Vans &amp; Trucks · EVA Car Mats Ireland">
 <meta name="twitter:description" content="Made-to-measure EVA car mats for every make and model. Ten mat colours across Diamond and Honeycomb textures, eight trim colours, custom-fit to your vehicle. Order online or visit our Sallins studio.">
-<meta name="twitter:image" content="https://evacarmats.ie/hero-home.jpeg">
+<meta name="twitter:image" content="https://evacarmats.ie/og-image.jpg">
 <link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="manifest" href="site.webmanifest">
 </head>
 <body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KFMDJZR2" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
 
 <!-- ============== HEADER ============== -->
 <header class="site-header" data-screen-label="header">
@@ -659,6 +675,7 @@
     </div>
 
     <form class="card dark" data-form="" style="padding: 40px" novalidate="">
+      <div class="eva-hp" aria-hidden="true"><label>Leave this field empty<input type="text" name="website_url" tabindex="-1" autocomplete="off"></label></div>
       <div style="display:flex; justify-content: space-between; align-items: center; margin-bottom: 32px; padding-bottom: 24px; border-bottom: 1px solid var(--hairline)">
         <div class="kicker">FORM · MATS QUOTE</div>
         <div class="label">Step 1 of 1</div>
@@ -889,7 +906,7 @@
 
 <!-- ============== COOKIE BANNER ============== -->
 <div class="cookie-banner" id="cookie-banner" role="dialog" aria-label="Cookie consent">
-  <p class="cookie-banner-text">We use cookies to improve your experience. By continuing to use this site, you accept our use of cookies. <a href="cookie-policy.html">Learn more</a></p>
+  <p class="cookie-banner-text">We use cookies to measure traffic and improve the site. You can accept or reject below. <a href="cookie-policy.html">Learn more</a></p>
   <div class="cookie-banner-actions">
     <button class="cookie-accept" id="cookie-accept">Accept</button>
     <button class="cookie-decline" id="cookie-decline">Decline</button>

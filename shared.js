@@ -135,6 +135,24 @@
   // ---- WhatsApp click-to-chat + anti-bot helpers ----
   const WA_NUMBER = '353894655600';
   function evaTrack(ev, extra){ (window.dataLayer=window.dataLayer||[]).push(Object.assign({event:ev}, extra||{})); }
+  const WEB3FORMS_KEY = '34d8f961-02c3-4a6e-9e5d-db0e2a3c03e1';
+  function evaSendEmail(form){
+    const data = {access_key: WEB3FORMS_KEY, subject: 'New website enquiry — EVA Car Mats', from_name: 'EVA Car Mats Website', botcheck: ''};
+    form.querySelectorAll('input,select,textarea').forEach(function(el){
+      const n = el.name;
+      if(!n || n==='website_url' || n==='botcheck' || n==='access_key') return;
+      if((el.type==='radio'||el.type==='checkbox') && !el.checked) return;
+      const v = (el.value||'').trim(); if(!v) return;
+      data[n] = data[n] ? (data[n]+', '+v) : v;
+    });
+    if(data.email) data.replyto = data.email;
+    return fetch('https://api.web3forms.com/submit', {
+      method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body: JSON.stringify(data)
+    }).then(function(r){ return r.ok ? r.json() : {success:false}; })
+      .then(function(j){ return !!(j && j.success); })
+      .catch(function(){ return false; });
+  }
   function evaLabel(n){
     const map={name:'Name',phone:'Phone',email:'Email',make:'Make',model:'Model',year:'Year',
       vehicleType:'Vehicle type',material:'Material',colour:'Colour',color:'Colour',stitching:'Stitching',
@@ -188,19 +206,23 @@
         btn.disabled = true;
         const orig = btn.innerHTML;
         btn.innerHTML = 'Sending…';
-        evaSendWhatsApp(form);
-        setTimeout(() => {
+        evaTrack('generate_lead', {lead_method:'email_form', form_id:(form.id||'contact')});
+        evaSendEmail(form).then(function(okSent){
           btn.disabled = false;
           btn.innerHTML = orig;
-          form.reset();
-          form.querySelectorAll('.swatch').forEach(s => s.classList.remove('selected'));
-          form.querySelectorAll('.swatch:first-child').forEach(s => {
-            s.classList.add('selected');
-            const i = s.querySelector('input'); if(i) i.checked = true;
-          });
-          form.querySelectorAll('.model-card').forEach(c => c.classList.remove('selected'));
-          toast('Opening WhatsApp to send your enquiry — just press send.');
-        }, 600);
+          if(okSent){
+            form.reset();
+            form.querySelectorAll('.swatch').forEach(s => s.classList.remove('selected'));
+            form.querySelectorAll('.swatch:first-child').forEach(s => {
+              s.classList.add('selected');
+              const i = s.querySelector('input'); if(i) i.checked = true;
+            });
+            form.querySelectorAll('.model-card').forEach(c => c.classList.remove('selected'));
+            toast('Thanks — we\'ll be in touch shortly.');
+          } else {
+            toast('Sorry, something went wrong. Please call or WhatsApp us on 089 465 5600.');
+          }
+        });
       }
     });
     // clear invalid on input
@@ -316,5 +338,5 @@
     else if(a.classList.contains('wa-fab') || href.indexOf('wa.me')>-1 || href.indexOf('api.whatsapp')>-1){ evaTrack('whatsapp_click', {source: a.classList.contains('wa-fab')?'float_button':'link'}); }
   }, true);
 
-  window.evaSendWhatsApp=evaSendWhatsApp;window.evaHoneypotTripped=evaHoneypotTripped;window.evaTooFast=evaTooFast;
+  window.evaSendWhatsApp=evaSendWhatsApp;window.evaSendEmail=evaSendEmail;window.evaTrack=evaTrack;window.evaHoneypotTripped=evaHoneypotTripped;window.evaTooFast=evaTooFast;
 })();

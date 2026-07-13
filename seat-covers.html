@@ -1100,6 +1100,7 @@ gtag("set","ads_data_redaction",true);gtag("set","url_passthrough",true);})();
         <h4>Studio</h4>
         <ul>
           <li><a href="tel:+353894655600">089 465 5600</a></li>
+          <li><a href="mailto:contact@evacarmats.ie">contact@evacarmats.ie</a></li>
           <li><a href="contact.html">Sallins, Co. Kildare</a></li>
           <li><a href="contact.html">Mon–Sat · 09:00–18:30</a></li>
           <li><a href="contact.html">Get directions</a></li>
@@ -1158,10 +1159,18 @@ gtag("set","ads_data_redaction",true);gtag("set","url_passthrough",true);})();
       });
 
       if (valid) {
-        if(window.evaSendWhatsApp){ window.evaSendWhatsApp(form); }
-        form.style.display = 'none';
-        successEl.style.display = 'block';
-        successEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        if(window.evaTrack){ window.evaTrack('generate_lead', {lead_method:'email_form', form_id:'seat-cover-form'}); }
+        var _btn = form.querySelector('[type="submit"]'); if(_btn){ _btn.disabled = true; }
+        (window.evaSendEmail ? window.evaSendEmail(form) : Promise.resolve(true)).then(function(okSent){
+          if(okSent){
+            form.style.display = 'none';
+            successEl.style.display = 'block';
+            successEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          } else {
+            if(_btn){ _btn.disabled = false; }
+            if(window.toast){ window.toast('Sorry, something went wrong. Please call or WhatsApp us on 089 465 5600.'); }
+          }
+        });
       }
     });
 

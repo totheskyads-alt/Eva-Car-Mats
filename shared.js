@@ -134,6 +134,7 @@
 
   // ---- WhatsApp click-to-chat + anti-bot helpers ----
   const WA_NUMBER = '353894655600';
+  function evaTrack(ev, extra){ (window.dataLayer=window.dataLayer||[]).push(Object.assign({event:ev}, extra||{})); }
   function evaLabel(n){
     const map={name:'Name',phone:'Phone',email:'Email',make:'Make',model:'Model',year:'Year',
       vehicleType:'Vehicle type',material:'Material',colour:'Colour',color:'Colour',stitching:'Stitching',
@@ -155,6 +156,7 @@
     return parts;
   }
   function evaSendWhatsApp(form){
+    evaTrack('generate_lead', {lead_method:'whatsapp_form', form_id:(form&&form.id)||'contact'});
     const text='New enquiry — EVA Car Mats website\n\n'+evaFormToText(form).join('\n');
     const url='https://wa.me/'+WA_NUMBER+'?text='+encodeURIComponent(text);
     const w=window.open(url,'_blank'); if(!w) window.location.href=url;
@@ -303,6 +305,16 @@
     document.body.appendChild(a);
   })();
 
+
+
+  // ---- conversion click tracking (phone + WhatsApp) ----
+  document.addEventListener('click', function(e){
+    const a = e.target && e.target.closest ? e.target.closest('a') : null;
+    if(!a) return;
+    const href = (a.getAttribute('href')||'');
+    if(href.indexOf('tel:')===0){ evaTrack('phone_click', {phone:href.replace('tel:','')}); }
+    else if(a.classList.contains('wa-fab') || href.indexOf('wa.me')>-1 || href.indexOf('api.whatsapp')>-1){ evaTrack('whatsapp_click', {source: a.classList.contains('wa-fab')?'float_button':'link'}); }
+  }, true);
 
   window.evaSendWhatsApp=evaSendWhatsApp;window.evaHoneypotTripped=evaHoneypotTripped;window.evaTooFast=evaTooFast;
 })();

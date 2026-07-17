@@ -1443,7 +1443,8 @@ body.menu-open .menu-toggle span:nth-child(3){ transform: translateY(-7px) rotat
   white-space: nowrap;
   transition: background .2s var(--ease);
 }
-.cookie-accept:hover{ background: var(--gold-2); }
+.cookie-accept{ box-shadow: 0 4px 16px rgba(199,152,73,0.35); font-weight: 700; }
+.cookie-accept:hover{ background: var(--gold-2); box-shadow: 0 6px 22px rgba(199,152,73,0.45); }
 .cookie-decline{
   display: inline-flex;
   align-items: center;

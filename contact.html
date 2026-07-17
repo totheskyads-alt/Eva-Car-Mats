@@ -499,17 +499,13 @@ gtag("set","ads_data_redaction",true);gtag("set","url_passthrough",true);})();
           <label>Email</label>
           <input type="email" name="email">
         </div>
-        <div class="field">
-          <label>I'm interested in</label>
-          <select name="interest">
-            <option>Custom car mats</option>
-            <option>Taxi driver set</option>
-            <option>Van or truck mats</option>
-            <option>Window tinting</option>
-            <option>Studio measuring</option>
-            <option>Fleet / multi-vehicle</option>
-            <option>Other / general question</option>
-          </select>
+        <div class="field full">
+          <label>Services you're interested in</label>
+          <div class="radio-row">
+            <input type="checkbox" name="services" value="Car mats" id="svc-mats-ct"><label for="svc-mats-ct">Car mats</label>
+            <input type="checkbox" name="services" value="Window tinting" id="svc-tint-ct"><label for="svc-tint-ct">Window tinting</label>
+            <input type="checkbox" name="services" value="Seat covers" id="svc-seat-ct"><label for="svc-seat-ct">Seat covers</label>
+          </div>
         </div>
         <div class="field full">
           <label>Preferred contact</label>

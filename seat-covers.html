@@ -941,6 +941,21 @@ gtag("set","ads_data_redaction",true);gtag("set","url_passthrough",true);})();
           </div>
 
           <div class="field">
+            <label for="sc-seat-count">Number of Seats <span class="req">*</span></label>
+            <select id="sc-seat-count" name="seatCount" required>
+              <option value="">Select…</option>
+              <option>2</option>
+              <option>4</option>
+              <option>5</option>
+              <option>6</option>
+              <option>7</option>
+              <option>8</option>
+              <option>9+</option>
+            </select>
+            <span class="error">Please tell us how many seats</span>
+          </div>
+
+          <div class="field">
             <label for="sc-material">Preferred Material <span class="req">*</span></label>
             <select id="sc-material" name="material" required>
               <option value="">Select material…</option>
@@ -1012,6 +1027,14 @@ gtag("set","ads_data_redaction",true);gtag("set","url_passthrough",true);})();
             </select>
           </div>
 
+          <div class="field full">
+            <label>Services you're interested in</label>
+            <div class="radio-row">
+              <input type="checkbox" name="services" value="Car mats" id="svc-mats-sc"><label for="svc-mats-sc">Car mats</label>
+              <input type="checkbox" name="services" value="Window tinting" id="svc-tint-sc"><label for="svc-tint-sc">Window tinting</label>
+              <input type="checkbox" name="services" value="Seat covers" id="svc-seat-sc"><label for="svc-seat-sc">Seat covers</label>
+            </div>
+          </div>
           <div class="field full">
             <label for="sc-notes">Additional Notes</label>
             <textarea id="sc-notes" name="notes" placeholder="Any other details — embossed logo, unusual seat shapes, materials reference, deadline…"></textarea>

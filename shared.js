@@ -340,3 +340,42 @@
 
   window.evaSendWhatsApp=evaSendWhatsApp;window.evaSendEmail=evaSendEmail;window.evaTrack=evaTrack;window.evaHoneypotTripped=evaHoneypotTripped;window.evaTooFast=evaTooFast;
 })();
+
+// ---- social reels: autoplay muted when visible, tap for sound ----
+(function(){
+  var reels = Array.prototype.slice.call(document.querySelectorAll('.reel'));
+  if(!reels.length) return;
+  function vid(r){ return r.querySelector('video'); }
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        var v = vid(e.target);
+        if(e.isIntersecting && e.intersectionRatio >= 0.6){ var p = v.play(); if(p && p.catch) p.catch(function(){}); }
+        else { v.pause(); }
+      });
+    }, { threshold: [0, 0.6] });
+    reels.forEach(function(r){ io.observe(r); });
+  }
+  reels.forEach(function(r){
+    r.addEventListener('click', function(){
+      var v = vid(r), turnOn = v.muted;
+      reels.forEach(function(o){ vid(o).muted = true; o.classList.remove('unmuted'); o.querySelector('.reel-sound').textContent = '\u{1F507}'; });
+      if(turnOn){ v.muted = false; v.currentTime = 0; r.classList.add('unmuted'); r.querySelector('.reel-sound').textContent = '\u{1F50A}'; }
+      var p = v.play(); if(p && p.catch) p.catch(function(){});
+    });
+  });
+  // count-up for stats
+  var nums = document.querySelectorAll('.reels-stat-num[data-to]');
+  if('IntersectionObserver' in window && nums.length){
+    var so = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(!e.isIntersecting) return; so.unobserve(e.target);
+        var el = e.target, to = +el.dataset.to, suf = el.dataset.suffix || '', t0 = null;
+        function fmt(n){ return to >= 100000 ? Math.round(n/1000) + 'K' : Math.round(n).toLocaleString('en-IE'); }
+        function step(t){ if(!t0) t0 = t; var k = Math.min(1,(t-t0)/1400); el.textContent = fmt(to*(1-Math.pow(1-k,3))) + suf; if(k<1) requestAnimationFrame(step); }
+        requestAnimationFrame(step);
+      });
+    }, { threshold: .5 });
+    nums.forEach(function(n){ so.observe(n); });
+  }
+})();

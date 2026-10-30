@@ -89,19 +89,19 @@ gtag("set","ads_data_redaction",true);gtag("set","url_passthrough",true);})();
   /* ---- photo strip ---- */
   @keyframes photo-scroll {
     from { transform: translateX(0); }
-    to   { transform: translateX(-50%); }
+    to   { transform: translate3d(-50%,0,0); }
   }
   .photo-strip { overflow: hidden; border-top: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline); }
   .photo-strip-track {
-    display: flex; gap: 6px;
+    display: flex;
     animation: photo-scroll 55s linear infinite;
-    width: max-content;
+    width: max-content; will-change: transform; backface-visibility: hidden;
   }
   .photo-strip-track:hover { animation-play-state: paused; }
   .photo-strip-track img { cursor: zoom-in; transition: filter .2s, transform .2s; }
   .photo-strip-track img:hover { filter: brightness(1.08); }
   .photo-strip-track img {
-    height: 300px; width: auto;
+    height: 300px; width: auto; margin-right: 6px; background: var(--surface);
     object-fit: cover; display: block; flex-shrink: 0;
   }
   @media (max-width: 768px) {
@@ -269,37 +269,37 @@ gtag("set","ads_data_redaction",true);gtag("set","url_passthrough",true);})();
 <!-- PHOTO STRIP -->
 <div class="photo-strip" aria-hidden="true">
   <div class="photo-strip-track">
-    <img src="ps-01.jpeg" alt="" loading="lazy">
-    <img src="ps-02.jpeg" alt="" loading="lazy">
-    <img src="ps-03.jpeg" alt="" loading="lazy">
-    <img src="ps-05.jpeg" alt="" loading="lazy">
-    <img src="ps-06.jpeg" alt="" loading="lazy">
-    <img src="ps-07.jpeg" alt="" loading="lazy">
-    <img src="ps-15.jpeg" alt="" loading="lazy">
-    <img src="ps-22.jpeg" alt="" loading="lazy">
-    <img src="ps-26.jpeg" alt="" loading="lazy">
-    <img src="vwid4-01.jpeg" alt="" loading="lazy">
-    <img src="vwid4-02.jpeg" alt="" loading="lazy">
-    <img src="vwid4-03.jpeg" alt="" loading="lazy">
-    <img src="vwid4-04.jpeg" alt="" loading="lazy">
-    <img src="vwid4-05.jpeg" alt="" loading="lazy">
-    <img src="vwid4-06.jpeg" alt="" loading="lazy">
+    <img src="strip/ps-01.jpg" data-full="ps-01.jpeg" width="450" height="600" alt="" loading="eager" decoding="async">
+    <img src="strip/ps-02.jpg" data-full="ps-02.jpeg" width="450" height="600" alt="" loading="eager" decoding="async">
+    <img src="strip/ps-03.jpg" data-full="ps-03.jpeg" width="450" height="600" alt="" loading="eager" decoding="async">
+    <img src="strip/ps-05.jpg" data-full="ps-05.jpeg" width="450" height="600" alt="" loading="eager" decoding="async">
+    <img src="strip/ps-06.jpg" data-full="ps-06.jpeg" width="450" height="600" alt="" loading="eager" decoding="async">
+    <img src="strip/ps-07.jpg" data-full="ps-07.jpeg" width="450" height="600" alt="" loading="eager" decoding="async">
+    <img src="strip/ps-15.jpg" data-full="ps-15.jpeg" width="800" height="600" alt="" loading="lazy" decoding="async">
+    <img src="strip/ps-22.jpg" data-full="ps-22.jpeg" width="450" height="600" alt="" loading="lazy" decoding="async">
+    <img src="strip/ps-26.jpg" data-full="ps-26.jpeg" width="800" height="600" alt="" loading="lazy" decoding="async">
+    <img src="strip/vwid4-01.jpg" data-full="vwid4-01.jpeg" width="450" height="600" alt="" loading="lazy" decoding="async">
+    <img src="strip/vwid4-02.jpg" data-full="vwid4-02.jpeg" width="450" height="600" alt="" loading="lazy" decoding="async">
+    <img src="strip/vwid4-03.jpg" data-full="vwid4-03.jpeg" width="450" height="600" alt="" loading="lazy" decoding="async">
+    <img src="strip/vwid4-04.jpg" data-full="vwid4-04.jpeg" width="450" height="600" alt="" loading="lazy" decoding="async">
+    <img src="strip/vwid4-05.jpg" data-full="vwid4-05.jpeg" width="450" height="600" alt="" loading="lazy" decoding="async">
+    <img src="strip/vwid4-06.jpg" data-full="vwid4-06.jpeg" width="450" height="600" alt="" loading="lazy" decoding="async">
     <!-- duplicate set for seamless loop -->
-    <img src="ps-01.jpeg" alt="" loading="lazy">
-    <img src="ps-02.jpeg" alt="" loading="lazy">
-    <img src="ps-03.jpeg" alt="" loading="lazy">
-    <img src="ps-05.jpeg" alt="" loading="lazy">
-    <img src="ps-06.jpeg" alt="" loading="lazy">
-    <img src="ps-07.jpeg" alt="" loading="lazy">
-    <img src="ps-15.jpeg" alt="" loading="lazy">
-    <img src="ps-22.jpeg" alt="" loading="lazy">
-    <img src="ps-26.jpeg" alt="" loading="lazy">
-    <img src="vwid4-01.jpeg" alt="" loading="lazy">
-    <img src="vwid4-02.jpeg" alt="" loading="lazy">
-    <img src="vwid4-03.jpeg" alt="" loading="lazy">
-    <img src="vwid4-04.jpeg" alt="" loading="lazy">
-    <img src="vwid4-05.jpeg" alt="" loading="lazy">
-    <img src="vwid4-06.jpeg" alt="" loading="lazy">
+    <img src="strip/ps-01.jpg" data-full="ps-01.jpeg" width="450" height="600" alt="" loading="lazy" decoding="async">
+    <img src="strip/ps-02.jpg" data-full="ps-02.jpeg" width="450" height="600" alt="" loading="lazy" decoding="async">
+    <img src="strip/ps-03.jpg" data-full="ps-03.jpeg" width="450" height="600" alt="" loading="lazy" decoding="async">
+    <img src="strip/ps-05.jpg" data-full="ps-05.jpeg" width="450" height="600" alt="" loading="lazy" decoding="async">
+    <img src="strip/ps-06.jpg" data-full="ps-06.jpeg" width="450" height="600" alt="" loading="lazy" decoding="async">
+    <img src="strip/ps-07.jpg" data-full="ps-07.jpeg" width="450" height="600" alt="" loading="lazy" decoding="async">
+    <img src="strip/ps-15.jpg" data-full="ps-15.jpeg" width="800" height="600" alt="" loading="lazy" decoding="async">
+    <img src="strip/ps-22.jpg" data-full="ps-22.jpeg" width="450" height="600" alt="" loading="lazy" decoding="async">
+    <img src="strip/ps-26.jpg" data-full="ps-26.jpeg" width="800" height="600" alt="" loading="lazy" decoding="async">
+    <img src="strip/vwid4-01.jpg" data-full="vwid4-01.jpeg" width="450" height="600" alt="" loading="lazy" decoding="async">
+    <img src="strip/vwid4-02.jpg" data-full="vwid4-02.jpeg" width="450" height="600" alt="" loading="lazy" decoding="async">
+    <img src="strip/vwid4-03.jpg" data-full="vwid4-03.jpeg" width="450" height="600" alt="" loading="lazy" decoding="async">
+    <img src="strip/vwid4-04.jpg" data-full="vwid4-04.jpeg" width="450" height="600" alt="" loading="lazy" decoding="async">
+    <img src="strip/vwid4-05.jpg" data-full="vwid4-05.jpeg" width="450" height="600" alt="" loading="lazy" decoding="async">
+    <img src="strip/vwid4-06.jpg" data-full="vwid4-06.jpeg" width="450" height="600" alt="" loading="lazy" decoding="async">
   </div>
 </div>
 
@@ -1131,7 +1131,7 @@ gtag("set","ads_data_redaction",true);gtag("set","url_passthrough",true);})();
   function close(){ lb.style.display = 'none'; img.removeAttribute('src'); document.body.style.overflow = ''; }
   strip.addEventListener('click', function(e){
     var t = e.target.closest('img');
-    if(t && t.src) open(t.src);
+    if(t && t.src) open(t.getAttribute('data-full') || t.src);
   });
   closeBtn.addEventListener('click', close);
   lb.addEventListener('click', function(e){ if(e.target === lb) close(); });

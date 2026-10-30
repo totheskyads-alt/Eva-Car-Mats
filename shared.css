@@ -1939,6 +1939,13 @@ body.lb-lock{ overflow: hidden; }
 .reel video{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block }
 .reel::after{ content:""; position:absolute; inset:0; background:linear-gradient(to top, rgba(0,0,0,.78) 0%, rgba(0,0,0,0) 42%); pointer-events:none }
 .reel-meta{ position:absolute; left:14px; right:14px; bottom:14px; z-index:2; pointer-events:none }
+.reel::after{ background:linear-gradient(to top, rgba(0,0,0,.85) 0%, rgba(0,0,0,0) 50%) }
+.reel-views{ position:absolute; top:12px; left:12px; z-index:2; padding:6px 10px; border-radius:999px; background:rgba(10,10,11,.62); border:1px solid rgba(255,255,255,.16); font-family:var(--mono); font-size:11px; font-weight:600; letter-spacing:.04em; color:var(--cream); pointer-events:none }
+.reel-links{ display:flex; align-items:center; gap:10px; margin-top:12px; flex-wrap:wrap; pointer-events:auto }
+.reel-likes{ font-family:var(--mono); font-size:11px; color:var(--cream); margin-right:auto }
+.reel-links a{ font-family:var(--mono); font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:var(--gold-2); text-decoration:none; padding:5px 8px; border:1px solid rgba(232,194,117,.4); border-radius:999px; background:rgba(10,10,11,.5) }
+.reel-links a:hover{ background:var(--gold); color:var(--ink); border-color:var(--gold) }
+.reel:focus-visible{ outline:2px solid var(--gold); outline-offset:2px }
 .reel-tag{ display:block; font-family:var(--mono); font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:var(--gold-2) }
 .reel-title{ display:block; margin-top:6px; font-family:var(--display); font-weight:600; font-size:19px; line-height:1.15; color:var(--cream) }
 .reel-sound{ position:absolute; top:12px; right:12px; z-index:2; width:34px; height:34px; border-radius:50%; display:grid; place-items:center; background:rgba(10,10,11,.6); border:1px solid rgba(255,255,255,.18); color:var(--cream); font-size:15px; pointer-events:none }

@@ -357,7 +357,9 @@
     reels.forEach(function(r){ io.observe(r); });
   }
   reels.forEach(function(r){
-    r.addEventListener('click', function(){
+    r.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); r.click(); } });
+    r.addEventListener('click', function(e){
+      if(e.target.closest('a')) return;
       var v = vid(r), turnOn = v.muted;
       reels.forEach(function(o){ vid(o).muted = true; o.classList.remove('unmuted'); o.querySelector('.reel-sound').textContent = '\u{1F507}'; });
       if(turnOn){ v.muted = false; v.currentTime = 0; r.classList.add('unmuted'); r.querySelector('.reel-sound').textContent = '\u{1F50A}'; }

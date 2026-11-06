@@ -16,7 +16,7 @@ gtag("set","ads_data_redaction",true);gtag("set","url_passthrough",true);})();
 <title>EVA Car Mats Ireland — Custom Tailored Mats &amp; Window Tinting · Sallins, Co. Kildare</title>
 <meta name="description" content="EVA Car Mats Ireland — premium custom-fit EVA mats made to measure for every vehicle. Window tinting and detailing services in Sallins, Co. Kildare. Call 089 465 5600.">
 <link rel="preload" as="image" href="hero-home.jpeg" fetchpriority="high">
-<link rel="stylesheet" href="shared.css?v=7">
+<link rel="stylesheet" href="shared.css?v=8">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 
@@ -242,6 +242,8 @@ gtag("set","ads_data_redaction",true);gtag("set","url_passthrough",true);})();
 <section class="hero" data-screen-label="hero" style="align-items: flex-start">
   <div class="hero-bg">
     <img src="hero-home.jpeg" alt="Custom EVA car mats with M-Sport badge, full bespoke set for one vehicle" fetchpriority="high" decoding="async" style="transform: scale(1.18); object-position: center 42%">
+    <video class="hero-video" muted loop playsinline preload="none" aria-hidden="true" data-src-desktop="videos/hero-collage.mp4" data-src-mobile="videos/hero-collage-mobile.mp4"></video>
+    <div class="hero-video-shade"></div>
     <div style="position:absolute; inset:0; background: linear-gradient(180deg, rgba(8,8,9,0.72) 0%, rgba(8,8,9,0.42) 38%, rgba(8,8,9,0.55) 72%, rgba(8,8,9,0.95) 100%)"></div>
   </div>
   <div class="hero-inner" style="padding-top: clamp(48px, 7vh, 96px); padding-bottom: clamp(56px, 8vh, 96px); padding: 90px 0px 56px">
@@ -302,6 +304,21 @@ gtag("set","ads_data_redaction",true);gtag("set","url_passthrough",true);})();
     <img src="strip/vwid4-06.jpg" data-full="vwid4-06.jpeg" width="450" height="600" alt="" loading="lazy" decoding="async">
   </div>
 </div>
+
+<script>
+// Hero video collage: loads after the page, keeps the photo until the video is playing
+(function(){
+  var v = document.querySelector('.hero-video'); if(!v) return;
+  var c = navigator.connection || {};
+  if (c.saveData || /(^|-)2g$/.test(c.effectiveType || '') || (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches)) return;
+  function start(){
+    v.src = innerWidth < 768 ? v.dataset.srcMobile : v.dataset.srcDesktop;
+    v.addEventListener('playing', function(){ v.classList.add('on'); }, { once: true });
+    var p = v.play(); if (p && p.catch) p.catch(function(){});
+  }
+  if (document.readyState === 'complete') setTimeout(start, 300); else addEventListener('load', function(){ setTimeout(start, 300); });
+})();
+</script>
 
 <!-- ============== MARQUEE STRIP ============== -->
 <div class="marquee" aria-hidden="true">
